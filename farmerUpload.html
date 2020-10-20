@@ -42,7 +42,72 @@
           </form>
         </div>
       </nav>
-      <h1>this is the registration page</h1>
+      <div class="after-login">
+        <h4>Sign In as Urban Farmer</h4>
+        <form class="agric-FO-Login" action="#" method="#" name="urbanFarmerLogin">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="usernameUF"
+              placeholder="Urban Farmer Username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              id="inputFONum"
+              placeholder="Unique Farmer ID"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Log In</button>
+          <!-- <input
+            type="submit"
+            name="register-FO"
+            class="register-FO"
+            id="register-FO"
+          /> -->
+        </form>
+      </div>
+<div>
+      <form class="farmerOneRegister" name="urbanFarmerForm">
+        <img class="formImages" src="img/greenLeafSideImage1.png" alt="" />
+        <h4 id="registerFO">Upload produce here</h4>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <input
+              type="text"
+              class="form-control"
+              id="inputProduceName"
+              placeholder="Produce name"
+              required
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <select id="produceType" class="form-control" required>
+              <option value="Default" selected>Produce type</option>
+              <option value="Organic">Organic</option>
+              <option value="Inorganic">Inorganic</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <input
+              type="text"
+              class="form-control"
+              id="inputPrice"
+              placeholder="Price per Unit"
+              required
+            />
+          </div> 
+          </div>
+          <button type="submit" class="btn btn-primary" id="registerFO">
+            Upload</button
+          ><br />
+          </form>
+      <script src="./js/massajaUfarm.js"></script>
       <script src="js/jquery-3.5.1.slim.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap/bootstrap.js"></script>

@@ -67,18 +67,23 @@
     </nav>
     <div class="after-login">
       <h4>Sign In as Farmer One</h4>
-      <form class="agricOffLogin" action="#" method="#">
+      <form class="agric-FO-Login" action="#" method="#" name="farmerOneLogin">
         <div class="form-group">
-          <label for="usernameFO">FO Username</label>
-          <input type="text" class="form-control" id="usernameFO" required />
+          <input
+            type="text"
+            class="form-control"
+            id="usernameFO"
+            placeholder="FO Username"
+            required
+          />
           <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
         </div>
         <div class="form-group">
-          <label for="inputFONum">FO Number</label>
           <input
             type="password"
             class="form-control"
             id="inputFONum"
+            placeholder="FO Number"
             required
           />
         </div>
@@ -92,77 +97,95 @@
       </form>
     </div>
 
-    <form class="farmerOneRegister">
+    <form class="farmerOneRegister" name="farmerOneForm">
       <img class="formImages" src="img/greenLeafSideImage1.png" alt="" />
       <h4 id="registerFO">Register here new Urban Farmers</h4>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputName">First Name</label>
           <input
             type="text"
             class="form-control"
             id="inputFirstName"
+            placeholder="First Name"
             required
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="inputLastName">Last Name</label>
-          <input type="text" class="form-control" id="inputLastName" required />
+          <input
+            type="text"
+            class="form-control"
+            id="inputLastName"
+            placeholder="Last Name"
+            required
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputDOB">Date of Birth</label>
-          <input type="text" class="form-control" id="inputDOB" required />
+          <input
+            type="text"
+            class="form-control"
+            id="inputDOB"
+            placeholder="Date of Birth"
+            required
+          />
         </div>
         <div class="form-group col-md-6">
-          <label for="inputDOR">Date of Registration</label>
-          <input type="text" class="form-control" id="inputDOR" required />
+          <input
+            type="text"
+            class="form-control"
+            id="inputDOR"
+            placeholder="Date of Registration"
+            required
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputFOnumber">Farmer ID</label>
           <input
             type="number"
             class="form-control"
-            id="inputFOnumber"
+            id="inputfarmerID"
+            placeholder="Unique farmer ID"
             required
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="inputNIN">NIN Number</label>
-          <input type="password" class="form-control" id="inputNIN" required />
+          <input
+            type="password"
+            class="form-control"
+            id="inputfarmerNIN"
+            placeholder="NIN Number"
+            required
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
-          <label for="inputPhoneNumber">Phone Contact</label>
           <input
             type="text"
             class="form-control"
             id="inputPhoneNumber"
-            placeholder="0700123456"
+            placeholder="Phone Contact e.g 0700123456"
             required
           />
         </div>
         <div class="form-group col-md-4">
-          <label for="inputPhoneNumber">Alternative Contact</label>
           <input
             type="text"
             class="form-control"
-            id="inputPhoneNumber"
-            placeholder="0700123456"
+            id="altPhoneNumber"
+            placeholder="Other Contact e.g. 0780123456"
             required
           />
         </div>
         <div class="form-group col-md-4">
-          <label for="inputWard">Ward</label>
           <select id="inputWard" class="form-control" required>
-            <option selected>Busabala</option>
-            <option>Masajja</option>
-            <option>Kikajjo</option>
-            <option>Namasuba</option>
+            <option value="Default" selected>Ward</option>
+            <option value="Busabala">Busabala</option>
+            <option value="Massajja">Masajja</option>
+            <option value="Kikajjo">Kikajjo</option>
+            <option value="Namasuba">Namasuba</option>
           </select>
         </div>
       </div>
@@ -170,8 +193,8 @@
         <input
           class="form-check-input"
           type="checkbox"
-          id="inlineCheckbox1"
-          value="option1"
+          id="horticultureProduce"
+          value="Horticulture"
         />
         <label class="form-check-label" for="inlineCheckbox1"
           >Horticulture Produce</label
@@ -181,8 +204,8 @@
         <input
           class="form-check-input"
           type="checkbox"
-          id="inlineCheckbox2"
-          value="option2"
+          id="poultryProducts"
+          value="Poultry"
         />
         <label class="form-check-label" for="inlineCheckbox2"
           >Poultry products</label
@@ -192,8 +215,8 @@
         <input
           class="form-check-input"
           type="checkbox"
-          id="inlineCheckbox3"
-          value="option3"
+          id="diaryProducts"
+          value="Diary"
         />
         <label class="form-check-label" for="inlineCheckbox3"
           >Diary Products</label
@@ -207,22 +230,22 @@
           <input
             class="form-check-input"
             type="radio"
-            name="gridRadios"
-            id="gridRadios1"
-            value="option1"
+            name="gender"
+            id="genderM"
+            value="Male"
             checked
           />
-          <label class="form-check-label" for="gridRadios1"> Male </label>
+          <label class="form-check-label" for="genderM"> Male </label>
         </div>
         <div class="form-check">
           <input
             class="form-check-input"
             type="radio"
-            name="gridRadios"
-            id="gridRadios2"
-            value="option2"
+            name="gender"
+            id="genderF"
+            value="Female"
           />
-          <label class="form-check-label" for="gridRadios2"> Female </label>
+          <label class="form-check-label" for="genderF"> Female </label>
         </div>
       </div>
 
@@ -233,7 +256,7 @@
         Replace FO
       </button> -->
     </form>
-
+    <script src="./js/massajaUfarm.js"></script>
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap/bootstrap.js"></script>
