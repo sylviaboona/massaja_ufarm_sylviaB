@@ -1,0 +1,40 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='aboutUfarm') About Us
+      li.nav-item
+        a.nav-link(href='contactUfarm' tabindex='-1' aria-disabled='true') Contact Us
+    form.form-inline.my-2.my-lg-0
+      input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
+      button.btn.btn-outline-success.my-2.my-sm-0(type='submit')
+        | Search
+.after-login
+  h4 AO Sign In 
+  form.agric-FO-Login(action='/loginAO' method='POST' name='agricLogin')
+    .form-group
+      input#emailAO.form-control(type='email' aria-describedby='emailHelp' placeholder='Email e.g. example@hello.com' name='emailAO')
+      span#emailAOerr
+      // <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    .form-group
+      input#pwdAO.form-control(type='password' placeholder='Password (7-12 Characters)' name='pwdAO')
+      span#pwdAOerr
+    a(href="registerFO")
+        button.btn.btn-primary(type='submit'  onclick='loginAOform()') Log In
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

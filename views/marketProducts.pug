@@ -1,0 +1,107 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+body
+    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Open modal for @getbootstrap
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+            h4#exampleModalLabel.modal-title Register New FO
+          .modal-body
+            form(name='foRegisterForm' action='/registerFO' method='POST')
+              .form-row
+                .form-group.col-md-6
+                  input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
+                  span#fnameFOerr
+                .form-group.col-md-6
+                  input#inputLastName.form-control(type='text' placeholder='Last Name' name='lastNameFO')
+                  span#lnameFOerr
+              .form-row
+                .form-group.col-md-6
+                  input#inputDOB.form-control(type='text' placeholder='Date of Birth dd/mm/yyyy' name='dobFO')
+                  span#dobFOerr
+                .form-group.col-md-6
+                  input#inputDOR.form-control(type='text' placeholder='Registration Date dd/mm/yyyy' name='dorFO')
+                  span#dorFOerr
+              .form-row
+                .form-group.col-md-6
+                  input#inputFOnumber.form-control(type='number' placeholder='FO Number' name='foNumber')
+                  span#foNumErr
+                .form-group.col-md-6
+                  input#inputNIN.form-control(type='password' placeholder='NIN number' name='foNIN')
+                  span#foNINerr
+              .form-row
+                .form-group.col-md-6
+                  input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
+                  span#fophoneNumErr
+                .form-group.col-md-6
+                  select#inputWard.form-control(name='ward')
+                    option(value='Default' selected='') Select your Ward
+                    option(value='Busabala') Busabala
+                    option(value='Massajja') Masajja
+                    option(value='Kikajjo') Kikajjo
+                    option(value='Namasuba') Namasuba
+                  span#wardErr
+              .form-row
+                .form-group.col-md-6
+                  select#inputYears.form-control(name='stayPeriod')
+                    option(value='Default' selected='') Period of Stay
+                    option(value='10-15yrs') 10-15 years
+                    option(value='15-20yrs') 15-20years
+                    option(value='+20yrs') 20 years +
+                  span#stayPeriodErr
+                .form-group.col-md-6
+                  select#inputResidence.form-control(name='residenceType')
+                    option(value='Default' selected='') Residence type
+                    option(value='Citizen') Citizen
+                    option(value='NonCitizen') NonCitizen
+                  span#residenceErr
+              .form-check.form-check-inline
+                input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture')
+                label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+              .form-check.form-check-inline
+                input#poultryProducts.form-check-input(type='checkbox' value='Poultry')
+                label.form-check-label(for='inlineCheckbox2') Poultry products
+              .form-check.form-check-inline
+                input#diaryProducts.form-check-input(type='checkbox' value='Diary')
+                label.form-check-label(for='inlineCheckbox3') Diary Products
+              .form-group
+                .form-check
+                  input#gridRadios1.form-check-input(type='radio' name='gender' value='Male' checked='')
+                  label.form-check-label(for='gridRadios1')  Male 
+                .form-check
+                  input#gridRadios2.form-check-input(type='radio' name='gender' value='Female')
+                  label.form-check-label(for='gridRadios2')  Female 
+          .modal-footer
+            button.btn.btn-default(type='button' data-dismiss='modal') Close
+            button.btn.btn-primary(type='button' onclick='registerFOform()') Register FO
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')
+
+//- Carousel
+#carouselExampleIndicators.carousel.slide(data-ride='carousel')
+  ol.carousel-indicators
+    li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+    li(data-target='#carouselExampleIndicators' data-slide-to='1')
+    li(data-target='#carouselExampleIndicators' data-slide-to='2')
+  .carousel-inner
+    .carousel-item.active
+      img.d-block.w-100(src='img/FO_image1.jpg' alt='...')
+    .carousel-item
+      img.d-block.w-100(src='img/fo_image2.jpg' alt='...')
+    .carousel-item
+      img.d-block.w-100(src='img/FO_image1.jpg' alt='...')
+  a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+    span.carousel-control-prev-icon(aria-hidden='true')
+    span.sr-only Previous
+  a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+    span.carousel-control-next-icon(aria-hidden='true')
+    span.sr-only Next

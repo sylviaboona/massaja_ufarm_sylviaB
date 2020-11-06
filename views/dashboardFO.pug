@@ -1,0 +1,100 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='./css/style.css' type='text/css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='registerFO') Registration
+      li.nav-item
+        a.nav-link(href='/aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+body
+  .container
+    .row 
+      .col
+        p This is the FARMER ONE Dash board
+    .row
+      .col-3
+        p Side bar nav
+      .col-6
+        p Hello there
+      .col-3
+        button#newFObtn.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Add New UF
+        #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h4#exampleModalLabel.modal-title Register New Urban Farmer
+                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                  span(aria-hidden='true') &times;
+              .modal-body
+                form(name='urbanFarmerForm' action='/registerUF' method='POST')
+                  .form-row
+                    .form-group.col-md-6
+                      input#inputFirstName.form-control(type='text' name='firstNameUF' placeholder='First Name')
+                      span#fnameUFerr
+                    .form-group.col-md-6
+                      input#inputLastName.form-control(type='text' name='lastNameUF' placeholder='Last Name')
+                      span#lnameUFerr
+                  .form-row
+                    .form-group.col-md-6
+                      input#inputDOB.form-control(type="datetime-local" name="dobUF" placeholder="Date of Birth")
+                      span#dobUFerr
+                    .form-group.col-md-6
+                      input#inputDOR.form-control(type="datetime-local" name="dorUF")
+                      span#dorUFerr
+                  .form-row
+                    .form-group.col-md-6
+                      input#inputfarmerID.form-control(type='number' name='idNumber' placeholder='Unique farmer ID')
+                      span#idNumErr
+                    .form-group.col-md-6
+                      input#inputfarmerNIN.form-control(type='password' name='ufNIN' placeholder='NIN Number')
+                      span#ufNINerr
+                  .form-row
+                    .form-group.col-md-4
+                      input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
+                      span#ufphoneNumErr1
+                    .form-group.col-md-4
+                      input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
+                      span#ufphoneNumErr2
+                    .form-group.col-md-4
+                      select#inputWard.form-control(name='wardUF')
+                        option(value='Default' selected='') Ward
+                        option(value='Busabala') Busabala
+                        option(value='Massajja') Masajja
+                        option(value='Kikajjo') Kikajjo
+                        option(value='Namasuba') Namasuba
+                  .form-check.form-check-inline
+                    input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture')
+                    label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+                  .form-check.form-check-inline
+                    input#poultryProducts.form-check-input(type='checkbox' value='Poultry')
+                    label.form-check-label(for='inlineCheckbox2') Poultry products
+                  .form-check.form-check-inline
+                    input#diaryProducts.form-check-input(type='checkbox' value='Diary')
+                    label.form-check-label(for='inlineCheckbox3') Diary Products
+                    span#produceUFerr
+                  .form-group
+                    .form-check
+                      input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+                      label.form-check-label(for='genderM')  Male 
+                    .form-check
+                      input#genderF.form-check-input(type='radio' name='gender' value='Female')
+                      label.form-check-label(for='genderF')  Female 
+              .modal-footer
+                button.btn.btn-default(type='button' data-dismiss='modal') Close
+                button.btn.btn-primary(type='submit' onclick='registerUFform()') Register UF
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

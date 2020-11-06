@@ -3,8 +3,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Massajja Ufarm</title>
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
   </head>
 
   <body>
@@ -66,7 +66,7 @@
       </div>
     </nav>
 
-    <form class="farmerOneRegister" name="foRegisterForm">
+    <form class="farmerOneRegister" name="foRegisterForm" action="/registrationFO" method="POST">
       <img class="formImages" src="img/greenLeafSideImage1.png" alt="" />
       <h4 id="registerFO">Register here new FOs</h4>
       <div class="form-row">
@@ -141,7 +141,7 @@
         </div>
         <div class="form-group col-md-4">
           <select id="inputWard" class="form-control" name="ward">
-            <option value="Default" selected>Ward</option>
+            <option value="Default" selected>Select your Ward</option>
             <option value="Busabala">Busabala</option>
             <option value="Massajja">Masajja</option>
             <option value="Kikajjo">Kikajjo</option>
@@ -151,16 +151,16 @@
         <div class="form-group col-md-2">
           <select id="inputYears" class="form-control" name="stayPeriod">
             <option value="Default" selected>Period of Stay</option>
-            <option value="Ten+">10-15 years</option>
-            <option value="Fifteen+">15-20years</option>
-            <option value="Twenty+">20 years +</option>
+            <option value="10-15yrs">10-15 years</option>
+            <option value="15-20yrs">15-20years</option>
+            <option value="+20yrs">20 years +</option>
           </select>
         </div>
         <div class="form-group col-md-2">
           <select id="inputResidence" class="form-control" name="residenceType">
             <option value="Default" selected>Residence type</option>
-            <option value="Permanent">Permanent</option>
-            <option value="Temporary">Temporary</option>
+            <option value="Citizen">Citizen</option>
+            <option value="NonCitizen">NonCitizen</option>
           </select>
         </div>
       </div>
@@ -207,9 +207,9 @@
           <input
             class="form-check-input"
             type="radio"
-            name="gridRadios"
+            name="gender"
             id="gridRadios1"
-            value="option1"
+            value="Male"
             checked
           />
           <label class="form-check-label" for="gridRadios1"> Male </label>
@@ -218,9 +218,9 @@
           <input
             class="form-check-input"
             type="radio"
-            name="gridRadios"
+            name="gender"
             id="gridRadios2"
-            value="option2"
+            value="Female"
           />
           <label class="form-check-label" for="gridRadios2"> Female </label>
         </div>
@@ -239,9 +239,9 @@
       </button>
     </form>
     
-    <script src="js/jquery-3.5.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="./js/jquery-3.5.1.slim.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap/bootstrap.js"></script>
     <script src="./js/massajaUfarm.js"></script>
   </body>
 </html>

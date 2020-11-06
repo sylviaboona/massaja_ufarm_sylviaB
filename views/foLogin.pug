@@ -1,0 +1,40 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+.container.loginFOpage
+  .row
+    .col-2
+      img.fologinimage(src="../img/fo_image2.jpg", alt="")
+    .col-2
+      form.agric-FO-Login(action='/loginFO' method='POST' name='farmerOneLogin')
+        h4 FO Login
+        .form-group
+          input#usernameFO.form-control(type='text' placeholder='FO Username' name='usernameFO')
+          span#unameFOerr
+          // <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        .form-group
+          input#inputFONum.form-control(type='password' placeholder='FO Number' name='pwdFO')
+          span#pwdFOerr
+        a(href='registerUF')
+          button.btn.btn-primary(type='submit' onclick='fologinform()') Log In
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

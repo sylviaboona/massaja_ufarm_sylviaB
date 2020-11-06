@@ -1,0 +1,82 @@
+
+.navbar {
+  border-bottom: solid white 1px;
+}
+
+.navbar-brand {
+  color: white;
+}
+.welcomeimage{
+  width: 100%;
+  margin-top: 150px;
+  margin-left: -100px;
+}
+
+.fologinimage{
+  width: 100%;
+  margin-top: 250px;
+  margin-left: 150px;
+}
+
+/* .loginFOpage{
+  background-color: cadetblue;
+  height: 680px;
+} */
+
+#welcome-message{
+  padding-top: 250px;
+  text-align: center;
+  font-size: 50px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#welcome-tag {
+  margin-top: 30px;
+  padding-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.after-login {
+  background-color: olivedrab;
+  height: 680px;
+}
+.after-login h4 {
+  font-weight: bold;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.agric-FO-Login {
+  width: 400px;
+  margin-top: 200px;
+  margin-left: 600px;
+}
+
+.btn {
+  background-color: darkolivegreen;
+  border-color: white;
+}
+
+.farmerOneRegister {
+  /* width: 1000px; */
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.farmerOneRegister h4 {
+  text-align: center;
+  padding: 20px;
+}
+
+.formImages {
+  margin-left: 450px;
+}
+
+
+
+/* #newFObtn{
+  margin-left: 1200px;
+  margin-top: 200px;
+} */

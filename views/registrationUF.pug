@@ -1,0 +1,106 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='index.html') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='index.html')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='registration.html') Registration
+      //
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+        </li>
+      li.nav-item
+        a.nav-link(href='#' tabindex='-1' aria-disabled='true') About Us
+    form.form-inline.my-2.my-lg-0
+      input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
+      button.btn.btn-outline-success.my-2.my-sm-0(type='submit')
+        | Search
+form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST')
+  img.formImages(src='img/greenLeafSideImage1.png' alt='')
+  h4#registerFO Register here new Urban Farmers
+  .form-row
+    .form-group.col-md-6
+      input#inputFirstName.form-control(type='text' name='fname' placeholder='First Name')
+      span#fnameUFerr
+    .form-group.col-md-6
+      input#inputLastName.form-control(type='text' name='lname' placeholder='Last Name')
+      span#lnameUFerr
+  .form-row
+    .form-group.col-md-6
+      input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth')
+      span#dobUFerr
+    .form-group.col-md-6
+      input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration')
+      span#dorUFerr
+  .form-row
+    .form-group.col-md-6
+      input#inputfarmerID.form-control(type='number' name='idNumber' placeholder='Unique farmer ID')
+      span#idNumErr
+    .form-group.col-md-6
+      input#inputfarmerNIN.form-control(type='password' name='ufNIN' placeholder='NIN Number')
+      span#ufNINerr
+  .form-row
+    .form-group.col-md-4
+      input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
+      span#ufphoneNumErr1
+    .form-group.col-md-4
+      input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
+      span#ufphoneNumErr2
+    .form-group.col-md-4
+      select#inputWard.form-control(name='wardUF')
+        option(value='Default' selected='') Ward
+        option(value='Busabala') Busabala
+        option(value='Massajja') Masajja
+        option(value='Kikajjo') Kikajjo
+        option(value='Namasuba') Namasuba
+  .form-check.form-check-inline
+    input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture')
+    label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+  .form-check.form-check-inline
+    input#poultryProducts.form-check-input(type='checkbox' value='Poultry')
+    label.form-check-label(for='inlineCheckbox2') Poultry products
+  .form-check.form-check-inline
+    input#diaryProducts.form-check-input(type='checkbox' value='Diary')
+    label.form-check-label(for='inlineCheckbox3') Diary Products
+    //
+      <div class="directions-FO1">
+      <a href="https://goo.gl/maps/AYZkVdF5U5cSmzGd7">Directions to FOs Residence</a>
+      </div>
+  .form-group
+    .form-check
+      input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+      label.form-check-label(for='genderM')  Male 
+    .form-check
+      input#genderF.form-check-input(type='radio' name='gender' value='Female')
+      label.form-check-label(for='genderF')  Female 
+  a(href='loginUF')
+    button#registerFO.btn.btn-primary(type='submit')
+      | Register Urban Farmer
+    br
+  //
+    <button type="submit" class="btn btn-primary" id="replaceFO">
+    Replace FO
+    </button>
+script(src='./js/massajaUfarm.js')
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
