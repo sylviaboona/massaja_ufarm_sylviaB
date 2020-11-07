@@ -1,0 +1,47 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='./css/style.css' type='text/css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us   
+body
+    img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
+    .row
+        .col-md-4
+        .col-md-4
+            h4#registerFO Upload Your New Product Here
+            label Product Description
+            p
+                textarea(name="comments" maxlength="200")
+            .form-group
+              .form-check-inline
+                input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
+                label.form-check-label(for='organic')  Organic 
+              .form-check-inline
+                input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
+                label.form-check-label(for='inorganic')  Inorganic 
+            .input-group.mb-3
+                .custom-file
+                    input#inputGroupFile02.custom-file-input(type='file')
+                    label.custom-file-label(for='inputGroupFile02') Choose file
+                .input-group-append
+                    span.input-group-text(id='') Upload
+        .col-md-4  
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

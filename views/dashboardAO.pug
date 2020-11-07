@@ -15,96 +15,65 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
           | Home 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='registerFO') Registration
+        a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
-        a.nav-link(href='/aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+      li.nav-item
+        a.nav-link(href='registerFO') Add New FO   
+    form.search(action='/dashboardAO')
+        div.form-row
+            div.col-md-8
+                input.form-control(name='gender' placeholder="Enter your search term(gender) ...")
+            div.col-md-4
+                input.btn.btn-dark.btn-block(type="submit")
 body
-  .container
-    .row 
-      .col
-        p This is the AO Dash board
-    .row
-      .col-3
-        p Side bar nav
-      .col-6
-        p Hello there
-      .col-3
-        button#newFObtn.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Add New FO
-        #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
-          .modal-dialog(role='document')
-            .modal-content
-              .modal-header
-                h4#exampleModalLabel.modal-title Register New FO
-                button.close(type='button' data-dismiss='modal' aria-label='Close')
-                  span(aria-hidden='true') &times;
-              .modal-body
-                form(name='foRegisterForm' action='/registerFO' method='POST')
-                  .form-row
-                    .form-group.col-md-6
-                      input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
-                      span#fnameFOerr
-                    .form-group.col-md-6
-                      input#inputLastName.form-control(type='text' placeholder='Last Name' name='lastNameFO')
-                      span#lnameFOerr
-                  .form-row
-                    .form-group.col-md-6
-                      input#inputDOB.form-control(type='text' placeholder='Date of Birth dd/mm/yyyy' name='dobFO')
-                      span#dobFOerr
-                    .form-group.col-md-6
-                      input#inputDOR.form-control(type='text' placeholder='Registration Date dd/mm/yyyy' name='dorFO')
-                      span#dorFOerr
-                  .form-row
-                    .form-group.col-md-6
-                      input#inputFOnumber.form-control(type='number' placeholder='FO Number' name='foNumber')
-                      span#foNumErr
-                    .form-group.col-md-6
-                      input#inputNIN.form-control(type='password' placeholder='NIN number' name='foNIN')
-                      span#foNINerr
-                  .form-row
-                    .form-group.col-md-6
-                      input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
-                      span#fophoneNumErr
-                    .form-group.col-md-6
-                      select#inputWard.form-control(name='ward')
-                        option(value='Default' selected='') Select your Ward
-                        option(value='Busabala') Busabala
-                        option(value='Massajja') Masajja
-                        option(value='Kikajjo') Kikajjo
-                        option(value='Namasuba') Namasuba
-                      span#wardErr
-                  .form-row
-                    .form-group.col-md-6
-                      select#inputYears.form-control(name='stayPeriod')
-                        option(value='Default' selected='') Period of Stay
-                        option(value='10-15yrs') 10-15 years
-                        option(value='15-20yrs') 15-20years
-                        option(value='+20yrs') 20 years +
-                      span#stayPeriodErr
-                    .form-group.col-md-6
-                      select#inputResidence.form-control(name='residenceType')
-                        option(value='Default' selected='') Residence type
-                        option(value='Citizen') Citizen
-                        option(value='NonCitizen') NonCitizen
-                      span#residenceErr
-                  .form-check.form-check-inline
-                    input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='productType')
-                    label.form-check-label(for='inlineCheckbox1') Horticulture Produce
-                  .form-check.form-check-inline
-                    input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='productType')
-                    label.form-check-label(for='inlineCheckbox2') Poultry products
-                  .form-check.form-check-inline
-                    input#diaryProducts.form-check-input(type='checkbox' value='Diary' name='productType' checked)
-                    label.form-check-label(for='inlineCheckbox3') Diary Products
-                  .form-group
-                    .form-check
-                      input#gridRadios1.form-check-input(type='radio' name='gender' value='Male' checked='')
-                      label.form-check-label(for='genderM')  Male 
-                    .form-check
-                      input#gridRadios2.form-check-input(type='radio' name='gender' value='Female')
-                      label.form-check-label(for='genderF')  Female 
-              .modal-footer
-                button.btn.btn-default(type='button' data-dismiss='modal') Close
-                button.btn.btn-primary(type='submit' onclick='registerFOform()') Register FO
+    header.card-header
+        h4.card-title Farmer Ones in Massajja Division Ufarm
+    |&nbsp
+    table.table
+        thead.thead-dark
+            tr
+                th Firstname
+                th Lastname
+                th Username
+                th FO Number
+                th FO NIN
+                th Contact
+                th Ward
+                th Stay Period
+                th Residence Type
+                th DOB
+                th DOR
+                th Products
+                th Gender
+                th
+                th
+
+        tbody
+            if users.length
+            each user in users
+                tr
+                    td #{user.firstNameFO}
+                    td #{user.lastNameFO}
+                    td #{user.userNameFO}
+                    td #{user.foNumber}
+                    td #{user.foNIN}
+                    td #{user.phoneNumberFO}
+                    td #{user.ward}
+                    td #{user.stayPeriod}
+                    td #{user.residenceType}
+                    td #{user.dobFO}
+                    td #{user.dorFO}
+                    td #{user.produceType}  
+                    td #{user.gender}
+                    td
+                        a(href='/update/'+user._id) Update
+                    td
+                        form(method="post" action='/delete')
+                            input(type="hidden", placeholder="", name="id", value=user._id)
+                            button.btn.btn-dark.btn-block(type="submit") Delete
+            else
+                p No registrations yet :(
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')

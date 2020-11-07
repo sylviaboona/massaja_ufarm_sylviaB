@@ -2,8 +2,8 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Massajja Ufarm
-  link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
-  link(rel='stylesheet' href='css/style.css')
+  link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='./css/style.css' type='text/css')
 nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
   a.navbar-brand(href='welcome') Ufarm
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
@@ -18,17 +18,15 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
-.after-login
-  h4 Sign In
-  form.agric-FO-Login(action='/loginUF' method='POST' name='urbanFarmerLogin')
-    .form-group
-      input#usernameFO.form-control(type='text' placeholder='Urban Farmer Username')
-      // <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    .form-group
-      input#inputFONum.form-control(type='password' placeholder='Urban Farmer ID')
-    a(href="farmerUpload")
-      button.btn.btn-primary(type='submit') Log In
-script(src='js/jquery-3.5.1.slim.min.js')
-script(src='js/popper.min.js')
-script(src='js/bootstrap/bootstrap.js')
+      li.nav-item
+        a.nav-link(href='farmerUpload') Upload Product   
+    form.search(action='/dashboardUF')
+        div.form-row
+            div.col-md-8
+                input.form-control(name='gender' placeholder="Enter your search term(gender) ...")
+            div.col-md-4
+                input.btn.btn-dark.btn-block(type="submit")
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')
 script(src='./js/massajaUfarm.js')

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-const registrationFOSchema = new mongoose.Schema({
+const farmeruploadSchema = new mongoose.Schema({
     firstNameFO: {
         type: String,
         required: 'Please Enter first name'
@@ -27,4 +26,4 @@ const registrationFOSchema = new mongoose.Schema({
     gender: String,
   });
 
-  module.exports = mongoose.model('RegistrationFO', registrationFOSchema);
+  module.exports = mongoose.model('FarmerUpload', farmeruploadSchema);

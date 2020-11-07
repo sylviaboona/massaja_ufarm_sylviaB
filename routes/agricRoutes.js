@@ -25,11 +25,9 @@ router.post('/loginAO', async(req, res) => {
 
 router.get('/registerFO', (req, res) => {
     res.render('registrationFO')
-    }); 
-router.get('/dashboardAO', (req, res) => {
-  res.render('dashboardAO')
-  }); 
+    });  
 
+  //SAVING FARMER ONE DATA TO THE DATABASE
 router.post('/registerFO', async(req, res) => {
     try{
     const registrationFO = new RegistrationFO(req.body);
@@ -44,24 +42,30 @@ router.post('/registerFO', async(req, res) => {
     }); 
 
 
-
-  router.get('/', async(req, res) => {
+  //RETRIEVE FARMER ONE DATA FROM THE DATABASE
+  router.get('/dashboardAO', async(req, res)=>{
     try{
       let items = await RegistrationFO.find()
-      //SEARCHING ITEMS WITH A SPECIFIC FIELD IN THE DATABASE
-      if(req.query.name){
-        items = await RegistrationFO.find({name:req.query.name})
+      //SEARCHING FARMER ONE ITEMS FOR A SPECIFIC FIELD IN THE DATABASE
+      if(req.query.gender){
+        items = await RegistrationFO.find({name:req.query.gender})
       }
-      res.render('dashboardAO', {title:'Farmer One list', users: items})
+      res.render('dashboardAO', {users: items})
     }
     catch(err){
       res.status(400).send('Ooops! Couldnt find items in database!')
     }
-    }); 
+  })
 
-router.post('/registerFO', (req, res) => {
-      console.log(req.body);
-      res.redirect('/welcome');
-  });
+  //DELETING A FARMER ONE FROM THE DATABASE
+  router.post('/delete', async(req, res)=>{
+    try{
+      await RegistrationFO.deleteOne({_id:req.body.id})
+      res.redirect('back')
+    }catch(err){
+      res.status(400).send('Oooops! Cant delete item!')
+    }
+    
+  })
 
 module.exports = router;

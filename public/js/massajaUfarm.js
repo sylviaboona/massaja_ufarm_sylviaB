@@ -30,6 +30,7 @@ var loginAOform =()=>{
 const registerFOform = () => {
   const firstName = document.foRegisterForm.firstNameFO;
   const lastName = document.foRegisterForm.lastNameFO;
+  const userName = document.foRegisterForm.userNameFO;
   const dob = document.foRegisterForm.dobFO;
   const dor = document.getElementById("inputDOR");
   const foNumber = document.foRegisterForm.foNumber;
@@ -66,6 +67,17 @@ const registerFOform = () => {
     lastName.style.border = "2px solid red";
   } else {
     lastName.style.border = "2px solid green";
+  }
+
+  //Validate User Name.
+  let unameRegex = /^[A-Za-z]+$/;
+  let unameFOerr = document.getElementById('unameFOerr')
+  if (unameRegex.test(userName.value) == false) {
+    unameFOerr.innerHTML = '* User Name is required'
+    unameFOerr.style.color = 'red'
+    userName.style.border = "2px solid red";
+  } else {
+    userName.style.border = "2px solid green";
   }
 
   //Validate Date of Birth
@@ -198,6 +210,7 @@ var fologinform =()=>{
 const registerUFform = () => {
   const firstName = document.urbanFarmerForm.firstNameUF;
   const lastName = document.urbanFarmerForm.lastNameUF;
+  const userName = document.urbanFarmerForm.userNameUF;
   const dob = document.urbanFarmerForm.dobUF;
   const dor = document.getElementById("inputDOR");
   const idNumber = document.urbanFarmerForm.idNumber;
@@ -236,7 +249,20 @@ const registerUFform = () => {
     lastName.style.border = "2px solid green";
   }
 
-  //Validate Date of Birth
+
+  //Validate Urban Farmer User Name.
+  let unameRegex = /^[A-Za-z]+$/;
+  let unameUFerr = document.getElementById('unameUFerr')
+  if (unameRegex.test(userName.value) == false) {
+    unameUFerr.innerHTML = '* User Name is required'
+    unameUFerr.style.color = 'red'
+    userName.style.border = "2px solid red";
+    return false;
+  } else {
+    userName.style.border = "2px solid green";
+  }
+
+  //Validate Urban Farmer Date of Birth
   let dobRegex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
   let dobUFerr = document.getElementById('dobUFerr')
   if (!dob.value.match(dobRegex)) {
@@ -321,7 +347,7 @@ const registerUFform = () => {
     poultry.checked == false &&
     diary.checked == false
   ) {
-    produceUFerr.innerHTML = '*Please select  your produce type'
+    produceUFerr.innerHTML = '*Select at least one your produce type'
     produceUFerr.style.color = 'red'
   }
 };

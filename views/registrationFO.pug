@@ -15,53 +15,33 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
           | Home 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='registerFO') Registration
-      //
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-        </li>
+        a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
-        a.nav-link(href='#' tabindex='-1' aria-disabled='true') About Us
-    form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
-      button.btn.btn-outline-success.my-2.my-sm-0(type='submit')
-        | Search
-form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST')
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' onsubmit='registerFOform()')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
-  h4#registerFO Agriculrural Officer Dash Board
+  h4#registerFO Register New Farmer One  Here
   .form-row
-    .form-group.col-md-6
+    .form-group.col-md-4
       input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
       span#fnameFOerr
-    .form-group.col-md-6
+    .form-group.col-md-4
       input#inputLastName.form-control(type='text' placeholder='Last Name' name='lastNameFO')
       span#lnameFOerr
+    .form-group.col-md-4
+      input#inputUserName.form-control(type='text' placeholder='User Name' name='userNameFO')
+      span#unameFOerr
   .form-row
-    .form-group.col-md-6
-      input#inputDOB.form-control(type='text' placeholder='Date of Birth dd/mm/yyyy' name='dobFO')
-      span#dobFOerr
-    .form-group.col-md-6
-      input#inputDOR.form-control(type='text' placeholder='Registration Date dd/mm/yyyy' name='dorFO')
-      span#dorFOerr
-  .form-row
-    .form-group.col-md-6
+    .form-group.col-md-4
       input#inputFOnumber.form-control(type='number' placeholder='FO Number' name='foNumber')
       span#foNumErr
-    .form-group.col-md-6
+    .form-group.col-md-4
       input#inputNIN.form-control(type='password' placeholder='NIN number' name='foNIN')
       span#foNINerr
-  .form-row
     .form-group.col-md-4
       input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
       span#fophoneNumErr
+  .form-row
     .form-group.col-md-4
       select#inputWard.form-control(name='ward')
         option(value='Default' selected='') Select your Ward
@@ -70,19 +50,26 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST')
         option(value='Kikajjo') Kikajjo
         option(value='Namasuba') Namasuba
       span#wardErr
-    .form-group.col-md-2
+    .form-group.col-md-4
       select#inputYears.form-control(name='stayPeriod')
         option(value='Default' selected='') Period of Stay
         option(value='10-15yrs') 10-15 years
         option(value='15-20yrs') 15-20years
         option(value='+20yrs') 20 years +
       span#stayPeriodErr
-    .form-group.col-md-2
+    .form-group.col-md-4
       select#inputResidence.form-control(name='residenceType')
         option(value='Default' selected='') Residence type
         option(value='Citizen') Citizen
         option(value='NonCitizen') NonCitizen
       span#residenceErr
+  .form-row
+    .form-group.col-md-6
+      input#inputDOB.form-control(type='text' placeholder='Date of Birth dd/mm/yyyy' name='dobFO')
+      span#dobFOerr
+    .form-group.col-md-6
+      input#inputDOR.form-control(type='text' placeholder='Registration Date dd/mm/yyyy' name='dorFO')
+      span#dorFOerr
   .form-check.form-check-inline
     input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
     label.form-check-label(for='inlineCheckbox1') Horticulture Produce
@@ -90,22 +77,18 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST')
     input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
     label.form-check-label(for='inlineCheckbox2') Poultry products
   .form-check.form-check-inline
-    input#diaryProducts.form-check-input(type='checkbox' value='Diary' name='produceType' checked)
+    input#diaryProducts.form-check-input(type='checkbox' value='Diary' name='produceType' checked='')
     label.form-check-label(for='inlineCheckbox3') Diary Products
-    .directions-FO1
-      a(href='https://goo.gl/maps/AYZkVdF5U5cSmzGd7') Directions to FOs Residence
   .form-group
-    .form-check
-      input#gridRadios1.form-check-input(type='radio' name='gender' value='Male' checked='')
-      label.form-check-label(for='gridRadios1')  Male 
-    .form-check
-      input#gridRadios2.form-check-input(type='radio' name='gender' value='Female')
-      label.form-check-label(for='gridRadios2')  Female 
-  button#registerFO.btn.btn-primary(type='submit' onclick='registerFOform()')
-    | Register Farmer One
+    .form-check-inline
+      input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+      label.form-check-label(for='genderM')  Male 
+    .form-check-inline
+      input#genderF.form-check-input(type='radio' name='gender' value='Female')
+      label.form-check-label(for='genderF')  Female 
+  button#registerFO.btn.btn-primary(type='submit')
+    | Register
   br
-  button#replaceFO.btn.btn-primary(type='button')
-    | Add New FO
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')
