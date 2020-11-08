@@ -71,3 +71,28 @@
 .farmerUploadImages{
   margin-left: 650px;
 }
+
+.d-block.w-100{
+  height: 400px;
+}
+
+.card{  
+  margin-left: 300px;
+  margin-top: -30px;
+}
+.contactMessage{
+  font-weight: bold;
+  color: olivedrab;
+  text-align: center;
+}
+.card-text{
+  text-align: center;
+}
+.card2{
+  margin-left: 300px;
+  margin-top: -212px;
+  background-color: white;
+}
+.card-body{
+  background-color: white;
+}

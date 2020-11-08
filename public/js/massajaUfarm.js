@@ -102,7 +102,7 @@ const registerFOform = () => {
   }
 
   //Validate Unique FO Number
-  let foNumRegex = /[0-9]$/;
+  let foNumRegex = /^[A-Z]\w{5,6}$/;;
   ///^[A-Z]\w{3,4}$/;
   let foNumErr = document.getElementById('foNumErr')
   if (!foNumber.value.match(foNumRegex)) {

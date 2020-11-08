@@ -1,0 +1,84 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='./css/style.css' type='text/css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+form.farmerOneRegister(method="post" action="/update?id="+user._id)
+  img.formImages(src='img/greenLeafSideImage1.png' alt='')
+  h4#registerFO Update Urban Farmer Information Here
+  .form-row
+    .form-group.col-md-4
+      label First Name
+      input#inputFirstName.form-control(value = user.firstNameUF name ="firstNameUF")
+    .form-group.col-md-4
+      label Last Name
+      input#inputLastName.form-control(value = user.lastNameUF name ="lastNameUF")
+    .form-group.col-md-4
+      label User Name
+      input#inputUserName.form-control(value = user.userNameUF name ="userNameUF")
+  .form-row
+    .form-group.col-md-6
+      label Date of Birth
+      input#inputDOB.form-control(value = user.dobUF name ="dobUF")
+    .form-group.col-md-6
+      label Date of Registration
+      input#inputDOR.form-control(value = user.dorUF name ="dorUF")
+  .form-row
+    .form-group.col-md-6
+      label FO Number
+      input#inputFOnumber.form-control(value = user.idNumber name ="idNumber")
+    .form-group.col-md-6
+      label FO NIN
+      input#inputNIN.form-control(value = user.ufNIN name ="ufNIN")
+  .form-row
+    .form-group.col-md-4
+      label Contact
+      input#inputPhoneNumber.form-control(value = user.phoneNumberUF name ="phoneNumberUF")
+    .form-group.col-md-4
+      label Contact
+      input#inputPhoneNumber.form-control(value = user.phoneNumberUF2 name ="phoneNumberUF2")
+    .form-group.col-md-4
+      label Ward
+      select#inputWard.form-control(name='wardUF')
+        option(value="Busabala" selected = user.ward === "Busabala") Busabala
+        option(value="Massajja" selected = user.ward === "Massajja") Massajja
+        option(value="Kikajjo" selected = user.ward === "Kikajjo") Kikajjo
+        option(value="Namasuba" selected = user.ward === "Namasuba") Namasuba
+  .form-check.form-check-inline
+    input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType==="Horticulture" name="produceType")
+    label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+  .form-check.form-check-inline
+    input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType==="Poultry" name="produceType")
+    label.form-check-label(for='inlineCheckbox2') Poultry products
+  .form-check.form-check-inline
+    input#diaryProducts.form-check-input(value= "Diary" type="checkbox" checked = user.produceType==="Diary" name="produceType")
+    label.form-check-label(for='inlineCheckbox3') Diary Products
+  .form-group
+    .form-check-inline
+      input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender")
+      label.form-check-label(for='genderM')  Male 
+    .form-check-inline
+      input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender")
+      label.form-check-label(for='genderF')  Female 
+  button#registerFO.btn.btn-primary(type='submit')
+    | Update
+  br
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

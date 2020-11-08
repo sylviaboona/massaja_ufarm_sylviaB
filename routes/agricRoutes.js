@@ -45,10 +45,12 @@ router.post('/registerFO', async(req, res) => {
   //RETRIEVE FARMER ONE DATA FROM THE DATABASE
   router.get('/dashboardAO', async(req, res)=>{
     try{
+      //Declaring a variable 'items' to contain data of all farmer ones
       let items = await RegistrationFO.find()
-      //SEARCHING FARMER ONE ITEMS FOR A SPECIFIC FIELD IN THE DATABASE
-      if(req.query.gender){
-        items = await RegistrationFO.find({name:req.query.gender})
+      //SEARCHING FOR FARMER ONES LIVING IN A SPECIFIC WARD
+      if(req.query.ward){
+        //assigning 'items' to return only farmer ones in a given ward searched by the user
+        items = await RegistrationFO.find({name:req.query.ward})
       }
       res.render('dashboardAO', {users: items})
     }
@@ -68,4 +70,24 @@ router.post('/registerFO', async(req, res) => {
     
   })
 
+//UPDATING FARMER ONE INFORMATION IN THE DATABASE
+//Load the update form for a selected farmer one
+  router.get('/update/:id', async (req, res) => {
+    try {
+        const updateFO = await RegistrationFO.findOne({ _id:req.params.id })
+        res.render('updateAOdash', { user: updateFO })
+    } catch (err) {
+        res.status(400).send("Unable to find item in the database");
+    }
+})
+//Post the updated farmer one data back to the database 
+//and show the update on dashboard of AO
+router.post('/update', async (req, res) => {
+    try {
+        await RegistrationFO.findOneAndUpdate({_id:req.query.id}, req.body)
+        res.redirect('/dashboardAO');
+    } catch (err) {
+        res.status(404).send("Oooops! Update Failed. Try again");
+    }    
+})
 module.exports = router;

@@ -27,8 +27,36 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6B8E23;')
           a.dropdown-item(href='loginFO') Farmer One
           .dropdown-divider
           a.dropdown-item(href='loginUF') Urban Farmer
-.container
-  p contact page
+#carouselExampleControls.carousel.slide(data-ride='carousel')
+  .carousel-inner
+    .carousel-item.active
+      img.d-block.w-100(src='../img/contactImage4.jpg' alt='...')
+    .carousel-item
+      img.d-block.w-100(src='../img/contactImage4.jpg' alt='...')
+    .carousel-item
+      img.d-block.w-100(src='../img/contactImage4.jpg' alt='...')
+  a.carousel-control-prev(href='#carouselExampleControls' role='button' data-slide='prev')
+    span.carousel-control-prev-icon(aria-hidden='true')
+    span.sr-only Previous
+  a.carousel-control-next(href='#carouselExampleControls' role='button' data-slide='next')
+    span.carousel-control-next-icon(aria-hidden='true')
+    span.sr-only Next
+.row
+  .col-sm-4
+    .card(style='width: 25rem;')
+      .card-body
+        h5.card-title.card-text Talk to Agric Officer
+        p.card-text Are you interested in knowing more about Ufarm.
+        p.contactMessage +256789587888
+        p.contactMessage sylviaboona2@gmail.com
+        //- a.btn.btn-primary(href='#') Go somewhere
+  .col-sm-4
+    .card(style='width: 25rem;')
+      .card-body
+        h5.card-title Talk to Customer Support
+        p.card-text With supporting text below as a natural lead-in to additional content.
+        a.btn.btn-primary(href='#') Go somewhere
+
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')

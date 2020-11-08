@@ -14,7 +14,7 @@ router.post('/loginFO', async(req, res) => {
     const loginFO = new LoginFO(req.body);
     await loginFO.save(()=>{
       console.log('save successful');
-      res.redirect('/registerUF')
+      res.redirect('/dashboardFO')
       })
     }catch(err){
     res.status(400).send('Ooops! Something went wrong!')
@@ -47,8 +47,8 @@ router.post('/registerUF', async(req, res) => {
     try{
       let items = await RegistrationUF.find()
       //SEARCHING URBAN FARMER DATA FOR A SPECIFIC CATEGORY IN THE DATABASE say gender
-      if(req.query.gender){
-        items = await RegistrationUF.find({name:req.query.gender})
+      if(req.query.ward){
+        items = await RegistrationUF.find({name:req.query.ward})
       }
       res.render('dashboardFO', {users: items})
     }
@@ -67,5 +67,26 @@ router.post('/registerUF', async(req, res) => {
     }
     
   })
+
+  //UPDATING URBAN FARMER INFORMATION IN THE DATABASE
+//Load the update form for a selected urban farmer
+router.get('/update/:id', async (req, res) => {
+  try {
+      const updateUF = await RegistrationUF.findOne({ _id:req.params.id })
+      res.render('updateFOdash', { user: updateUF })
+  } catch (err) {
+      res.status(400).send("Unable to find item in the database");
+  }
+})
+//Post the updated urban farmer data back to the database 
+//and show the update on dashboard of FO
+router.post('/update', async (req, res) => {
+  try {
+      await RegistrationUF.findOneAndUpdate({_id:req.query.id}, req.body)
+      res.redirect('/dashboardFO');
+  } catch (err) {
+      res.status(404).send("Oooops! Update Failed. Try again");
+  }    
+})
 
 module.exports = router;
