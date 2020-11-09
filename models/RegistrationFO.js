@@ -23,7 +23,9 @@ const registrationFOSchema = new mongoose.Schema({
     residenceType:String,
     dobFO:String,
     dorFO:String,
-    productType: String,
+    produceType: [{
+        type: String
+    }],
     gender: String,
   });
 

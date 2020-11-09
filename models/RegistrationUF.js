@@ -17,7 +17,9 @@ const registrationUFSchema = new mongoose.Schema({
     phoneNumberUF: String,
     phoneNumberUF2: String,
     wardUF: String,
-    productType: String,
+    produceType: [{
+        type: String
+    }],
     gender: String,
   });
 

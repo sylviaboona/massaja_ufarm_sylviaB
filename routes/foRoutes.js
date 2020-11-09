@@ -1,5 +1,4 @@
 const express = require('express');
-const { deleteOne } = require("../models/LoginFO");
 const router = express.Router();
 const LoginFO = require('../models/LoginFO');
 const RegistrationUF = require('../models/RegistrationUF')
@@ -47,10 +46,10 @@ router.post('/registerUF', async(req, res) => {
     try{
       let items = await RegistrationUF.find()
       //SEARCHING URBAN FARMER DATA FOR A SPECIFIC CATEGORY IN THE DATABASE say gender
-      if(req.query.ward){
-        items = await RegistrationUF.find({name:req.query.ward})
+      if(req.query.wardUF){
+        items = await RegistrationUF.find({wardUF:req.query.wardUF})
       }
-      res.render('dashboardFO', {users: items})
+      res.render('dashboardFO', {ufarmers: items})
     }
     catch(err){
       res.status(400).send('Ooops! Couldnt find items in database!')
@@ -69,11 +68,11 @@ router.post('/registerUF', async(req, res) => {
   })
 
   //UPDATING URBAN FARMER INFORMATION IN THE DATABASE
-//Load the update form for a selected urban farmer
+//Load the update form for a selected urban farmer with a given id
 router.get('/update/:id', async (req, res) => {
   try {
       const updateUF = await RegistrationUF.findOne({ _id:req.params.id })
-      res.render('updateFOdash', { user: updateUF })
+      res.render('updateFOdash', { ufarmer: updateUF })
   } catch (err) {
       res.status(400).send("Unable to find item in the database");
   }

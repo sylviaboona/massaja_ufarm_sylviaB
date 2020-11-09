@@ -16,7 +16,8 @@ const app = express();
 //from the configuration file into Node’s process.env.
 mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 mongoose.connection

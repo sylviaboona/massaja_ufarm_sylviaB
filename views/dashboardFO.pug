@@ -23,7 +23,7 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
     form.search(action='/dashboardFO')
         div.form-row
             div.col-md-8
-                input.form-control(name='gender' placeholder="Enter your search term(gender) ...")
+                input.form-control(name='wardUF' placeholder="Enter your search term(gender) ...")
             div.col-md-4
                 input.btn.btn-dark.btn-block(type="submit")
 body
@@ -49,26 +49,26 @@ body
                 th
 
         tbody
-            if users.length
-            each user in users
+            if ufarmers.length
+            each ufarmer in ufarmers
                 tr
-                    td #{user.firstNameUF}
-                    td #{user.lastNameUF}
-                    td #{user.userNameUF}
-                    td #{user.dobUF}
-                    td #{user.dorUF}
-                    td #{user.idNumber}
-                    td #{user.ufNIN}
-                    td #{user.phoneNumberUF}
-                    td #{user.phoneNumberUF2}
-                    td #{user.wardUF}
-                    td #{user.produceType}
-                    td #{user.gender}
+                    td #{ufarmer.firstNameUF}
+                    td #{ufarmer.lastNameUF}
+                    td #{ufarmer.userNameUF}
+                    td #{ufarmer.dobUF}
+                    td #{ufarmer.dorUF}
+                    td #{ufarmer.idNumber}
+                    td #{ufarmer.ufNIN}
+                    td #{ufarmer.phoneNumberUF}
+                    td #{ufarmer.phoneNumberUF2}
+                    td #{ufarmer.wardUF}
+                    td #{ufarmer.produceType}
+                    td #{ufarmer.gender}
                     td
-                        a(href='/update/'+user._id) Update
+                        a(href='/update/'+ufarmer._id) Update
                     td
                         form(method="post" action='/deleteUF')
-                            input(type="hidden", placeholder="", name="id", value=user._id)
+                            input(type="hidden", placeholder="", name="id", value=ufarmer._id)
                             button.btn.btn-dark.btn-block(type="submit") Delete
             else
                 p No registrations yet :(

@@ -1,5 +1,4 @@
 const express = require('express');
-const { deleteOne } = require("../models/LoginAO");
 const router = express.Router();
 const LoginAO = require('../models/LoginAO');
 const RegistrationFO = require('../models/RegistrationFO')
@@ -50,7 +49,7 @@ router.post('/registerFO', async(req, res) => {
       //SEARCHING FOR FARMER ONES LIVING IN A SPECIFIC WARD
       if(req.query.ward){
         //assigning 'items' to return only farmer ones in a given ward searched by the user
-        items = await RegistrationFO.find({name:req.query.ward})
+        items = await RegistrationFO.find({ward:req.query.ward})
       }
       res.render('dashboardAO', {users: items})
     }
