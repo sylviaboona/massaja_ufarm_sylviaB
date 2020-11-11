@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const registrationFOSchema = new mongoose.Schema({
     firstNameFO: {
@@ -6,17 +7,18 @@ const registrationFOSchema = new mongoose.Schema({
         required: 'Please Enter first name'
     },
     lastNameFO: String,
-    // username:{
+    username:{
+        type: String,
+        unique: true,
+        required: 'Please Enter User Name' 
+    },
+    password: String,
+    foNIN: String,
+    //{
     //     type: String,
     //     unique: true,
-    //     required: 'Please Enter User name' 
+    //     required: 'Please Enter NIN number'
     // },
-    userNameFO: String,
-    foNumber: String,
-    foNIN:  {
-        type: String,
-        required: 'Please Enter NIN number'
-    },
     phoneNumberFO: String,
     ward: String,
     stayPeriod: String,
@@ -29,4 +31,5 @@ const registrationFOSchema = new mongoose.Schema({
     gender: String,
   });
 
+  registrationFOSchema.plugin(passportLocalMongoose);
   module.exports = mongoose.model('RegistrationFO', registrationFOSchema);

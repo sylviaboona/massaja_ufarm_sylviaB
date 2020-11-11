@@ -5,8 +5,17 @@ const bodyParser = require("body-parser");
 const agricRoutes = require('./routes/agricRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
+const loginRoutes = require('./routes/loginroutes')
 require('dotenv').config();
 const mongoose = require('mongoose');
+const RegistrationFO = require('./models/RegistrationFO')
+const expressSession = require('express-session')({
+  secret: 'secret', //signs the session ID cookie(should be unique value) 
+  resave: false, //forces the session to be saved back to the session store
+  saveUninitialized: false //forces a session that is “uninitialized” to be saved to the store.
+});
+const passport = require('passport');
+
 //Initialize express
 //Create an express application by calling the express function
 const app = express();
@@ -17,7 +26,8 @@ const app = express();
 mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useCreateIndex: true
 });
 
 mongoose.connection
@@ -42,10 +52,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /*Serving static files such as images, CSS files, and JavaScript files, 
 using the express.static()*/
 app.use(express.static(path.join(__dirname, 'public')));
-//Using the routes for Agricultural Officer from routes directory
+app.use(expressSession);
+//Initialize passport along with its session authentication middleware, 
+//directly inside our Express app.
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(RegistrationFO.createStrategy());
+passport.serializeUser(RegistrationFO.serializeUser());
+passport.deserializeUser(RegistrationFO.deserializeUser());
+
+//Using the routes for different users from routes directory
 app.use('/', agricRoutes)
 app.use('/', foRoutes)
 app.use('/', ufRoutes)
+app.use('/', loginRoutes)
 
 //Serving the client with the 'Home' page
 app.get('/welcome', (req, res) => {
@@ -62,6 +83,20 @@ app.get('/aboutUfarm', (req, res) => {
   res.render('aboutUfarm');
 }); 
 
+
+//Log out a user
+//logout
+app.post('/logout', (req, res) => {
+  if (req.session) {
+      req.session.destroy((err)=> {
+          if (err) {
+              // failed to destroy session
+          } else {
+              return res.redirect('/loginFO');
+          }
+      })
+  }  
+})
 
 //This gets the error page for any incorrect path
 app.get('*', (req, res) => {

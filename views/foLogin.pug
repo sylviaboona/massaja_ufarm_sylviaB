@@ -26,11 +26,11 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       form.agric-FO-Login(action='/loginFO' method='POST' name='farmerOneLogin')
         h4 FO Login
         .form-group
-          input#usernameFO.form-control(type='text' placeholder='FO Username' name='usernameFO')
+          input#usernameFO.form-control(type='text' placeholder='FO Username' name='username')
           span#unameFOerr
           // <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         .form-group
-          input#inputFONum.form-control(type='password' placeholder='FO Number' name='pwdFO')
+          input#inputFONum.form-control(type='password' placeholder='FO Number' name='password')
           span#pwdFOerr
         a(href='registerUF')
           button.btn.btn-primary(type='submit' onclick='fologinform()') Log In

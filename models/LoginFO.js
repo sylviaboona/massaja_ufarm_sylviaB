@@ -1,6 +1,7 @@
 //Require mongoose package
 const mongoose = require('mongoose');
 
+
 const loginFOSchema = new mongoose.Schema({
     userNameFO: {
       type: String,

@@ -2,24 +2,30 @@ const express = require('express');
 const router = express.Router();
 const LoginFO = require('../models/LoginFO');
 const RegistrationUF = require('../models/RegistrationUF')
+// const passport = require('passport');
 
-router.get('/loginFO', (req, res) => {
-    res.render('foLogin');
-  }); 
+// router.get('/loginFO', (req, res) => {
+//     res.render('foLogin');
+//   }); 
 
-//SAVING LOGIN INFORMATION FOR FARMER ONE TO THE DATABASE
-router.post('/loginFO', async(req, res) => {
-  try{
-    const loginFO = new LoginFO(req.body);
-    await loginFO.save(()=>{
-      console.log('save successful');
-      res.redirect('/dashboardFO')
-      })
-    }catch(err){
-    res.status(400).send('Ooops! Something went wrong!')
-    console.log(err);
-      }
-  });
+// //PROCESS THE LOG IN INFORMATION FOR FARMER ONE SUBMITTED
+// router.post('/loginFO', passport.authenticate('local'), (req,res) =>{
+//   req.session.user = req.user;
+//   res.redirect('/dashboardFO');
+// })
+
+// router.post('/loginFO', async(req, res) => {
+//   try{
+//     const loginFO = new LoginFO(req.body);
+//     await loginFO.save(()=>{
+//       console.log('save successful');
+//       res.redirect('/dashboardFO')
+//       })
+//     }catch(err){
+//     res.status(400).send('Ooops! Something went wrong!')
+//     console.log(err);
+//       }
+//   });
 
 
 router.get('/registerUF', (req, res) => {

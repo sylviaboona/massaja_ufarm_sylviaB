@@ -1,5 +1,6 @@
 //Require mongoose package
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const loginAOSchema = new mongoose.Schema({
     emailAO: {
@@ -11,5 +12,6 @@ const loginAOSchema = new mongoose.Schema({
         trim: true,
       },
   });
+  loginAOSchema.plugin(passportLocalMongoose);
   //Export the model LoginAO
   module.exports = mongoose.model('LoginAO', loginAOSchema);
