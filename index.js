@@ -2,13 +2,16 @@
 const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
+const multer = require('multer')
 const agricRoutes = require('./routes/agricRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
 const loginRoutes = require('./routes/loginroutes')
+const aologinRoutes = require('./routes/aologinRoutes')
 require('dotenv').config();
 const mongoose = require('mongoose');
-const RegistrationFO = require('./models/RegistrationFO')
+// const RegistrationFO = require('./models/RegistrationFO')
+const Users = require('./models/Users')
 const expressSession = require('express-session')({
   secret: 'secret', //signs the session ID cookie(should be unique value) 
   resave: false, //forces the session to be saved back to the session store
@@ -20,6 +23,11 @@ const passport = require('passport');
 //Create an express application by calling the express function
 const app = express();
 
+// var roles = {
+//   admin: 'Agric Officer',
+//   farmerone:'Farmer One',
+//   urbanfarmer:'Urban Farmer'
+// }
 //DATABASE CONNECTION
 //Dotenv will load our connection details, 
 //from the configuration file into Node’s process.env.
@@ -58,19 +66,30 @@ app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(RegistrationFO.createStrategy());
-passport.serializeUser(RegistrationFO.serializeUser());
-passport.deserializeUser(RegistrationFO.deserializeUser());
+// passport.use(RegistrationFO.createStrategy());
+// passport.serializeUser(RegistrationFO.serializeUser());
+// passport.deserializeUser(RegistrationFO.deserializeUser());
+
+
+passport.use(Users.createStrategy());
+passport.serializeUser(Users.serializeUser());
+passport.deserializeUser(Users.deserializeUser());
 
 //Using the routes for different users from routes directory
 app.use('/', agricRoutes)
 app.use('/', foRoutes)
 app.use('/', ufRoutes)
 app.use('/', loginRoutes)
+app.use('/', aologinRoutes)
+
 
 //Serving the client with the 'Home' page
 app.get('/welcome', (req, res) => {
   res.render('home');
+}); 
+
+app.get('/welcome2', (req, res) => {
+  res.render('home2');
 }); 
 
 //Serving the client with the 'Contact Us' page
@@ -83,9 +102,15 @@ app.get('/aboutUfarm', (req, res) => {
   res.render('aboutUfarm');
 }); 
 
+app.get('/productDash', (req, res) => {
+  res.render('productDash');
+}); 
+
+
+
 
 //Log out a user
-//logout
+//logout Farmer One
 app.post('/logout', (req, res) => {
   if (req.session) {
       req.session.destroy((err)=> {
@@ -97,6 +122,7 @@ app.post('/logout', (req, res) => {
       })
   }  
 })
+
 
 //This gets the error page for any incorrect path
 app.get('*', (req, res) => {

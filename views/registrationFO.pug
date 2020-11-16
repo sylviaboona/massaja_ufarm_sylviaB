@@ -64,10 +64,13 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' 
         option(value='NonCitizen') NonCitizen
       span#residenceErr
   .form-row
-    .form-group.col-md-6
+    .form-group.col-md-4
+      input#inputRole.form-control(type='text' name='role' value='FarmerOne' readonly)
+      span#dobFOerr
+    .form-group.col-md-4
       input#inputDOB.form-control(type='text' placeholder='Date of Birth dd/mm/yyyy' name='dobFO')
       span#dobFOerr
-    .form-group.col-md-6
+    .form-group.col-md-4
       input#inputDOR.form-control(type='text' placeholder='Registration Date dd/mm/yyyy' name='dorFO')
       span#dorFOerr
   .form-check.form-check-inline

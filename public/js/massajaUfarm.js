@@ -1,39 +1,39 @@
-//VALIDATION FUNCTION FOR AGRIC OFFICER LOGIN FORM
-var loginAOform =()=>{
-  const emailAO = document.agricLogin.emailAO
-  const password = document.agricLogin.pwdAO
+// //VALIDATION FUNCTION FOR AGRIC OFFICER LOGIN FORM
+// var loginAOform =()=>{
+//   const emailAO = document.agricLogin.username
+//   const password = document.agricLogin.password
  
-  //Validate AO  email address
-  let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const emailError = document.getElementById('emailAOerr');
-  if(emailRegex.test(emailAO.value) == false){
-    emailError.innerHTML='* Email is required'
-    emailError.style.color = 'maroon'
-    emailAO.style.border = '2px solid red' 
-  }else{
-    emailAO.style.border = '2px solid green'
-  }
+//   //Validate AO  email address
+//   let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   const emailError = document.getElementById('emailAOerr');
+//   if(emailRegex.test(emailAO.value) == false){
+//     emailError.innerHTML='* Email is required'
+//     emailError.style.color = 'maroon'
+//     emailAO.style.border = '2px solid red' 
+//   }else{
+//     emailAO.style.border = '2px solid green'
+//   }
 
-  let passWordRegex = /^\w{7,12}$/;
-  let pwdAOErr = document.getElementById('pwdAOerr')
-  if(!password.value.match(passWordRegex)){
-    pwdAOErr.innerHTML='* Password is required'
-    pwdAOErr.style.color = 'maroon'
-    password.style.border = '2px solid red';
-  }else{
-    password.style.border = '2px solid green';
-  }
+//   let passWordRegex = /^\w{7,12}$/;
+//   let pwdAOErr = document.getElementById('pwdAOerr')
+//   if(!password.value.match(passWordRegex)){
+//     pwdAOErr.innerHTML='* Password is required'
+//     pwdAOErr.style.color = 'maroon'
+//     password.style.border = '2px solid red';
+//   }else{
+//     password.style.border = '2px solid green';
+//   }
 
-}
+// }
 
 //VALIDATION FUNCTION FOR FARMER ONE REGISTRATION FORM
 const registerFOform = () => {
   const firstName = document.foRegisterForm.firstNameFO;
   const lastName = document.foRegisterForm.lastNameFO;
-  const userName = document.foRegisterForm.userNameFO;
+  const userName = document.foRegisterForm.username;
   const dob = document.foRegisterForm.dobFO;
   const dor = document.getElementById("inputDOR");
-  const foNumber = document.foRegisterForm.foNumber;
+  const foNumber = document.foRegisterForm.password;
   const foNIN = document.foRegisterForm.foNIN;
   const phoneNumber = document.foRegisterForm.phoneNumberFO;
   const ward = document.foRegisterForm.ward;

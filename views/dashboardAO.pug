@@ -23,9 +23,11 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
     form.search(action='/dashboardAO')
         div.form-row
             div.col-md-8
-                input.form-control(name='ward' placeholder="Enter your search term(gender) ...")
+                input.form-control(name='ward' placeholder="Search(ward) ...")
             div.col-md-4
                 input.btn.btn-dark.btn-block(type="submit")
+    form(method="post" action='/logoutAO') 
+      button.btn.btn-dark.btn-block(type="submit") Log out
 body
     header.card-header
         h4.card-title Farmer Ones in Massajja Division Ufarm

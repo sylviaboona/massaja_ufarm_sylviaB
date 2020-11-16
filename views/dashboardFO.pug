@@ -19,13 +19,15 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
       li.nav-item
-        a.nav-link(href='registerFO') Add New UF   
+        a.nav-link(href='registerUF') Add New UF   
     form.search(action='/dashboardFO')
         div.form-row
             div.col-md-8
-                input.form-control(name='wardUF' placeholder="Enter your search term(gender) ...")
+                input.form-control(name='wardUF' placeholder="Search term(ward) ...")
             div.col-md-4
                 input.btn.btn-dark.btn-block(type="submit")
+    form(method="post" action='/logout') 
+      button.btn.btn-dark.btn-block(type="submit") Log out
 body
     header.card-header
         h4.card-title Urban Farmers in Massajja Division Ufarm
@@ -49,26 +51,26 @@ body
                 th
 
         tbody
-            if ufarmers.length
-            each ufarmer in ufarmers
+            if users.length
+            each user in users
                 tr
-                    td #{ufarmer.firstNameUF}
-                    td #{ufarmer.lastNameUF}
-                    td #{ufarmer.userNameUF}
-                    td #{ufarmer.dobUF}
-                    td #{ufarmer.dorUF}
-                    td #{ufarmer.idNumber}
-                    td #{ufarmer.ufNIN}
-                    td #{ufarmer.phoneNumberUF}
-                    td #{ufarmer.phoneNumberUF2}
-                    td #{ufarmer.wardUF}
-                    td #{ufarmer.produceType}
-                    td #{ufarmer.gender}
+                    td #{user.firstNameUF}
+                    td #{user.lastNameUF}
+                    td #{user.username}
+                    td #{user.dobUF}
+                    td #{user.dorUF}
+                    td #{user.password}
+                    td #{user.ufNIN}
+                    td #{user.phoneNumberUF}
+                    td #{user.phoneNumberUF2}
+                    td #{user.wardUF}
+                    td #{user.produceType}
+                    td #{user.gender}
                     td
-                        a(href='/update/'+ufarmer._id) Update
+                        a(href='/updateUF/'+user._id) Update
                     td
                         form(method="post" action='/deleteUF')
-                            input(type="hidden", placeholder="", name="id", value=ufarmer._id)
+                            input(type="hidden", placeholder="", name="id", value=user._id)
                             button.btn.btn-dark.btn-block(type="submit") Delete
             else
                 p No registrations yet :(

@@ -29,21 +29,30 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
       input#inputLastName.form-control(type='text' name='lastNameUF' placeholder='Last Name')
       span#lnameUFerr
     .form-group.col-md-4
-      input#inputUserName.form-control(type='text' name='userNameUF' placeholder='User Name')
+      input#inputUserName.form-control(type='text' name='username' placeholder='User Name')
       span#unameUFerr
   .form-row
-    .form-group.col-md-6
+    //- .form-group.col-md-4
+    //-   select#inputRole.form-control(name='role')
+    //-     option(value='Default' selected='') Select your role
+    //-     option(value='AgricOfficer') Agric Officer
+    //-     option(value='FarmerOne') Farmer One
+    //-     option(value='UrbanFarmer') Urban Farmer
+    .form-group.col-md-4
+      input#inputRole.form-control(type='text' name='role' value='UrbanFarmer' readonly)
+      span#dobUFerr
+    .form-group.col-md-4
       input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth')
       span#dobUFerr
-    .form-group.col-md-6
+    .form-group.col-md-4
       input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration')
       span#dorUFerr
   .form-row
     .form-group.col-md-6
-      input#inputfarmerID.form-control(type='number' name='idNumber' placeholder='Unique farmer ID')
+      input#inputfarmerID.form-control(type='number' name='password' placeholder='Unique farmer ID')
       span#idNumErr
     .form-group.col-md-6
-      input#inputfarmerNIN.form-control(type='password' name='ufNIN' placeholder='NIN Number')
+      input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
       span#ufNINerr
   .form-row
     .form-group.col-md-4

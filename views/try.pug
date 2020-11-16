@@ -1,0 +1,91 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='./css/style.css' type='text/css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us   
+  form(method="post" action='/logout') 
+    button.btn.btn-dark.btn-block(type="submit") Log out
+body
+    img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
+    h4#registerFO Upload Your New Product Here
+    div.container
+        fieldset.outer
+            legend Upload Your New Product Here
+            form(class="form1", name="form1", action="/myform", method="POST")
+                p
+                input(type="text" name="name" placeholder="Name" required)
+                p
+                input(type="tel" name="phone" placeholder="Phone" required)
+                p
+                input(type="email" name="email" placeholder="Email" required) 
+                p
+                fieldset.inner
+                    legend What item do you need
+                    p
+                    input(type="checkbox" name="item" value="wedding_gown") 
+                    label(for="form1") Wedding gown
+                    p
+                    input(type="checkbox" name="item" value="changing_dress")
+                    label(for="form1") Changing dress
+                    p
+                    input(type="checkbox" name="item" value="bridal_shoes")   
+                    label(for="form1") Bridal Shoes
+
+                p
+                fieldset.inner2
+                    legend Extras(Pick One)
+                    p
+                    input(type="radio" name="extras" value="crown") 
+                    label(for="form1") Crown
+                    p
+                    input(type="radio" name="extras" value="veil")
+                    label(for="form1") Veil
+                    p
+                    input(type="radio" name="extras" value="flower_girl_dress")   
+                    label(for="form1") Flower girl dress
+
+                p
+                label(for="form1") Pickup Date
+                input(type="datetime-local" name="pickup_time")
+
+                
+                div.delivery
+                    p
+                    label Pickup Place
+                        select(id="pickup_place" name="pickup_place")
+                            option(value="" selected="selected") Select One
+                            option(value="acacia" name="acacia") Acacia Mall
+                            option(value="oasis" name="oasis") Oasis Mall
+                            option(value="delivery" name="delivery") Home Delivery
+                    p
+                    label Dropoff Place
+                    input(type="text" name="dropoff_place" required list="destinations")
+                    datalist(id="destinations")
+                        option(value="Airport" name="Airport")
+                        option(value="Beach" name="Beach")
+                        option(value="Fred Flinstone's House" name="Fred Flinstone's House")  
+                    p
+                    label Special Instructions
+                        textarea(name="comments" maxlength="500")
+
+                p
+                button.formbutton Submit Order
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

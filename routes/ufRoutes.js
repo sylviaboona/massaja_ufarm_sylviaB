@@ -1,7 +1,5 @@
 const express = require('express');
-const { deleteOne } = require("../models/LoginUF");
 const router = express.Router();
-const LoginUF = require('../models/LoginUF');
 const FarmerUpload = require('../models/FarmerUpload')
 
 router.get('/loginUF', (req, res) => {

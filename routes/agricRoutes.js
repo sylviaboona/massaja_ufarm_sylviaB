@@ -1,32 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const LoginAO = require('../models/LoginAO');
 const RegistrationFO = require('../models/RegistrationFO')
-
-
-// router.get('/loginAO', (req, res) => {
-//     res.render('agricLogin');
-//   }); 
-
-//SAVING LOGIN INFORMATION FOR AGRICULTURAL OFFICER TO THE DATABASE
-
-// router.post('/loginAO', passport.authenticate('local'), (req,res) =>{
-//   req.session.user = req.user;
-//   res.redirect('/dashboardAO');
-// })
-
-// router.post('/loginAO', async(req, res) => {
-//   try{
-//     const loginAO = new LoginAO(req.body);
-//     await loginAO.save(()=>{
-//       console.log('save successful');
-//       res.redirect('/dashboardAO')
-//       })
-//     }catch(err){
-//     res.status(400).send('Ooops! Something went wrong!')
-//     console.log(err);
-//       }
-//   });
+const Users = require('../models/Users')
 
 
 router.get('/registerFO', (req, res) => {
@@ -37,7 +12,9 @@ router.get('/registerFO', (req, res) => {
   router.post('/registerFO', async (req, res) => {
     try {
         const items = new RegistrationFO(req.body);
-        await RegistrationFO.register(items, req.body.password , (err) => {
+        const userDetails = new Users(req.body);
+        items.save()
+        await Users.register(userDetails, req.body.password , (err) => {
             if (err)
               { 
                throw err

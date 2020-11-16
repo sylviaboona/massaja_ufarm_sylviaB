@@ -26,14 +26,13 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
   h4 AO Sign In 
   form.agric-FO-Login(action='/loginAO' method='POST' name='agricLogin')
     .form-group
-      input#emailAO.form-control(type='email' aria-describedby='emailHelp' placeholder='Email e.g. example@hello.com' name='emailAO')
+      input#emailAO.form-control(type='text' placeholder='Username' name='username')
       span#emailAOerr
-      // <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     .form-group
-      input#pwdAO.form-control(type='password' placeholder='Password (7-12 Characters)' name='pwdAO')
+      input#pwdAO.form-control(type='password' placeholder='Password (7-12 Characters)' name='password')
       span#pwdAOerr
     a(href="registerFO")
-        button.btn.btn-primary(type='submit'  onclick='loginAOform()') Log In
+        button.btn.btn-primary(type='submit'  onclick='registerFOform()') Log In
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')

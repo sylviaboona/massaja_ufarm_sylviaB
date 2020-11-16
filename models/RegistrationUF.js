@@ -5,11 +5,9 @@ const registrationUFSchema = new mongoose.Schema({
         type: String,
         required: 'Please Enter first name'
     },
-    lastNameUF: String,
-    userNameUF: String,
+    lastNameUF: String, 
     dobUF:String,
     dorUF:String,
-    idNumber: String,
     ufNIN:  {
         type: String,
         required: 'Please Enter NIN number'
@@ -22,5 +20,4 @@ const registrationUFSchema = new mongoose.Schema({
     }],
     gender: String,
   });
-
   module.exports = mongoose.model('RegistrationUF', registrationUFSchema);

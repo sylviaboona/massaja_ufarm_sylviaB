@@ -18,29 +18,61 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us   
+  form(method="post" action='/logout') 
+    button.btn.btn-dark.btn-block(type="submit") Log out
+
 body
     img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
     .row
-        .col-md-4
-        .col-md-4
+        .col-4
+        .col-4
             h4#registerFO Upload Your New Product Here
-            label Product Description
-            p
-                textarea(name="comments" maxlength="200")
-            .form-group
-              .form-check-inline
-                input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
-                label.form-check-label(for='organic')  Organic 
-              .form-check-inline
-                input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
-                label.form-check-label(for='inorganic')  Inorganic 
-            .input-group.mb-3
-                .custom-file
-                    input#inputGroupFile02.custom-file-input(type='file')
-                    label.custom-file-label(for='inputGroupFile02') Choose file
-                .input-group-append
-                    span.input-group-text(id='') Upload
-        .col-md-4  
+            form(name='uploadForm' action='/farmerUpload')
+              .form-group.row
+                .col-md-4
+                  input#userNameUF.form-control(type='text' name='productname' placeholder='Product Name')
+                .col-md-4
+                  select#inputWard.form-control(name='wardUF')
+                    option(value='Default' selected='') Ward
+                    option(value='Busabala') Busabala
+                    option(value='Massajja') Masajja
+                    option(value='Kikajjo') Kikajjo
+                    option(value='Namasuba') Namasuba
+                .col-md-4
+                  input#inputDOB.form-control(type='text' name='uploadDate' placeholder='Date of Upload')
+              .form-group
+                label(for='exampleFormControlTextarea1') Product Description
+                textarea#exampleFormControlTextarea1.form-control(rows='3')
+              fieldset
+                  .form-group
+                    legend.col-form-label.col-sm-2.pt-0 Produce Type
+                    .form-check-inline
+                      input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
+                      label.form-check-label(for='organic')  Organic 
+                    .form-check-inline
+                      input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
+                      label.form-check-label(for='inorganic')  Inorganic 
+              .form-group
+                .form-check-inline
+                  input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
+                  label.form-check-label(for='organic') Cash
+                .form-check-inline
+                  input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
+                  label.form-check-label(for='inorganic')  Mobile Money
+              .form-group
+                .form-check-inline
+                  input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
+                  label.form-check-label(for='organic')  Pick Up 
+                .form-check-inline
+                  input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
+                  label.form-check-label(for='inorganic')  Home Delivery
+            form(method='POST' action='/productDash' enctype='multipart/form-data')
+              div
+                label Select your profile picture:
+                input(type='file' name='profile_pic')
+              div
+                input(type='submit' name='btn_upload_profile_pic' value='Upload')
+        .col-4  
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')
