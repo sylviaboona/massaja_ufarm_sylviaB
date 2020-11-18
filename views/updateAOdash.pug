@@ -68,13 +68,13 @@ form.farmerOneRegister(method="post" action="/update?id="+user._id)
       label Date of Registration
       input#inputDOR.form-control(value = user.dorFO name ="dorFO")
   .form-check.form-check-inline
-    input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType==="Horticulture" name="produceType")
+    input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType.includes('Horticulture') name="produceType")
     label.form-check-label(for='inlineCheckbox1') Horticulture Produce
   .form-check.form-check-inline
-    input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType==="Poultry" name="produceType")
+    input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType.includes('Poultry') name="produceType")
     label.form-check-label(for='inlineCheckbox2') Poultry products
   .form-check.form-check-inline
-    input#diaryProducts.form-check-input(value= "Diary" type="checkbox" checked = user.produceType==="Diary" name="produceType")
+    input#diaryProducts.form-check-input(value= "Diary" type="checkbox" checked = user.produceType.includes('Diary') name="produceType")
     label.form-check-label(for='inlineCheckbox3') Diary Products
   .form-group
     .form-check-inline

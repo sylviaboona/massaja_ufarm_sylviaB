@@ -2,7 +2,6 @@
 const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
-const multer = require('multer')
 const agricRoutes = require('./routes/agricRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
@@ -45,6 +44,8 @@ mongoose.connection
   .on('error', (err) => {
     console.log(`Connection error: ${err.message}`);
   });
+
+
 
   //CONFIGURATION SETTINGS
 //Setting the view engine to pug

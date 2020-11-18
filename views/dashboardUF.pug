@@ -23,9 +23,48 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
     form.search(action='/dashboardUF')
         div.form-row
             div.col-md-8
-                input.form-control(name='gender' placeholder="Enter your search term(gender) ...")
+                input.form-control(name='productName' placeholder="Search(Product) ...")
             div.col-md-4
                 input.btn.btn-dark.btn-block(type="submit")
+    form(method="post" action='/logoutUF') 
+      button.btn.btn-dark.btn-block(type="submit") Log out
+body
+    header.card-header
+        h4.card-title Products available on the Market
+    |&nbsp
+    table.table
+        thead.thead-dark
+            tr
+                th Product Name
+                th Product Description
+                th Product Image
+                th Price (UGX)
+                th Produce Type
+                th Date of Upload 
+                th Ward 
+                th
+                th
+
+        tbody
+            if users.length
+            each user in users
+                tr
+                    td #{user.productName}
+                    td #{user.productDescription}
+                    td 
+                        img(src='/uploads/' + user.productImage height='80px' width='80px')
+                    td #{user.price}
+                    td #{user.productType}
+                    td #{user.uploadDate}
+                    td #{user.wardUF}
+                    td
+                        a(href='/updateProduct/'+user._id) Update
+                    td
+                        form(method="post" action='/deleteProduct')
+                            input(type="hidden", placeholder="", name="id", value=user._id)
+                            button.btn.btn-dark.btn-block(type="submit") Delete
+            else
+                p No registrations yet :(
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')

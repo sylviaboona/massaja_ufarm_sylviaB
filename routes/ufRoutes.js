@@ -1,36 +1,35 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer')
 const FarmerUpload = require('../models/FarmerUpload')
 
-router.get('/loginUF', (req, res) => {
-    res.render('ufLogin');
-  }); 
 
-//SAVING LOGIN INFORMATION FOR URBAM FARMERS TO THE DATABASE
-router.post('/loginUF', async(req, res) => {
-  try{
-    const loginUF = new LoginUF(req.body);
-    await loginUF.save(()=>{
-      console.log('save successful');
-      res.redirect('/farmerUpload')
-      })
-    }catch(err){
-    res.status(400).send('Ooops! Something went wrong!')
-    console.log(err);
-      }
-  });
+//Defining the storage location for our images to upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, './public/uploads/');
+  },
 
+  // By default, multer removes file extensions so let's add them back
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now());
+  }
+});
+
+//
+const upload = multer({storage: storage}).single('productImage')
 
 router.get('/farmerUpload', (req, res) => {
     res.render('farmerUpload')
     });  
 
   //SAVING URBAN FARMER'S UPLOADED PRODUCE TO THE DATABASE
-router.post('/farmerUpload', async(req, res) => {
+router.post('/farmerUpload', upload, async(req, res) => {
     try{
-    const farmerupload = new FarmerUpload(req.body);
-    await farmerupload.save(()=>{
-      console.log('save successful');
+    const farmeruploads = new FarmerUpload(req.body);
+    farmeruploads.productImage = req.file.filename;
+    console.log(req.body);
+    await farmeruploads.save(()=>{
       res.redirect('/dashboardUF')
       })
     }catch(err){
@@ -45,8 +44,8 @@ router.post('/farmerUpload', async(req, res) => {
     try{
       let items = await FarmerUpload.find()
       //SEARCHING URBAN FARMER PRODUCE FOR A SPECIFIC CATEGORY IN THE DATABASE say gender
-      if(req.query.gender){
-        items = await FarmerUpload.find({name:req.query.gender})
+      if(req.query.productName){
+        items = await FarmerUpload.find({name:req.query.productName})
       }
       res.render('dashboardUF', {users: items})
     }
