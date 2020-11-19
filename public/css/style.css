@@ -15,8 +15,8 @@
 
 .fologinimage{
   width: 100%;
-  margin-top: 250px;
-  margin-left: 150px;
+  margin-top: 200px;
+  margin-left: 100px;
 }
 
 #welcome-message{
@@ -47,8 +47,8 @@
 
 .agric-FO-Login {
   width: 400px;
-  margin-top: 200px;
-  margin-left: 600px;
+  margin-top: 300px;
+  margin-left: 100px;
 }
 
 .btn {
@@ -97,3 +97,6 @@
   background-color: white;
 }
 
+/* .container{
+  background-color: olivedrab;
+} */

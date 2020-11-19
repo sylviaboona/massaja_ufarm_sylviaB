@@ -5,13 +5,13 @@ head
   link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
   link(rel='stylesheet' href='./css/style.css' type='text/css')
 nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome') Ufarm
+  a.navbar-brand(href='welcome2') Ufarm
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome')
+        a.nav-link(href='welcome2')
           | Home 
           span.sr-only (current)
       li.nav-item
@@ -37,10 +37,8 @@ body
             tr
                 th Firstname
                 th Lastname
-                th Username
                 th DOB
                 th DOR
-                th Farmer ID
                 th Farmer NIN
                 th Contact 1
                 th Contact 2
@@ -56,10 +54,8 @@ body
                 tr
                     td #{user.firstNameUF}
                     td #{user.lastNameUF}
-                    td #{user.username}
                     td #{user.dobUF}
                     td #{user.dorUF}
-                    td #{user.password}
                     td #{user.ufNIN}
                     td #{user.phoneNumberUF}
                     td #{user.phoneNumberUF2}

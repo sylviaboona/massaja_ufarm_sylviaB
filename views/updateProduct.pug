@@ -1,0 +1,82 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='/css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='/css/style.css' type='text/css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome2') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome2')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us   
+  form(method="post" action='/logout') 
+    button.btn.btn-dark.btn-block(type="submit") Log out
+
+body
+    .row
+        .col-4
+        .col-4
+            img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
+            h4#registerFO Update Your Product Here
+            form(name='uploadForm' action="/updateProduct?id="+user._id method='POST')
+              .form-group.row
+                .col-md-6
+                  input#productName.form-control(value = user.productName name ="productName")
+                .col-md-6
+                  select#inputWard.form-control(name='wardUF')
+                    option(value='Default' selected='') Ward
+                    option(value="Busabala" selected = user.wardUF === "Busabala") Busabala
+                    option(value="Massajja" selected = user.wardUF === "Massajja") Massajja
+                    option(value="Kikajjo" selected = user.wardUF === "Kikajjo") Kikajjo
+                    option(value="Namasuba" selected = user.wardUF === "Namasuba") Namasuba
+              .form-group.row  
+                .col-md-6
+                  input#inputUploadDate.form-control(value = user.uploadDate name='uploadDate')
+                .col-md-6
+                  input#inputPrice.form-control(value = user.price name='price' )
+              .form-group
+                label(for='exampleFormControlTextarea1') Product Description
+                textarea#exampleFormControlTextarea1.form-control(value = user.productDescription name="productDescription")
+              fieldset
+                  .form-group
+                    legend.col-form-label.col-sm-2.pt-0 Produce Type
+                    .form-check-inline
+                      input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked = user.productType==="Organic")
+                      label.form-check-label(for='organic')  Organic 
+                    .form-check-inline
+                      input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic' checked = user.productType==="Inorganic")
+                      label.form-check-label(for='inorganic')  Inorganic 
+              .form-group
+                .form-check-inline
+                  input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked = user.paymentMode==="Cash")
+                  label.form-check-label(for='organic') Cash
+                .form-check-inline
+                  input#inorganicType.form-check-input(type='radio' name='paymentMode' value='MMoney' checked = user.paymentMode==="MMoney")
+                  label.form-check-label(for='inorganic')  Mobile Money
+              .form-group
+                .form-check-inline
+                  input#organicType.form-check-input(type='radio' name='delivery' value='PickUp' checked = user.delivery==="PickUp")
+                  label.form-check-label(for='organic')  Pick Up 
+                .form-check-inline
+                  input#inorganicType.form-check-input(type='radio' name='delivery' value='HomeDelivery' checked = user.delivery==="HomeDelivery")
+                  label.form-check-label(for='inorganic')  Home Delivery
+              .form-group
+                .form-check-inline
+                  input(name='productImage' value = user.productImage)
+                .form-check-inline
+                   button#registerFO.btn.btn-primary(type='submit')
+                        | Update
+        .col-4  
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

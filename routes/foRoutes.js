@@ -17,6 +17,7 @@ router.get('/registerUF', (req, res) => {
 
   router.post('/registerUF', async (req, res) => {
     try {
+        req.body.role ='UrbanFarmer'
         const items = new RegistrationUF(req.body);
         const userDetails = new Users(req.body);
         items.save()
@@ -25,7 +26,7 @@ router.get('/registerUF', (req, res) => {
               { 
                throw err
               }
-            res.redirect('/loginFO')
+            res.redirect('/login')
         })
     }
     catch (err) {
@@ -51,7 +52,7 @@ router.get('/registerUF', (req, res) => {
         }
     }else {
         console.log("Can't find session")
-        res.redirect('/loginFO')
+        res.redirect('/login')
     }
 })
 
@@ -82,7 +83,7 @@ router.get('/registerUF', (req, res) => {
     }
   }else {
       console.log("Can't find session")
-      res.redirect('/loginFO')
+      res.redirect('/login')
   }
     
   })
@@ -99,7 +100,7 @@ router.get('/updateUF/:id', async (req, res) => {
   }
 }else {
   console.log("Can't find session")
-  res.redirect('/loginFO')
+  res.redirect('/login')
 }
 })
 //Post the updated urban farmer data back to the database 
@@ -114,9 +115,21 @@ router.post('/updateUF', async (req, res) => {
   } 
 }else {
   console.log("Can't find session")
-  res.redirect('/loginFO')
+  res.redirect('/login')
 }
      
 })
 
+
+router.post('/logoutFO', (req, res) => {
+  if (req.session) {
+      req.session.destroy((err)=> {
+          if (err) {
+              // failed to destroy session
+          } else {
+              return res.redirect('/login');
+          }
+      })
+  }  
+})
 module.exports = router;

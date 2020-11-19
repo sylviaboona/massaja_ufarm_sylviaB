@@ -5,12 +5,12 @@ const passport = require('passport');
 
 
 //REnders the login page for AO
-router.get('/loginFO', (req, res) => {
-    res.render('foLogin');
+router.get('/login', (req, res) => {
+    res.render('login');
   }); 
 
 //PROCESS THE LOG IN INFORMATION FOR FARMER ONE SUBMITTED
-router.post('/loginFO', passport.authenticate('local'), (req,res) =>{
+router.post('/login', passport.authenticate('local'), (req,res) =>{
   req.session.user = req.user;
   const userRole = req.user.role;
   if (userRole=='AgricOfficer'){

@@ -1,9 +1,39 @@
 const express = require('express');
 const router = express.Router();
 const RegistrationFO = require('../models/RegistrationFO')
+const RegistrationAO = require('../models/RegistrationAO')
 const Users = require('../models/Users')
 
 
+
+router.get('/registerAO', (req, res) => {
+  res.render('registrationAO')
+  });  
+
+//SAVING FARMER ONE DATA TO THE DATABASE
+router.post('/registerAO', async (req, res) => {
+  try {
+      req.body.role = 'AgricOfficer'
+      const agricofficerInfo = new RegistrationAO(req.body);
+      const loginDetails = new Users(req.body);
+      agricofficerInfo.save()
+      await Users.register(loginDetails, req.body.password , (err) => {
+          if (err)
+            { 
+             throw err
+            }
+          res.redirect('/login')
+      })
+  }
+  catch (err) {
+      res.status(400).send('Ooops! Something went wrong.')
+      console.log(err)
+  }
+})
+
+
+
+//GETTING THE FARMER ONE REGISTRATION
 router.get('/registerFO', (req, res) => {
     res.render('registrationFO')
     });  
@@ -11,15 +41,16 @@ router.get('/registerFO', (req, res) => {
   //SAVING FARMER ONE DATA TO THE DATABASE
   router.post('/registerFO', async (req, res) => {
     try {
-        const items = new RegistrationFO(req.body);
-        const userDetails = new Users(req.body);
-        items.save()
-        await Users.register(userDetails, req.body.password , (err) => {
+        req.body.role = 'FarmerOne'
+        const farmeroneInfo = new RegistrationFO(req.body);
+        const loginDetails = new Users(req.body);
+        farmeroneInfo.save()
+        await Users.register(loginDetails, req.body.password , (err) => {
             if (err)
               { 
                throw err
               }
-            res.redirect('/loginFO')
+            res.redirect('/login')
         })
     }
     catch (err) {
@@ -57,7 +88,7 @@ router.get('/registerFO', (req, res) => {
         }
     }else {
         console.log("Can't find session")
-        res.redirect('/loginFO')
+        res.redirect('/login')
     }
 })
 
@@ -107,5 +138,18 @@ router.post('/update', async (req, res) => {
     } catch (err) {
         res.status(404).send("Oooops! Update Failed. Try again");
     }    
+})
+
+
+router.post('/logoutAO', (req, res) => {
+  if (req.session) {
+      req.session.destroy((err)=> {
+          if (err) {
+              // failed to destroy session
+          } else {
+              return res.redirect('/login');
+          }
+      })
+  }  
 })
 module.exports = router;

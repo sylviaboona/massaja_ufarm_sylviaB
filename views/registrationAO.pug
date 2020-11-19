@@ -18,9 +18,9 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
-form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' onsubmit='registerFOform()')
+form.farmerOneRegister(name='foRegisterForm' action='/registerAO' method='POST')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
-  h4#registerFO Register New Farmer One  Here
+  h4#registerFO Sign Up New Agricultural Officer
   .form-row
     .form-group.col-md-4
       input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
@@ -33,15 +33,11 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' 
       span#unameFOerr
   .form-row
     .form-group.col-md-4
-      input#inputFOnumber.form-control(type='password' placeholder='FO Number' name='password')
+      input#inputFOnumber.form-control(type='password' placeholder='Password' name='password')
       span#foNumErr
-    .form-group.col-md-4
-      input#inputNIN.form-control(type='password' placeholder='NIN number' name='foNIN')
-      span#foNINerr
     .form-group.col-md-4
       input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
       span#fophoneNumErr
-  .form-row
     .form-group.col-md-4
       select#inputWard.form-control(name='ward')
         option(value='Default' selected='') Select your Ward
@@ -50,38 +46,6 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' 
         option(value='Kikajjo') Kikajjo
         option(value='Namasuba') Namasuba
       span#wardErr
-    .form-group.col-md-4
-      select#inputYears.form-control(name='stayPeriod')
-        option(value='Default' selected='') Period of Stay
-        option(value='10-15yrs') 10-15 years
-        option(value='15-20yrs') 15-20years
-        option(value='+20yrs') 20 years +
-      span#stayPeriodErr
-    .form-group.col-md-4
-      select#inputResidence.form-control(name='residenceType')
-        option(value='Default' selected='') Residence type
-        option(value='Citizen') Citizen
-        option(value='NonCitizen') NonCitizen
-      span#residenceErr
-  .form-row
-    //- .form-group.col-md-4
-    //-   input#inputRole.form-control(type='text' name='role' value='FarmerOne' readonly)
-    //-   span#dobFOerr
-    .form-group.col-md-6
-      input#inputDOB.form-control(type='text' placeholder='Date of Birth' name='dobFO' onfocus="(this.type='date')")
-      span#dobFOerr
-    .form-group.col-md-6
-      input#inputDOR.form-control(type='text' placeholder='Date of Registration' name='dorFO' onfocus="(this.type='date')")
-      span#dorFOerr
-  .form-check.form-check-inline
-    input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
-    label.form-check-label(for='horticulture') Horticulture Produce
-  .form-check.form-check-inline
-    input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
-    label.form-check-label(for='poultry') Poultry products
-  .form-check.form-check-inline
-    input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType' checked)
-    label.form-check-label(for='dairy') Diary Products
   .form-group
     .form-check-inline
       input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
@@ -89,7 +53,7 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' 
     .form-check-inline
       input#genderF.form-check-input(type='radio' name='gender' value='Female')
       label.form-check-label(for='genderF')  Female 
-  button#registerFO.btn.btn-primary(type='submit' href='/welcome2')
+  button#registerFO.btn.btn-primary(type='submit')
     | Register
   br
 script(src='./js/jquery-3.5.1.slim.min.js')

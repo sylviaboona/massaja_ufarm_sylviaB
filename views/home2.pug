@@ -5,13 +5,13 @@ head
   link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
   link(rel='stylesheet' href='css/style.css')
 nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6B8E23;')
-  a.navbar-brand(href='welcome') Ufarm
+  a.navbar-brand(href='welcome2') Ufarm
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome')
+        a.nav-link(href='welcome2')
           | Home 
           span.sr-only (current)
       li.nav-item
@@ -19,18 +19,9 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6B8E23;')
       li.nav-item
         a.nav-link(href='contactUfarm' tabindex='-1' aria-disabled='true') Contact Us
       li.nav-item
-        a.nav-link(href='#') Browse Products
+        a.nav-link(href='dashboardUF') Browse Products
       li.nav-item
-        a.nav-link(href='registerUF') Sign Up
-      li.nav-item.dropdown
-        a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-          | LogIn
-        .dropdown-menu(aria-labelledby='navbarDropdown')
-          a.dropdown-item(href='loginAO') Agricultural Officer
-          .dropdown-divider
-          a.dropdown-item(href='loginFO') Farmer One
-          .dropdown-divider
-          a.dropdown-item(href='loginUF') Urban Farmer
+        a.nav-link(href='loginFO') Log In
 .container.welcomepage
   .row
     .col-6

@@ -6,6 +6,7 @@ const registrationFOSchema = new mongoose.Schema({
         required: 'Please Enter first name'
     },
     lastNameFO: String,
+    username: String,
     foNIN: String,
     //{
     //     type: String,
@@ -16,6 +17,7 @@ const registrationFOSchema = new mongoose.Schema({
     ward: String,
     stayPeriod: String,
     residenceType:String,
+    role: String,
     dobFO:String,
     dorFO:String,
     produceType: [{

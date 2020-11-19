@@ -6,7 +6,7 @@ const agricRoutes = require('./routes/agricRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
 const loginRoutes = require('./routes/loginroutes')
-const aologinRoutes = require('./routes/aologinRoutes')
+// const adminregRoutes = require('./routes/adminregRoutes')
 require('dotenv').config();
 const mongoose = require('mongoose');
 // const RegistrationFO = require('./models/RegistrationFO')
@@ -81,7 +81,7 @@ app.use('/', agricRoutes)
 app.use('/', foRoutes)
 app.use('/', ufRoutes)
 app.use('/', loginRoutes)
-app.use('/', aologinRoutes)
+// app.use('/', adminregRoutes)
 
 
 //Serving the client with the 'Home' page

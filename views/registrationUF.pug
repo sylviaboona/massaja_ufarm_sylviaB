@@ -33,19 +33,13 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
       span#unameUFerr
   .form-row
     //- .form-group.col-md-4
-    //-   select#inputRole.form-control(name='role')
-    //-     option(value='Default' selected='') Select your role
-    //-     option(value='AgricOfficer') Agric Officer
-    //-     option(value='FarmerOne') Farmer One
-    //-     option(value='UrbanFarmer') Urban Farmer
-    .form-group.col-md-4
-      input#inputRole.form-control(type='text' name='role' value='UrbanFarmer' readonly)
+    //-   input#inputRole.form-control(type='text' name='role' value='UrbanFarmer' readonly)
+    //-   span#dobUFerr
+    .form-group.col-md-6
+      input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth' onfocus="(this.type='date')")
       span#dobUFerr
-    .form-group.col-md-4
-      input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth')
-      span#dobUFerr
-    .form-group.col-md-4
-      input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration')
+    .form-group.col-md-6
+      input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration' onfocus="(this.type='date')")
       span#dorUFerr
   .form-row
     .form-group.col-md-6
@@ -71,13 +65,13 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
   .form-group
     .form-check.form-check-inline
       input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
-      label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+      label.form-check-label(for='horticulture') Horticulture Produce
     .form-check.form-check-inline
       input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
-      label.form-check-label(for='inlineCheckbox2') Poultry products
+      label.form-check-label(for='poultry') Poultry products
     .form-check.form-check-inline
-      input#diaryProducts.form-check-input(type='checkbox' value='Diary' name='produceType')
-      label.form-check-label(for='inlineCheckbox3') Diary Products
+      input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
+      label.form-check-label(for='dairy') Diary Products
   .form-group
     .form-check-inline
       input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')

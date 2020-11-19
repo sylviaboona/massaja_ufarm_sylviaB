@@ -40,15 +40,14 @@ body
                     option(value='Namasuba') Namasuba
               .form-group.row  
                 .col-md-6
-                  input#inputUploadDate.form-control(type='text' name='uploadDate' placeholder='Date of Upload')
+                  input#inputUploadDate.form-control(type ='text' name='uploadDate' placeholder='Date of Upload' onfocus="(this.type='date')")
                 .col-md-6
                   input#inputPrice.form-control(type='text' name='price' placeholder='Price')
               .form-group
-                label(for='exampleFormControlTextarea1') Product Description
-                textarea#exampleFormControlTextarea1.form-control(rows='3' name="productDescription")
-              fieldset
-                  .form-group
-                    legend.col-form-label.col-sm-2.pt-0 Produce Type
+                textarea#exampleFormControlTextarea1.form-control(rows='3' name="productDescription" placeholder='Product Description')
+              .form-group
+                    .form-check-inline
+                      label.form-check-label(for='organic')  Produce Type
                     .form-check-inline
                       input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
                       label.form-check-label(for='organic')  Organic 
@@ -57,12 +56,16 @@ body
                       label.form-check-label(for='inorganic')  Inorganic 
               .form-group
                 .form-check-inline
+                  label.form-check-label(for='organic')  Payment Mode
+                .form-check-inline
                   input#organicType.form-check-input(type='radio' name='paymentMode' value='Organic' checked='')
                   label.form-check-label(for='organic') Cash
                 .form-check-inline
                   input#inorganicType.form-check-input(type='radio' name='paymentMode' value='Inorganic')
                   label.form-check-label(for='inorganic')  Mobile Money
               .form-group
+                .form-check-inline
+                  label.form-check-label(for='organic')  Delivery Mode
                 .form-check-inline
                   input#organicType.form-check-input(type='radio' name='delivery' value='Organic' checked='')
                   label.form-check-label(for='organic')  Pick Up 
@@ -71,9 +74,9 @@ body
                   label.form-check-label(for='inorganic')  Home Delivery
               .form-group
                 .form-check-inline
-                  input(type='file' name='productImage')
+                  input#uploadProduct(type='file' name='productImage')
                 .form-check-inline
-                  input(type='submit' name='uploadproduct' value='Upload')
+                  input#registerFO.btn.btn-primary(type='submit' name='uploadproduct' value='Upload')
         .col-4  
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')

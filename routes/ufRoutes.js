@@ -65,4 +65,48 @@ router.post('/farmerUpload', upload, async(req, res) => {
     
   })
 
+
+ //UPDATING URBAN FARMER INFORMATION IN THE DATABASE
+//Load the update form for a selected urban farmer with a given id
+router.get('/updateProduct/:id', async (req, res) => {
+  if (req.session.user) {
+  try {
+      const updateProduct = await FarmerUpload.findOne({ _id:req.params.id })
+      res.render('updateProduct', { user: updateProduct })
+  } catch (err) {
+      res.status(400).send("Unable to find item in the database");
+  }
+}else {
+  console.log("Can't find session")
+  res.redirect('/loginFO')
+}
+})
+//Post the updated urban farmer data back to the database 
+//and show the update on dashboard of FO
+router.post('/updateProduct', async (req, res) => {
+  if (req.session.user) {
+  try {
+      await FarmerUpload.findOneAndUpdate({_id:req.query.id}, req.body)
+      res.redirect('/dashboardUF');
+  } catch (err) {
+      res.status(404).send("Oooops! Update Failed. Try again");
+  } 
+}else {
+  console.log("Can't find session")
+  res.redirect('/loginFO')
+}    
+})
+
+router.post('/logoutUF', (req, res) => {
+  if (req.session) {
+      req.session.destroy((err)=> {
+          if (err) {
+              // failed to destroy session
+          } else {
+              return res.redirect('/login');
+          }
+      })
+  }  
+})
+
 module.exports = router;

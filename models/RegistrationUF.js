@@ -6,12 +6,14 @@ const registrationUFSchema = new mongoose.Schema({
         required: 'Please Enter first name'
     },
     lastNameUF: String, 
+    username: String,
     dobUF:String,
     dorUF:String,
     ufNIN:  {
         type: String,
         required: 'Please Enter NIN number'
     },
+    role: String,
     phoneNumberUF: String,
     phoneNumberUF2: String,
     wardUF: String,
