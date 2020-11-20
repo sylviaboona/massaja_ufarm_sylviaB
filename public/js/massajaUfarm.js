@@ -8,7 +8,7 @@ const registerAOform = () => {
   const ward = document.agricOfficerForm.ward;
 
   //Validate First Name.
-  let fnameRegex = /^[A-Za-z]+$/;
+  let fnameRegex = /^[A-Za-z]\w{5,50}$/;
   let fnameAOerr = document.getElementById("fnameUFerr");
   if (fnameRegex.test(firstName.value) == false) {
     fnameAOerr.innerHTML = "* First Name is required";
@@ -20,7 +20,7 @@ const registerAOform = () => {
   }
 
   //Validate Last Name.
-  let lnameRegex = /^[A-Za-z]+$/;
+  let lnameRegex = /^[A-Za-z]\w{5,50}$/;
   let lnameAOerr = document.getElementById("lnameUFerr");
   if (lnameRegex.test(lastName.value) == false) {
     lnameAOerr.innerHTML = "* Last Name is required";
@@ -101,7 +101,8 @@ const registerAOform = () => {
     //emailError.style.color = 'maroon'
 
     //Validate First Name.
-    let fnameRegex = /^[A-Za-z]+$/;
+    let fnameRegex = /^[A-Za-z]\w{5,50}$/;
+    //    /^[A-Za-z]+$/;
     let fnameFOerr = document.getElementById("fnameFOerr");
     if (fnameRegex.test(firstName.value) == false) {
       fnameFOerr.innerHTML = "* First Name is required";
@@ -113,7 +114,8 @@ const registerAOform = () => {
     }
 
     //Validate Last Name.
-    let lnameRegex = /^[A-Za-z]+$/;
+    let lnameRegex = /^[A-Za-z]\w{5,50}$/;
+    // /^[A-Za-z]+$/;
     let lnameFOerr = document.getElementById("lnameFOerr");
     if (lnameRegex.test(lastName.value) == false) {
       lnameFOerr.innerHTML = "* Last Name is required";
@@ -273,7 +275,8 @@ const registerAOform = () => {
     //emailError.style.color = 'maroon'
 
     //Validate First Name.
-    let fnameRegex = /^[A-Za-z]+$/;
+    let fnameRegex = /^[A-Za-z]\w{5,50}$/;
+    //   /^[A-Za-z]+$/;
     let fnameUFerr = document.getElementById("fnameUFerr");
     if (fnameRegex.test(firstName.value) == false) {
       fnameUFerr.innerHTML = "* First Name is required";
@@ -285,7 +288,8 @@ const registerAOform = () => {
     }
 
     //Validate Last Name.
-    let lnameRegex = /^[A-Za-z]+$/;
+    let lnameRegex = /^[A-Za-z]\w{5,50}$/;
+    //  /^[A-Za-z]+$/;
     let lnameUFerr = document.getElementById("lnameUFerr");
     if (lnameRegex.test(lastName.value) == false) {
       lnameUFerr.innerHTML = "* Last Name is required";
