@@ -17,13 +17,25 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6B8E23;')
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
       li.nav-item
-        a.nav-link(href='contactUfarm' tabindex='-1' aria-disabled='true') Contact Us
-      li.nav-item
-        a.nav-link(href='farmerUpload') Upload
-      li.nav-item
-        a.nav-link(href='dashboardFO') Farmers Database
+        a.nav-link(href='contactUfarm') Contact Us
 body
-  h4 Produce dash
+  header.card-header
+        h4.card-title Products available on the Market
+        |&nbsp
+  .row
+      .col-sm-4
+        if items.length
+        each item in items
+          .card.productcard(style='width: 15rem;')
+            .card-body
+                p 
+                  img(src='/uploads/' + item.productImage height='100px' width='100px')
+                h5 #{item.productName}
+                p #{item.productDescription}
+                p #{item.price}
+                p #{item.quantity}
+                a.btn.btn-primary(href='#') Order
+                p
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')

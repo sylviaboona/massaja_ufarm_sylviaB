@@ -17,9 +17,11 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
-        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+        a.nav-link(href='aboutUfarm') About Us
       li.nav-item
         a.nav-link(href='registerUF') Add New UF   
+      li.nav-item
+        a.nav-link(href='dashboardUF') Approve Products 
     form.search(action='/dashboardFO')
         div.form-row
             div.col-md-8
@@ -33,7 +35,7 @@ body
         h4.card-title Urban Farmers in Massajja Division Ufarm
     |&nbsp
     table.table
-        thead.thead-dark
+        thead.card-header
             tr
                 th Firstname
                 th Lastname
@@ -69,7 +71,7 @@ body
                             input(type="hidden", placeholder="", name="id", value=user._id)
                             button.btn.btn-dark.btn-block(type="submit") Delete
             else
-                p No registrations yet :(
+                p No products found yet :(
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')

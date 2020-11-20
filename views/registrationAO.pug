@@ -17,29 +17,29 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
-        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
-form.farmerOneRegister(name='foRegisterForm' action='/registerAO' method='POST')
+        a.nav-link(href='aboutUfarm') About Us
+form.farmerOneRegister(name='agricOfficerForm' action='/registerAO' method='POST' onsubmit='registerAOform()')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
   h4#registerFO Sign Up New Agricultural Officer
   .form-row
     .form-group.col-md-4
-      input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
-      span#fnameFOerr
+      input.form-control(type='text' placeholder='First Name' name='firstNameAO')
+      span#fnameAOerr
     .form-group.col-md-4
-      input#inputLastName.form-control(type='text' placeholder='Last Name' name='lastNameFO')
-      span#lnameFOerr
+      input.form-control(type='text' placeholder='Last Name' name='lastNameAO')
+      span#lnameAOerr
     .form-group.col-md-4
-      input#inputUserName.form-control(type='text' placeholder='User Name' name='username')
-      span#unameFOerr
+      input.form-control(type='text' placeholder='User Name' name='username')
+      span#unameAOerr
   .form-row
     .form-group.col-md-4
-      input#inputFOnumber.form-control(type='password' placeholder='Password' name='password')
-      span#foNumErr
+      input.form-control(type='password' placeholder='Password' name='password')
+      span#pwdErr
     .form-group.col-md-4
-      input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
-      span#fophoneNumErr
+      input.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberAO')
+      span#aophoneNumErr
     .form-group.col-md-4
-      select#inputWard.form-control(name='ward')
+      select.form-control(name='ward')
         option(value='Default' selected='') Select your Ward
         option(value='Busabala') Busabala
         option(value='Massajja') Masajja
@@ -48,10 +48,10 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerAO' method='POST')
       span#wardErr
   .form-group
     .form-check-inline
-      input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+      input.form-check-input(type='radio' name='gender' value='Male' checked='')
       label.form-check-label(for='genderM')  Male 
     .form-check-inline
-      input#genderF.form-check-input(type='radio' name='gender' value='Female')
+      input.form-check-input(type='radio' name='gender' value='Female')
       label.form-check-label(for='genderF')  Female 
   button#registerFO.btn.btn-primary(type='submit')
     | Register

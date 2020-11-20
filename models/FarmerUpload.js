@@ -10,6 +10,7 @@ const farmeruploadSchema = new mongoose.Schema({
     wardUF: String,
     paymentMode: String,
     delivery:String,
+    status: String,
   });
 
   module.exports = mongoose.model('FarmerUpload', farmeruploadSchema);

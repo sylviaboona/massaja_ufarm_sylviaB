@@ -15,9 +15,9 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
           | Home 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='contactUfarm') Contact Us
+        a.nav-link(href='contactUfarm') About Us
       li.nav-item
-        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+        a.nav-link(href='aboutUfarm') Contact Us
       li.nav-item
         a.nav-link(href='registerFO') Add New FO   
     form.search(action='/dashboardAO')
@@ -33,7 +33,7 @@ body
         h4.card-title Farmer Ones in Massajja Division Ufarm
     |&nbsp
     table.table
-        thead.thead-dark
+        thead.card-header 
             tr
                 th Firstname
                 th Lastname
@@ -55,8 +55,6 @@ body
                 tr
                     td #{user.firstNameFO}
                     td #{user.lastNameFO}
-                    td #{user.username}
-                    td #{user.password}
                     td #{user.foNIN}
                     td #{user.phoneNumberFO}
                     td #{user.ward}
@@ -73,7 +71,7 @@ body
                             input(type="hidden", placeholder="", name="id", value=user._id)
                             button.btn.btn-dark.btn-block(type="submit") Delete
             else
-                p No registrations yet :(
+                p No farmers found in this ward yet :(
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')

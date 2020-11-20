@@ -17,7 +17,7 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
-        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
+        a.nav-link(href='aboutUfarm') About Us
       li.nav-item
         a.nav-link(href='farmerUpload') Upload Product   
     form.search(action='/dashboardUF')
@@ -30,10 +30,10 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       button.btn.btn-dark.btn-block(type="submit") Log out
 body
     header.card-header
-        h4.card-title Products available on the Market
+        h4.card-title Products uploaded by Urban farmer
     |&nbsp
     table.table
-        thead.thead-dark
+        thead.card-header
             tr
                 th Product Name
                 th Product Description
@@ -42,6 +42,7 @@ body
                 th Produce Type
                 th Date of Upload 
                 th Ward 
+                th Status
                 th
                 th
 
@@ -57,6 +58,7 @@ body
                     td #{user.productType}
                     td #{user.uploadDate}
                     td #{user.wardUF}
+                    td #{user.status}
                     td
                         a(href='/updateProduct/'+user._id) Update
                     td

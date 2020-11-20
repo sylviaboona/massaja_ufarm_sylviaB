@@ -17,8 +17,8 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
-        a.nav-link(href='aboutUfarm' tabindex='-1' aria-disabled='true') About Us
-form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST')
+        a.nav-link(href='aboutUfarm') About Us
+form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST' onsubmit='registerUFform')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
   h4#registerFO Register here new Urban Farmers
   .form-row
@@ -80,10 +80,10 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
       input#genderF.form-check-input(type='radio' name='gender' value='Female')
       label.form-check-label(for='genderF')  Female 
   a(href='loginUF')
-    button#registerFO.btn.btn-primary(type='submit' onclick='registerUFform')
+    button#registerFO.btn.btn-primary(type='submit')
       | Register
     br
-script(src='./js/massajaUfarm.js')
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')
