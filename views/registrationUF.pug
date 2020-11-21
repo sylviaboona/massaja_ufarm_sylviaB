@@ -18,7 +18,7 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
-form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST' onsubmit='registerUFform')
+form.farmerOneRegister(name='urbanFarmerForm' action = '/registerUF' method='POST' onsubmit='return registerUFform()')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
   h4#registerFO Register here new Urban Farmers
   .form-row
@@ -32,9 +32,6 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
       input#inputUserName.form-control(type='text' name='username' placeholder='User Name')
       span#unameUFerr
   .form-row
-    //- .form-group.col-md-4
-    //-   input#inputRole.form-control(type='text' name='role' value='UrbanFarmer' readonly)
-    //-   span#dobUFerr
     .form-group.col-md-6
       input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth' onfocus="(this.type='date')")
       span#dobUFerr
@@ -43,7 +40,7 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
       span#dorUFerr
   .form-row
     .form-group.col-md-6
-      input#inputfarmerID.form-control(type='number' name='password' placeholder='Unique farmer ID')
+      input#inputfarmerID.form-control(type='text' name='password' placeholder='Unique farmer ID')
       span#idNumErr
     .form-group.col-md-6
       input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
@@ -62,16 +59,18 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
         option(value='Massajja') Masajja
         option(value='Kikajjo') Kikajjo
         option(value='Namasuba') Namasuba
+      span#wardUFErr
   .form-group
-    .form-check.form-check-inline
+    .form-check-inline
       input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
       label.form-check-label(for='horticulture') Horticulture Produce
-    .form-check.form-check-inline
+    .form-check-inline
       input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
       label.form-check-label(for='poultry') Poultry products
-    .form-check.form-check-inline
+    .form-check-inline
       input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
       label.form-check-label(for='dairy') Diary Products
+      span#produceUFerr
   .form-group
     .form-check-inline
       input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
@@ -79,7 +78,7 @@ form.farmerOneRegister(name='urbanFarmerForm' action='/registerUF' method='POST'
     .form-check-inline
       input#genderF.form-check-input(type='radio' name='gender' value='Female')
       label.form-check-label(for='genderF')  Female 
-  a(href='loginUF')
+  a(href='#')
     button#registerFO.btn.btn-primary(type='submit')
       | Register
     br

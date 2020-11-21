@@ -18,7 +18,7 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
-form.farmerOneRegister(name='agricOfficerForm' action='/registerAO' method='POST' onsubmit='registerAOform()')
+form.farmerOneRegister(name='agricOfficerForm' action='/registerAO' method='POST' onsubmit='return registerAOform()')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
   h4#registerFO Sign Up New Agricultural Officer
   .form-row

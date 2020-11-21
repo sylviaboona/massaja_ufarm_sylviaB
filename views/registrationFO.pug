@@ -18,7 +18,7 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
-form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' onsubmit='registerFOform()')
+form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' onsubmit='return registerFOform()')
   img.formImages(src='img/greenLeafSideImage1.png' alt='')
   h4#registerFO Register New Farmer One  Here
   .form-row
