@@ -9,10 +9,14 @@ router.get("/registerUF", (req, res) => {
 
 //SAVING URBAN FARMER'S INFORMATION TO THE DATABASE
 
+
+
 router.post("/registerUF", async (req, res) => {
+  if (req.session.user) {
   try {
+    const findFarmerOne = await Users.findOne({username: req.session.user.username})
     req.body.role = "UrbanFarmer";
-    //req.body.wardUF = user.ward
+    req.body.wardUF = findFarmerOne.ward
     const items = new RegistrationUF(req.body);
     const loginDetails = new Users(req.body);
     items.save();
@@ -25,6 +29,10 @@ router.post("/registerUF", async (req, res) => {
   } catch (err) {
     res.status(400).send("Ooops! Something went wrong.");
     console.log(err);
+  }
+}else {
+    console.log("Can't find session");
+    res.redirect("/login");
   }
 });
 

@@ -245,21 +245,24 @@ const registerAOform = () => {
   };
 
   //VALIDATION FUNCTION FOR URBAN FARMER REGISTRATION FORM
-  const registerUFform = () => {
-    const firstName = document.urbanFarmerForm.firstNameUF;
-    const lastName = document.urbanFarmerForm.lastNameUF;
-    const userName = document.urbanFarmerForm.username;
-    const dob = document.urbanFarmerForm.dobUF;
+    const registerUFform = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const form = document.urbanFarmerForm;
+    const firstName = form.firstNameUF;
+    const lastName = form.lastNameUF;
+    const userName = form.username;
+    const dob = form.dobUF;
+    const idNumber = form.password;
+    const ufNIN = form.ufNIN;
+    const phoneNumber = form.phoneNumberUF;
+    const phoneNumber2 = form.phoneNumberUF2;
+    const ward = form.wardUF;
     const dor = document.getElementById("inputDOR");
-    const idNumber = document.urbanFarmerForm.password;
-    const ufNIN = document.urbanFarmerForm.ufNIN;
-    const phoneNumber = document.urbanFarmerForm.phoneNumberUF;
-    const phoneNumber2 = document.urbanFarmerForm.phoneNumberUF2;
-    const ward = document.urbanFarmerForm.wardUF;
     const horticulture = document.getElementById("horticultureProduce");
     const poultry = document.getElementById("poultryProducts");
     const diary = document.getElementById("diaryProducts");
-    // event.preventDefault();
 
     //Validate First Name.
     let fnameRegex = /^[A-Za-z]{5,50}$/;
@@ -374,16 +377,16 @@ const registerAOform = () => {
       phoneNumber2.style.border = "2px solid green";
     }
 
-    //Validate Ward - a ward must be selected
-    let wardUFErr = document.getElementById("wardUFErr");
-    if (ward.value == "Default") {
-      wardUFErr.innerHTML = "*Please select a ward";
-      wardUFErr.style.color = "red";
-      ward.style.border = "2px solid red";
-      return false;
-    } else {
-      ward.style.border = "2px solid green";
-    }
+    // //Validate Ward - a ward must be selected
+    // let wardUFErr = document.getElementById("wardUFErr");
+    // if (ward.value == "Default") {
+    //   wardUFErr.innerHTML = "*Please select a ward";
+    //   wardUFErr.style.color = "red";
+    //   ward.style.border = "2px solid red";
+    //   return false;
+    // } else {
+    //   ward.style.border = "2px solid green";
+    // }
 
     //Validate Urban Farmer Produce Type
     let produceUFerr = document.getElementById("produceUFerr");
@@ -401,8 +404,10 @@ const registerAOform = () => {
       let parent = horticulture.parentNode.parentNode;
       parent.style.border = '2px solid green';
     }
-    let regbutton = document.getElementById('registerFO');
+    let anchor = document.getElementById('registerUF');
+    let regbutton = anchor.getElementsByTagName('input')[0];
     regbutton.disabled = true;
+    form.requestSubmit();
   };
 
 
@@ -473,6 +478,9 @@ const registerAOform = () => {
       ward.style.border = "2px solid green";
     }
   };
+  if (document.getElementById('registerUF')){
+    let anchor = document.getElementById('registerUF');
+    anchor.addEventListener('click', registerUFform)
+  }
 
-  // let regbutton = document.getElementById('registerFO');
-  // regbutton.addEventListener('click', registerUFform)
+  
