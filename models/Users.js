@@ -7,8 +7,12 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: 'Please Enter User Name' 
     },
-    password: String,
-    role:String
+    password: {
+        type: String,
+        unique: true,
+    },
+    role:String,
+    ward: String
   });
 
   userSchema.plugin(passportLocalMongoose);

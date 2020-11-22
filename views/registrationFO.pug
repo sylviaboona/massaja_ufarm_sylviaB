@@ -64,24 +64,23 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' 
         option(value='NonCitizen') NonCitizen
       span#residenceErr
   .form-row
-    //- .form-group.col-md-4
-    //-   input#inputRole.form-control(type='text' name='role' value='FarmerOne' readonly)
-    //-   span#dobFOerr
     .form-group.col-md-6
       input#inputDOB.form-control(type='text' placeholder='Date of Birth' name='dobFO' onfocus="(this.type='date')")
       span#dobFOerr
     .form-group.col-md-6
       input#inputDOR.form-control(type='text' placeholder='Date of Registration' name='dorFO' onfocus="(this.type='date')")
       span#dorFOerr
-  .form-check.form-check-inline
-    input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
-    label.form-check-label(for='horticulture') Horticulture Produce
-  .form-check.form-check-inline
-    input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
-    label.form-check-label(for='poultry') Poultry products
-  .form-check.form-check-inline
-    input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType' checked)
-    label.form-check-label(for='dairy') Diary Products
+  .form-group
+    .form-check-inline
+      input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
+      label.form-check-label(for='horticulture') Horticulture Produce
+    .form-check-inline
+      input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
+      label.form-check-label(for='poultry') Poultry products
+    .form-check-inline
+      input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
+      label.form-check-label(for='dairy') Diary Products
+      span#produceFOerr
   .form-group
     .form-check-inline
       input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
@@ -89,7 +88,7 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST' 
     .form-check-inline
       input#genderF.form-check-input(type='radio' name='gender' value='Female')
       label.form-check-label(for='genderF')  Female 
-  button#registerFO.btn.btn-primary(type='submit' href='/welcome2')
+  button#registerFO.btn.btn-primary(type='button' href='#')
     | Register
   br
 script(src='./js/jquery-3.5.1.slim.min.js')

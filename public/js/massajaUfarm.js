@@ -44,7 +44,7 @@ const registerAOform = () => {
   }
 
   //Validate AO password
-  let pwdRegex = /^[A-Z][0-9]{6}+$/;
+  let pwdRegex = /^[A-Z][0-9]{5}+$/;
   let pwdErr = document.getElementById("foNumErr");
   if (!password.value.match(pwdRegex)) {
     pwdErr.innerHTML = "* Unique FO Number is required";
@@ -133,7 +133,6 @@ const registerAOform = () => {
     }
 
     //Validate Date of Birth
-
     let dobFOerr = document.getElementById("dobFOerr");
     // if (date.year()>2010){
     //   dobUFerr.innerHTML = "*Must be 10yrs old and above";
@@ -149,6 +148,7 @@ const registerAOform = () => {
     } else {
       dob.style.border = "2px solid green";
     }
+
     //Validate Date of Registration of Farmer One
     let dorFOerr = document.getElementById("dorFOerr");
     if (dor.value=='') {
@@ -160,8 +160,8 @@ const registerAOform = () => {
       dor.style.border = "2px solid green";
     }
 
-    //Validate Unique FO Number
-    let foNumRegex = /^[A-Z][0-9]{5}$/;
+    //Validate Unique FO Number, should start with 3 Uppercase letters followed by 2 numbers
+    let foNumRegex = /^[A-Z]{3}[0-9]{3}$/;
     let foNumErr = document.getElementById("foNumErr");
     if (!foNumber.value.match(foNumRegex)) {
       foNumErr.innerHTML = "* Unique FO Number is required";
@@ -173,7 +173,7 @@ const registerAOform = () => {
     }
 
     //Validate FO NIN Number
-    let foNINRegex = /^[A-Z0-9]{13}$/;
+    let foNINRegex = /^[A-Z]{2}[0-9]{7}[A-Z]{1}[0-9]{2}[A-Z]{1}$/;
     let foNINerr = document.getElementById("foNINerr");
     if (!foNIN.value.match(foNINRegex)) {
       foNINerr.innerHTML = "* NIN is required";
@@ -185,7 +185,7 @@ const registerAOform = () => {
     }
 
     //Validate Farmer One Phone number
-    let phoneRegex = /^[0-9]{10}+$/;
+    let phoneRegex = /^[0-9]{10}$/;
     let fophoneNumErr = document.getElementById("fophoneNumErr");
     if (!phoneNumber.value.match(phoneRegex)) {
       fophoneNumErr.innerHTML = "* Phone Number is required";
@@ -208,7 +208,6 @@ const registerAOform = () => {
     }
 
     //Validate Period of Stay in Ward for Farmer One, must be more than 10 years
-    // let x = ward.value;
     let stayPeriodErr = document.getElementById("stayPeriodErr");
     if (stayPeriod.value == "Default") {
       stayPeriodErr.innerHTML = "*Select Stay Period In ward";
@@ -229,15 +228,19 @@ const registerAOform = () => {
     } else {
       residenceType.style.border = "2px solid green";
     }
-    //Validate Farmer One Produce Type
+
+    //Validate Farmer One Produce Type, at least one item should be checked
     if (
       horticulture.checked == false &&
       poultry.checked == false &&
       diary.checked == false
     ) {
-      produceFOerr.innerHTML = "*Select at least one your produce type";
+      produceFOerr.innerHTML = "*Select produce type";
       produceFOerr.style.color = "red";
       return false;
+    } else{
+      let parent = horticulture.parentNode.parentNode;
+      parent.style.border = '2px solid green';
     }
   };
 
@@ -348,7 +351,7 @@ const registerAOform = () => {
     }
 
     //Validate Phone number 1
-    let phoneRegex = /[0-9]{10}$/;
+    let phoneRegex = /^[0-9]{10}$/;
     let ufphoneNumErr1 = document.getElementById("ufphoneNumErr1");
     if (!phoneNumber.value.match(phoneRegex)) {
       ufphoneNumErr1.innerHTML = "* Phone Number is required";
@@ -360,7 +363,7 @@ const registerAOform = () => {
     }
 
     //Validate Phone number 2
-    let phoneRegex2 = /[0-9]{10}$/;
+    let phoneRegex2 = /^[0-9]{10}$/;
     let ufphoneNumErr2 = document.getElementById("ufphoneNumErr2");
     if (!phoneNumber2.value.match(phoneRegex2)) {
       ufphoneNumErr2.innerHTML = "* Other Contact is required";
@@ -400,6 +403,75 @@ const registerAOform = () => {
     }
     let regbutton = document.getElementById('registerFO');
     regbutton.disabled = true;
+  };
+
+
+  //VALIDATE PRODUCT UPLOAD FORM FOR URBAN FARMER
+  const validateUpload = () => {
+    const productName = document.uploadForm.productName;
+    const ward = document.uploadForm.ward;
+    const productDescription = document.uploadForm.productDescription;
+    const uploadDate = document.uploadForm.uploadDate;
+    const price = document.uploadForm.price;
+  
+  
+    //Validate First Name.
+    let productNameRegex = /^[A-Za-z]{5,50}$/;
+    let productnameErr = document.getElementById("productnameErr");
+    if (productNameRegex.test(productName.value) == false) {
+      productnameErr.innerHTML = "* First Name is required";
+      productnameErr.style.color = "red";
+      productName.style.border = "2px solid red";
+      return false;
+    } else {
+      productName.style.border = "2px solid green";
+    }
+  
+    //Validate Product Description, should not be more than 50 characters
+    let descRegex = /^[A-Za-z]{5,50}$/;
+    let descErr = document.getElementById("descErr");
+    if (descRegex.test(productDescription.value) == false) {
+      descErr.innerHTML = "* Last Name is required";
+      descErr.style.color = "red";
+      productDescription.style.border = "2px solid red";
+      return false;
+    } else {
+      productDescription.style.border = "2px solid green";
+    }
+  
+    //Validate Upload Date
+    let uploadDateErr = document.getElementById("uploadDateErr");
+    if (uploadDate.value=='') {
+      uploadDateErr.innerHTML = "* Enter Date of Upload";
+      uploadDateErr.style.color = "red";
+      uploadDate.style.border = "2px solid red";
+      return false;
+    } else {
+      uploadDate.style.border = "2px solid green";
+    }
+  
+    //Validate price
+    let priceRegex = /^[0-9]+$/;
+    let priceErr = document.getElementById("priceErr");
+    if (!price.value.match(priceRegex)) {
+      priceErr.innerHTML = "* Price is required";
+      priceErr.style.color = "red";
+      price.style.border = "2px solid red";
+      return false;
+    } else {
+      price.style.border = "2px solid green";
+    }
+  
+    //Validate Ward - a ward must be selected
+    let wardUFerr = document.getElementById("wardUFErr");
+    if (ward.value == "Default") {
+      wardUFerr.innerHTML = "*Please select a ward";
+      wardUFerr.style.color = "red";
+      ward.style.border = "2px solid red";
+      return false;
+    } else {
+      ward.style.border = "2px solid green";
+    }
   };
 
   // let regbutton = document.getElementById('registerFO');

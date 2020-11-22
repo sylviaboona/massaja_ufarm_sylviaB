@@ -46,20 +46,20 @@ form.farmerOneRegister(name='urbanFarmerForm' action = '/registerUF' method='POS
       input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
       span#ufNINerr
   .form-row
-    .form-group.col-md-4
+    .form-group.col-md-6
       input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
       span#ufphoneNumErr1
-    .form-group.col-md-4
+    .form-group.col-md-6
       input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
       span#ufphoneNumErr2
-    .form-group.col-md-4
-      select#inputWard.form-control(name='wardUF')
-        option(value='Default' selected='') Ward
-        option(value='Busabala') Busabala
-        option(value='Massajja') Masajja
-        option(value='Kikajjo') Kikajjo
-        option(value='Namasuba') Namasuba
-      span#wardUFErr
+    //- .form-group.col-md-4
+    //-   select#inputWard.form-control(name='wardUF')
+    //-     option(value='Default' selected='') Ward
+    //-     option(value='Busabala') Busabala
+    //-     option(value='Massajja') Masajja
+    //-     option(value='Kikajjo') Kikajjo
+    //-     option(value='Namasuba') Namasuba
+    //-   span#wardUFErr
   .form-group
     .form-check-inline
       input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')

@@ -2,12 +2,6 @@ const express = require("express");
 const router = express.Router();
 const RegistrationUF = require("../models/RegistrationUF");
 const Users = require("../models/Users");
-// const passport = require('passport');
-// var roles = {
-//   admin: 'AgricOfficer',
-//   farmerone:'FarmerOne',
-//   urbanfarmer:'UrbanFarmer'
-// }
 
 router.get("/registerUF", (req, res) => {
   res.render("registrationUF");
@@ -20,9 +14,9 @@ router.post("/registerUF", async (req, res) => {
     req.body.role = "UrbanFarmer";
     //req.body.wardUF = user.ward
     const items = new RegistrationUF(req.body);
-    const userDetails = new Users(req.body);
+    const loginDetails = new Users(req.body);
     items.save();
-    await Users.register(userDetails, req.body.password, (err) => {
+    await Users.register(loginDetails, req.body.password, (err) => {
       if (err) {
         throw err;
       }

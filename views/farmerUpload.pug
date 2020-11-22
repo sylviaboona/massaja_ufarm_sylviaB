@@ -25,12 +25,13 @@ body
     .row
         .col-4
         .col-4
-            img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
-            h4#registerFO Upload Your New Product Here
-            form(name='uploadForm' action='/farmerUpload' enctype='multipart/form-data' method='POST')
+            img.farmerUploadImages.imageUpload(src='img/greenLeafSideImage1.png' alt='')
+            h4.imageheader Upload Your New Product Here
+            form(name='uploadForm' action='/farmerUpload' enctype='multipart/form-data' method='POST' onsubmit='return validateUpload()')
               .form-group.row
                 .col-md-6
                   input#userNameUF.form-control(type='text' name='productName' placeholder='Product Name')
+                  span#productnameErr
                 .col-md-6
                   select#inputWard.form-control(name='wardUF')
                     option(value='Default' selected='') Ward
@@ -38,13 +39,20 @@ body
                     option(value='Massajja') Masajja
                     option(value='Kikajjo') Kikajjo
                     option(value='Namasuba') Namasuba
+                  span#wardUFerr
               .form-group.row  
-                .col-md-6
+                .col-md-4
                   input#inputUploadDate.form-control(type ='text' name='uploadDate' placeholder='Date of Upload' onfocus="(this.type='date')")
-                .col-md-6
+                  span#uploadDateErr
+                .col-md-4
+                  input#inputPrice.form-control(type='text' name='quantity' placeholder='Quantity')
+                  span#priceErr
+                .col-md-4
                   input#inputPrice.form-control(type='text' name='price' placeholder='Price')
+                  span#priceErr
               .form-group
                 textarea#exampleFormControlTextarea1.form-control(rows='3' name="productDescription" placeholder='Product Description')
+                span#descErr
               .form-group
                     .form-check-inline
                       label.form-check-label(for='organic')  Produce Type
