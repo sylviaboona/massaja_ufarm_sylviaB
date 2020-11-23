@@ -1,0 +1,44 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='/css/bootstrap/bootstrap.css' type='text/css')
+  link(rel='stylesheet' href='/css/style.css' type='text/css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome2') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome2')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm') About Us   
+  form(method="post" action='/logout') 
+    button.btn.btn-dark.btn-block(type="submit") Log out
+
+body
+    .row
+        .col-4
+        .col-4
+            img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
+            h4#registerFO Update product status
+            form(name='uploadForm' action="/updateStatus?id="+user._id method='POST')
+              .form-group.row
+                .col-md-6
+                    select#inputStatus.form-control(name='status')
+                        option(value="Pending" selected = user.status === "Pending") Pending
+                        option(value="Approved" selected = user.status === "Approved") Approved
+                        option(value="Declined" selected = user.status === "Declined") Declined
+                //-   input#productstatus.form-control(value = user.status name ="status")
+                .form-check-inline
+                   button#registerFO.btn.btn-primary(type='submit')
+                        | Update
+        .col-4  
+script(src='./js/jquery-3.5.1.slim.min.js')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap/bootstrap.js')

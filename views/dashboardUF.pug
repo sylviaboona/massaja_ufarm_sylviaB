@@ -38,35 +38,40 @@ body
                 th Product Name
                 th Product Description
                 th Product Image
-                th Price (UGX)
+                th Unit Price  (UGX)
+                th Quantity
                 th Produce Type
                 th Date of Upload 
                 th Ward 
                 th Status
+                th Action
                 th
                 th
 
         tbody
-            if users.length
-            each user in users
+            if items.length
+            each item in items
                 tr
-                    td #{user.productName}
-                    td #{user.productDescription}
+                    td #{item.productName}
+                    td #{item.productDescription}
                     td 
-                        img(src='/uploads/' + user.productImage height='80px' width='80px')
-                    td #{user.price}
-                    td #{user.productType}
-                    td #{user.uploadDate}
-                    td #{user.wardUF}
-                    td #{user.status}
+                        img(src='/uploads/' + item.productImage height='80px' width='80px')
+                    td #{item.price}
+                    td #{item.quantity}
+                    td #{item.productType}
+                    td #{item.uploadDate}
+                    td #{item.ward}
+                    td #{item.status}
                     td
-                        a(href='/updateProduct/'+user._id) Update
+                        a(href='/updateStatus/'+item._id) Approve
+                    td
+                        a(href='/updateProduct/'+item._id) Update
                     td
                         form(method="post" action='/deleteProduct')
-                            input(type="hidden", placeholder="", name="id", value=user._id)
+                            input(type="hidden", placeholder="", name="id", value=item._id)
                             button.btn.btn-dark.btn-block(type="submit") Delete
             else
-                p No registrations yet :(
+                p No products found :(
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')

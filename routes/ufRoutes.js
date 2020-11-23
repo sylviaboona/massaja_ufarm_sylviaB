@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const FarmerUpload = require("../models/FarmerUpload");
+const Users = require("../models/Users");
+const RegistrationUF = require("../models/RegistrationUF");
 
 //Defining the storage location for our images to upload
 const storage = multer.diskStorage({
@@ -15,7 +17,7 @@ const storage = multer.diskStorage({
   },
 });
 
-//
+// Declaring a variable upload that defines where the images will be stored
 const upload = multer({ storage: storage }).single("productImage");
 
 router.get("/farmerUpload", (req, res) => {
@@ -24,11 +26,13 @@ router.get("/farmerUpload", (req, res) => {
 
 //SAVING URBAN FARMER'S UPLOADED PRODUCE TO THE DATABASE
 router.post("/farmerUpload", upload, async (req, res) => {
+  if (req.session.user) {
   try {
+    const urbanfarmer = await Users.findOne({username: req.session.user.username})
     req.body.status = "Pending";
+    req.body.ward = urbanfarmer.ward;
     const farmeruploads = new FarmerUpload(req.body);
     farmeruploads.productImage = req.file.filename;
-    console.log(req.body);
     await farmeruploads.save(() => {
       res.redirect("/dashboardUF");
     });
@@ -36,20 +40,31 @@ router.post("/farmerUpload", upload, async (req, res) => {
     res.status(400).send("Ooops! Something went wrong!");
     console.log(err);
   }
+} else {
+  console.log("Can't find session");
+  res.redirect("/login");
+}
+  
 });
 
 //RETRIEVE URBAN FARMER'S UPLOADED PRODUCE FROM THE DATABASE
 router.get("/dashboardUF", async (req, res) => {
+  if (req.session.user) {
   try {
-    let items = await FarmerUpload.find();
-    //SEARCHING URBAN FARMER PRODUCE FOR A SPECIFIC CATEGORY IN THE DATABASE say gender
+    // const urbanfarmers = await Users.findOne({username: req.session.user.username})
+    let farmerProducts = await FarmerUpload.find(); //{phoneContact:urbanfarmers.phoneNumberUF}
+    //SEARCHING URBAN FARMER PRODUCE FOR A SPECIFIC PRODUCT
     if (req.query.productName) {
-      items = await FarmerUpload.find({ name: req.query.productName });
+      farmerProducts = await FarmerUpload.find({ productName: req.query.productName });
     }
-    res.render("dashboardUF", { users: items });
+    res.render("dashboardUF", { items: farmerProducts });
   } catch (err) {
     res.status(400).send("Ooops! Couldnt find items in database!");
   }
+} else {
+  console.log("Can't find session");
+  res.redirect("/login");
+}
 });
 
 //DELETING AN URBAN FARMER'S PRODUCT FROM THE DATABASE
@@ -74,7 +89,7 @@ router.get("/updateProduct/:id", async (req, res) => {
     }
   } else {
     console.log("Can't find session");
-    res.redirect("/loginFO");
+    res.redirect("/login");
   }
 });
 //Post the updated urban farmer data back to the database
@@ -89,9 +104,41 @@ router.post("/updateProduct", async (req, res) => {
     }
   } else {
     console.log("Can't find session");
-    res.redirect("/loginFO");
+    res.redirect("/login");
   }
 });
+
+//UPDATING URBAN FARMER INFORMATION IN THE DATABASE
+//Load the update form for a selected urban farmer with a given id
+router.get("/updateStatus/:id", async (req, res) => {
+  if (req.session.user) {
+    try {
+      const updateStatus = await FarmerUpload.findOne({ _id: req.params.id });
+      res.render("statusUpdate", { user: updateStatus });
+    } catch (err) {
+      res.status(400).send("Unable to find item in the database");
+    }
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
+  }
+});
+//Post the updated urban farmer data back to the database
+//and show the update on dashboard of FO
+router.post("/updateStatus", async (req, res) => {
+  if (req.session.user) {
+    try {
+      await FarmerUpload.findOneAndUpdate({ _id: req.query.id }, req.body);
+      res.redirect("/dashboardUF");
+    } catch (err) {
+      res.status(404).send("Oooops! Update Failed. Try again");
+    }
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
+  }
+});
+
 
 router.post("/logoutUF", (req, res) => {
   if (req.session) {

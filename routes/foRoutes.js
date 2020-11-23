@@ -16,7 +16,7 @@ router.post("/registerUF", async (req, res) => {
   try {
     const findFarmerOne = await Users.findOne({username: req.session.user.username})
     req.body.role = "UrbanFarmer";
-    req.body.wardUF = findFarmerOne.ward
+    req.body.ward = findFarmerOne.ward
     const items = new RegistrationUF(req.body);
     const loginDetails = new Users(req.body);
     items.save();
@@ -41,9 +41,10 @@ router.post("/registerUF", async (req, res) => {
 router.get("/dashboardFO", async (req, res) => {
   if (req.session.user) {
     try {
-      let items = await RegistrationUF.find(); //{wardUF:user.ward}
-      if (req.query.wardUF) {
-        items = await RegistrationUF.find({ wardUF: req.query.wardUF });
+      const farmerOne = await Users.findOne({username: req.session.user.username})
+      let items = await RegistrationUF.find({ward:farmerOne.ward}); 
+      if (req.query.ward) {
+        items = await RegistrationUF.find({ ward: req.query.ward });
       }
       res.render("dashboardFO", {
         users: items,
@@ -117,6 +118,8 @@ router.post("/updateUF", async (req, res) => {
     res.redirect("/login");
   }
 });
+
+
 
 router.post("/logoutFO", (req, res) => {
   if (req.session) {

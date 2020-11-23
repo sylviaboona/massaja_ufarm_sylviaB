@@ -1,11 +1,14 @@
 // //VALIDATION FUNCTION FOR AGRIC OFFICER REGISTRATION FORM
-const registerAOform = () => {
-  const firstName = document.agricOfficerForm.firstNameAO;
-  const lastName = document.agricOfficerForm.lastNameAO;
-  const userName = document.agricOfficerForm.username;
-  const password = document.agricOfficerForm.password;
-  const phoneNumber = document.agricOfficerForm.phoneNumberAO;
-  const ward = document.agricOfficerForm.ward;
+const registerAOform = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  const form = document.agricOfficerForm;
+  const firstName = form.firstNameAO;
+  const lastName = form.lastNameAO;
+  const userName = form.username;
+  const password = form.password;
+  const phoneNumber = form.phoneNumberAO;
+  const ward = form.ward;
 
   //Validate First Name.
   let fnameRegex = /^[A-Za-z]{5,50}$/;
@@ -44,7 +47,7 @@ const registerAOform = () => {
   }
 
   //Validate AO password
-  let pwdRegex = /^[A-Z][0-9]{5}+$/;
+  let pwdRegex = /^[A-Z][0-9]{5}$/;
   let pwdErr = document.getElementById("foNumErr");
   if (!password.value.match(pwdRegex)) {
     pwdErr.innerHTML = "* Unique FO Number is required";
@@ -56,7 +59,7 @@ const registerAOform = () => {
   }
 
   //Validate AO Phone number, should be 10 digits
-  let phoneRegex2 = /^[0-9]{10}+$/;
+  let phoneRegex2 = /^[0-9]{10}$/;
   let aophoneNumErr2 = document.getElementById("ufphoneNumErr2");
   if (!phoneNumber.value.match(phoneRegex2)) {
     aophoneNumErr2.innerHTML = "* Phone Number 2 is required";
@@ -68,7 +71,7 @@ const registerAOform = () => {
   }
 
   //Validate Ward - a ward must be selected
-  let wardAOErr = document.getElementById("wardUFErr");
+  let wardAOErr = document.getElementById("wardAOErr");
   if (ward.value == "Default") {
     wardAOErr.innerHTML = "*Please select a ward";
     wardAOErr.style.color = "red";
@@ -77,21 +80,28 @@ const registerAOform = () => {
   } else {
     ward.style.border = "2px solid green";
   }
+  let anchor = document.getElementById('registerAgricOfficer');
+  let regbutton = anchor.getElementsByTagName('input')[0];
+  regbutton.disabled = true;
+  form.requestSubmit();
 };
 
   //VALIDATION FUNCTION FOR FARMER ONE REGISTRATION FORM
-  const registerFOform = () => {
-    const firstName = document.foRegisterForm.firstNameFO;
-    const lastName = document.foRegisterForm.lastNameFO;
-    const userName = document.foRegisterForm.username;
-    const dob = document.foRegisterForm.dobFO;
+  const registerFOform = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const form = document.foRegisterForm;
+    const firstName = form.firstNameFO;
+    const lastName = form.lastNameFO;
+    const userName = form.username;
+    const dob = form.dobFO;
     const dor = document.getElementById("inputDOR");
-    const foNumber = document.foRegisterForm.password;
-    const foNIN = document.foRegisterForm.foNIN;
-    const phoneNumber = document.foRegisterForm.phoneNumberFO;
-    const ward = document.foRegisterForm.ward;
-    const stayPeriod = document.foRegisterForm.stayPeriod;
-    const residenceType = document.foRegisterForm.residenceType;
+    const foNumber = form.password;
+    const foNIN = form.foNIN;
+    const phoneNumber = form.phoneNumberFO;
+    const ward = form.ward;
+    const stayPeriod = form.stayPeriod;
+    const residenceType = form.residenceType;
     const horticulture = document.getElementById("horticultureProduce");
     const poultry = document.getElementById("poultryProducts");
     const diary = document.getElementById("diaryProducts");
@@ -242,6 +252,10 @@ const registerAOform = () => {
       let parent = horticulture.parentNode.parentNode;
       parent.style.border = '2px solid green';
     }
+    let anchor = document.getElementById('registerFarmerOne');
+    let regbutton = anchor.getElementsByTagName('input')[0];
+    regbutton.disabled = true;
+    form.requestSubmit();
   };
 
   //VALIDATION FUNCTION FOR URBAN FARMER REGISTRATION FORM
@@ -421,7 +435,7 @@ const registerAOform = () => {
   
   
     //Validate First Name.
-    let productNameRegex = /^[A-Za-z]{5,50}$/;
+    let productNameRegex = /^[A-Za-z]{2,50}$/;
     let productnameErr = document.getElementById("productnameErr");
     if (productNameRegex.test(productName.value) == false) {
       productnameErr.innerHTML = "* First Name is required";
@@ -433,7 +447,7 @@ const registerAOform = () => {
     }
   
     //Validate Product Description, should not be more than 50 characters
-    let descRegex = /^[A-Za-z]{5,50}$/;
+    let descRegex = /^[A-Za-z ]{5,50}$/;
     let descErr = document.getElementById("descErr");
     if (descRegex.test(productDescription.value) == false) {
       descErr.innerHTML = "* Last Name is required";
@@ -458,7 +472,7 @@ const registerAOform = () => {
     //Validate price
     let priceRegex = /^[0-9]+$/;
     let priceErr = document.getElementById("priceErr");
-    if (!price.value.match(priceRegex)) {
+    if (priceRegex.test(price.value)==false) {
       priceErr.innerHTML = "* Price is required";
       priceErr.style.color = "red";
       price.style.border = "2px solid red";
@@ -467,20 +481,18 @@ const registerAOform = () => {
       price.style.border = "2px solid green";
     }
   
-    //Validate Ward - a ward must be selected
-    let wardUFerr = document.getElementById("wardUFErr");
-    if (ward.value == "Default") {
-      wardUFerr.innerHTML = "*Please select a ward";
-      wardUFerr.style.color = "red";
-      ward.style.border = "2px solid red";
-      return false;
-    } else {
-      ward.style.border = "2px solid green";
-    }
   };
   if (document.getElementById('registerUF')){
     let anchor = document.getElementById('registerUF');
     anchor.addEventListener('click', registerUFform)
+  }
+  if (document.getElementById('registerFarmerOne')){
+    let anchor = document.getElementById('registerFarmerOne');
+    anchor.addEventListener('click', registerFOform)
+  }
+  if (document.getElementById('registerAgricOfficer')){
+    let anchor = document.getElementById('registerAgricOfficer');
+    anchor.addEventListener('click', registerAOform)
   }
 
   

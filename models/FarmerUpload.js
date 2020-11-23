@@ -7,10 +7,12 @@ const farmeruploadSchema = new mongoose.Schema({
     price:String,
     productType: String,
     uploadDate: String,
-    wardUF: String,
+    ward: String,
     paymentMode: String,
     delivery:String,
     status: String,
+    phoneContact: String,
+    quantity: String,
   });
 
   module.exports = mongoose.model('FarmerUpload', farmeruploadSchema);

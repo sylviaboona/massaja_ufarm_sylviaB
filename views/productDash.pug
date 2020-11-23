@@ -23,21 +23,20 @@ body
         h4.card-title Products available on the Market
         |&nbsp
   .row
-      .col-sm-4
         if items.length
         each item in items
           .card.productcard(style='width: 15rem;')
             .card-body
+                h5 Product name: #{item.productName}
                 p 
-                  img(src='/uploads/' + item.productImage height='100px' width='100px')
-                h5 #{item.productName}
-                p #{item.productDescription}
-                p #{item.price}
-                p #{item.quantity}
+                  img(src='/uploads/' + item.productImage height='100px' width='120px')
+                p Description: #{item.productDescription}
+                p Unit Price: #{item.price}
+                p Quantity:#{item.quantity}
+                p Contact: #{item.phoneContact}
                 a.btn.btn-primary(href='#') Order
                 p
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')
 script(src='./js/massajaUfarm.js')
-

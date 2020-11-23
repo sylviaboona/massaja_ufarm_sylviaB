@@ -32,17 +32,14 @@ body
                 .col-md-6
                   input#productName.form-control(value = user.productName name ="productName")
                 .col-md-6
-                  select#inputWard.form-control(name='wardUF')
-                    option(value='Default' selected='') Ward
-                    option(value="Busabala" selected = user.wardUF === "Busabala") Busabala
-                    option(value="Massajja" selected = user.wardUF === "Massajja") Massajja
-                    option(value="Kikajjo" selected = user.wardUF === "Kikajjo") Kikajjo
-                    option(value="Namasuba" selected = user.wardUF === "Namasuba") Namasuba
+                  input#inputPhone.form-control(value = user.phoneContact name='phoneContact')
               .form-group.row  
-                .col-md-6
+                .col-md-4
                   input#inputUploadDate.form-control(value = user.uploadDate name='uploadDate')
-                .col-md-6
+                .col-md-4
                   input#inputPrice.form-control(value = user.price name='price' )
+                .col-md-4
+                  input#inputUploadDate.form-control(value = user.quantity name='quantity')
               .form-group
                 label(for='exampleFormControlTextarea1') Product Description
                 textarea#exampleFormControlTextarea1.form-control(value = user.productDescription name="productDescription")
