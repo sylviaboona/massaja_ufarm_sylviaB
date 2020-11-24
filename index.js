@@ -22,11 +22,6 @@ const passport = require('passport');
 //Create an express application by calling the express function
 const app = express();
 
-// var roles = {
-//   admin: 'Agric Officer',
-//   farmerone:'Farmer One',
-//   urbanfarmer:'Urban Farmer'
-// }
 //DATABASE CONNECTION
 //Dotenv will load our connection details, 
 //from the configuration file into Node’s process.env.
@@ -67,10 +62,6 @@ app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
-// passport.use(RegistrationFO.createStrategy());
-// passport.serializeUser(RegistrationFO.serializeUser());
-// passport.deserializeUser(RegistrationFO.deserializeUser());
-
 
 passport.use(Users.createStrategy());
 passport.serializeUser(Users.serializeUser());
@@ -81,7 +72,6 @@ app.use('/', agricRoutes)
 app.use('/', foRoutes)
 app.use('/', ufRoutes)
 app.use('/', loginRoutes)
-// app.use('/', adminregRoutes)
 
 
 //Serving the client with the 'Home' page
@@ -125,9 +115,9 @@ app.post('/logout', (req, res) => {
 })
 
 
-//This gets the error page for any incorrect path
+//This gets the error page when an incorrect path is requested
 app.get('*', (req, res) => {
-  res.send('error page');
+  res.render('errorPage');
 }); 
 
 app.listen(3000);

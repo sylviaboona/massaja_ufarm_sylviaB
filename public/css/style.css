@@ -7,6 +7,9 @@
   color: white;
 }
 
+.nav-item a{
+  color: white;
+}
 .welcomeimage{
   width: 100%;
   margin-top: 150px;
@@ -14,12 +17,16 @@
 }
 
 /* .loginFOpage{
-  background-color: olivedrab;
+  background-image: linear-gradient(to bottom, rgba(191, 223, 161, 0.52), rgba(43, 46, 44, 0.73)),
+  url(/avocado1.JPG);;
 } */
 
 .loginForm{
-  border: 1px solid olivedrab;
   border-radius: 20px;
+  border: 1px solid white;
+  background-color: olivedrab;
+  margin-bottom: 200px;
+  margin-top: 200px;
 }
 
 .fologinimage{
@@ -56,9 +63,9 @@
 }
 
 .agric-FO-Login {
-  width: 400px;
-  margin-top: 300px;
-  margin-left: 100px;
+  width: 350px;
+  margin-top: 100px;
+  /* margin-left: 100px; */
 }
 
 .btn {
@@ -135,5 +142,24 @@
 .viewProducts input{
   background-color: olivedrab;
   color: white;
+  border-radius: 10px;
+}
 
+.errorImage{
+  margin-left: 650px;
+  margin-top: 200px;
+  width: 400px;
+}
+
+.errorBTN{
+  margin-left: 670px;
+  margin-top: 50px;
+
+}
+
+.errorBTN input{
+  background-color: olivedrab;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
 }

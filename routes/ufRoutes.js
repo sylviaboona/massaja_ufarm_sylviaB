@@ -20,67 +20,78 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single("productImage");
 
 router.get("/farmerUpload", (req, res) => {
+  if (req.session.user.role === "UrbanFarmer") {
   res.render("farmerUpload");
+  }
 });
 
 //SAVING URBAN FARMER'S UPLOADED PRODUCE TO THE DATABASE
 router.post("/farmerUpload", upload, async (req, res) => {
   if (req.session.user) {
-  try {
-    const urbanfarmer = await Users.findOne({username: req.session.user.username})
-    req.body.status = "Pending";
-    req.body.ward = urbanfarmer.ward;
-    const farmeruploads = new FarmerUpload(req.body);
-    farmeruploads.productImage = req.file.filename;
-    await farmeruploads.save(() => {
-      res.redirect("/dashboardUF");
-    });
-  } catch (err) {
-    res.status(400).send("Ooops! Something went wrong!");
-    console.log(err);
+      try {
+        const urbanfarmer = await Users.findOne({
+          username: req.session.user.username,
+        });
+        req.body.status = "Pending";
+        req.body.ward = urbanfarmer.ward;
+        const farmeruploads = new FarmerUpload(req.body);
+        farmeruploads.productImage = req.file.filename;
+        await farmeruploads.save(() => {
+          res.redirect("/dashboardUF");
+        });
+      } catch (err) {
+        res.status(400).send("Ooops! Something went wrong!");
+        console.log(err);
+      }
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
   }
-} else {
-  console.log("Can't find session");
-  res.redirect("/login");
-}
-  
 });
 
 //RETRIEVE URBAN FARMER'S UPLOADED PRODUCE FROM THE DATABASE
 router.get("/dashboardUF", async (req, res) => {
   if (req.session.user) {
-    if(req.session.user.role=='UrbanFarmer'|| req.session.user.role=='FarmerOne'){
+    if (
+      req.session.user.role == "UrbanFarmer" ||
+      req.session.user.role == "FarmerOne"
+    ) {
       try {
+        const farmer = await Users.findOne({
+          username: req.session.user.username,
+        });
         // const urbanfarmers = await Users.findOne({username: req.session.user.username})
-        let farmerProducts = await FarmerUpload.find(); //{phoneContact:urbanfarmers.phoneNumberUF}
+        let farmerProducts = await FarmerUpload.find({ ward: farmer.ward }); //{username:farmer.username}
         //SEARCHING URBAN FARMER PRODUCE FOR A SPECIFIC PRODUCT
         if (req.query.productName) {
-          farmerProducts = await FarmerUpload.find({ productName: req.query.productName });
+          farmerProducts = await FarmerUpload.find({
+            productName: req.query.productName,
+          });
         }
         res.render("dashboardUF", { items: farmerProducts });
       } catch (err) {
         res.status(400).send("Ooops! Couldnt find items in database!");
       }
     }
-} else {
-  console.log("Can't find session");
-  res.redirect("/login");
-}
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
+  }
 });
 
 //DELETING AN URBAN FARMER'S PRODUCT FROM THE DATABASE
 router.post("/deleteProduct", async (req, res) => {
   if (req.session.user) {
-  try {
-    await FarmerUpload.deleteOne({ _id: req.body.id });
-    res.redirect("back");
-  } catch (err) {
-    res.status(400).send("Oooops! Cant delete item!");
+    try {
+      await FarmerUpload.deleteOne({ _id: req.body.id });
+      res.redirect("back");
+    } catch (err) {
+      res.status(400).send("Oooops! Cant delete item!");
+    }
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
   }
-} else {
-  console.log("Can't find session");
-  res.redirect("/login");
-}
 });
 
 //UPDATING URBAN FARMER INFORMATION IN THE DATABASE
@@ -88,12 +99,14 @@ router.post("/deleteProduct", async (req, res) => {
 router.get("/updateProduct/:id", async (req, res) => {
   if (req.session.user) {
     try {
-      if (req.session.user.role=='UrbanFarmer'){
-        const updateProduct = await FarmerUpload.findOne({ _id: req.params.id });
+      if (req.session.user.role == "UrbanFarmer") {
+        const updateProduct = await FarmerUpload.findOne({
+          _id: req.params.id,
+        });
         res.render("updateProduct", { user: updateProduct });
-      }else if(req.session.user.role=='FarmerOne') {
+      } else if (req.session.user.role == "FarmerOne") {
         const updateStatus = await FarmerUpload.findOne({ _id: req.params.id });
-      res.render("statusUpdate", { user: updateStatus });
+        res.render("statusUpdate", { user: updateStatus });
       }
     } catch (err) {
       res.status(400).send("Unable to find item in the database");
@@ -149,7 +162,6 @@ router.post("/updateProduct", async (req, res) => {
 //     res.redirect("/login");
 //   }
 // });
-
 
 router.post("/logoutUF", (req, res) => {
   if (req.session) {
