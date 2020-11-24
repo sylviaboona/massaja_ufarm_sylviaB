@@ -27,7 +27,7 @@ body
         .col-4
             img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
             h4#registerFO Update product status
-            form(name='uploadForm' action="/updateStatus?id="+user._id method='POST')
+            form(name='uploadForm' action="/updateProduct?id="+user._id method='POST')
               .form-group.row
                 .col-md-6
                     select#inputStatus.form-control(name='status')
