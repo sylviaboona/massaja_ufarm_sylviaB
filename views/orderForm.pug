@@ -1,0 +1,48 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Massajja Ufarm
+  link(rel='stylesheet' href='/css/bootstrap/bootstrap.css')
+  link(rel='stylesheet' href='/css/style.css')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
+  a.navbar-brand(href='welcome2') Ufarm
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='welcome2')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='contactUfarm') Contact Us
+      li.nav-item
+        a.nav-link(href='aboutUfarm') About Us
+body
+  .container.loginFOpage
+    .row
+      .col-4
+        //- img.fologinimage(src="../img/avocado1.jpg", alt="" width='400px')
+      .col-4.loginForm
+        form(name='orderForm' action=`/orderForm/?id=${productId}` method='POST')
+            .form-row
+                .form-group.col-md-6
+                    label Product Name:
+                    input#inputFirstName.form-control(type='text' name = 'productname')
+                .form-group.col-md-6
+                    label Unit Price:
+                    input#inputFirstName.form-control(type='text' name = 'price')
+            .form-row
+                .form-group.col-md-6
+                    label Customer Contact:
+                    input#inputFirstName.form-control(name='customerContact' type='text')
+                .form-group.col-md-6
+                    label Quantity:
+                    input#inputFirstName.form-control(type='number' name = 'quantity')
+            button.btn.btn-primary(type='submit') Submit Order
+      .col-4
+    //- .col-4
+script(src='js/jquery-3.5.1.slim.min.js')
+script(src='js/popper.min.js')
+script(src='js/bootstrap/bootstrap.js')
+script(src='./js/massajaUfarm.js')

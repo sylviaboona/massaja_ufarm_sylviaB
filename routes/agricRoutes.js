@@ -33,7 +33,9 @@ router.get("/registerFO", (req, res) => {
 });
 
 //SAVING FARMER ONE DATA TO THE DATABASE
+
 router.post("/registerFO", async (req, res) => {
+  if (req.session.user) {
   try {
     req.body.role = "FarmerOne";
     const farmeroneInfo = new RegistrationFO(req.body);
@@ -49,20 +51,12 @@ router.post("/registerFO", async (req, res) => {
     res.status(400).send("Ooops! Something went wrong.");
     console.log(err);
   }
+} else {
+  console.log("Can't find session");
+  res.redirect("/login");
+}
 });
 
-// router.post('/registerFO', async(req, res) => {
-//     try{
-//     const registrationFO = new RegistrationFO(req.body);
-//     await registrationFO.save(()=>{
-//       console.log('save successful');
-//       res.redirect('/dashboardAO')
-//       })
-//     }catch(err){
-//       res.status(400).send('Ooops! Something went wrong!')
-//     console.log(err);
-//       }
-//     });
 
 //RETRIEVE FARMER ONE DATA FROM THE DATABASE
 

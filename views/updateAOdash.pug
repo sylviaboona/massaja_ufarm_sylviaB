@@ -25,43 +25,40 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
     .form-row
       .form-group.col-md-6
         label First Name
-        input#inputFirstName.form-control(value = user.firstNameFO name ="firstNameFO")
+        input#inputFirstName.form-control(value = user.firstNameFO name ="firstNameFO" readonly)
       .form-group.col-md-6
         label Last Name
-        input#inputLastName.form-control(value = user.lastNameFO name ="lastNameFO")
+        input#inputLastName.form-control(value = user.lastNameFO name ="lastNameFO" readonly)
     .form-row
       .form-group.col-md-6
         label FO NIN
-        input#inputNIN.form-control(value = user.foNIN name ="foNIN")
+        input#inputNIN.form-control(value = user.foNIN name ="foNIN" readonly)
       .form-group.col-md-6
         label Contact
         input#inputPhoneNumber.form-control(value = user.phoneNumberFO name ="phoneNumberFO")
     .form-row
       .form-group.col-md-4
         label Ward
-        select#inputWard.form-control(name='ward')
+        select#inputWard.form-control(name='ward' readonly)
           option(value="Busabala" selected = user.ward === "Busabala") Busabala
           option(value="Massajja" selected = user.ward === "Massajja") Massajja
           option(value="Kikajjo" selected = user.ward === "Kikajjo") Kikajjo
           option(value="Namasuba" selected = user.ward === "Namasuba") Namasuba
       .form-group.col-md-4
-        label Period of Stay
-        select#inputYears.form-control(name='stayPeriod')
-          option(value="10-15yrs" selected = user.stayPeriod === "10-15yrs") 10-15yrs
-          option(value="15-20yrs" selected = user.stayPeriod === "15-20yrs") 15-20yrs
-          option(value="+20yrs" selected = user.stayPeriod === "+20yrs") +20yrs
+        label Year of Stay 
+        input.form-control(value = user.stayPeriod name ="stayPeriod" readonly)
       .form-group.col-md-4
         label Residence Type
-        select#inputResidence.form-control(name='residenceType')
+        select#inputResidence.form-control(name='residenceType' readonly)
           option(value="Citizen" selected = user.residenceType === "Citizen") Citizen
           option(value="Non Citizen" selected = user.residenceType === "Non Citizen") Non Citizen
     .form-row
       .form-group.col-md-6
         label Date of Birth
-        input#inputDOB.form-control(value = user.dobFO name ="dobFO")
+        input#inputDOB.form-control(value = user.dobFO name ="dobFO" readonly)
       .form-group.col-md-6
         label Date of Registration
-        input#inputDOR.form-control(value = user.dorFO name ="dorFO")
+        input#inputDOR.form-control(value = user.dorFO name ="dorFO" readonly)
     .form-check.form-check-inline
       input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType.includes('Horticulture') name="produceType")
       label.form-check-label(for='inlineCheckbox1') Horticulture Produce
@@ -73,10 +70,10 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       label.form-check-label(for='inlineCheckbox3') Diary Products
     .form-group
       .form-check-inline
-        input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender")
+        input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender" readonly)
         label.form-check-label(for='genderM')  Male 
       .form-check-inline
-        input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender")
+        input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender" readonly)
         label.form-check-label(for='genderF')  Female 
     button#registerFO.btn.btn-primary(type='submit')
       | Update

@@ -6,6 +6,7 @@ const agricRoutes = require('./routes/agricRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
 const loginRoutes = require('./routes/loginroutes')
+const orderRoutes = require('./routes/clientRoutes')
 // const adminregRoutes = require('./routes/adminregRoutes')
 require('dotenv').config();
 const mongoose = require('mongoose');
@@ -68,10 +69,11 @@ passport.serializeUser(Users.serializeUser());
 passport.deserializeUser(Users.deserializeUser());
 
 //Using the routes for different users from routes directory
-app.use('/', agricRoutes)
-app.use('/', foRoutes)
-app.use('/', ufRoutes)
-app.use('/', loginRoutes)
+app.use('/', agricRoutes);
+app.use('/', foRoutes);
+app.use('/', ufRoutes);
+app.use('/', loginRoutes);
+app.use('/', orderRoutes);
 
 
 //Serving the client with the 'Home' page

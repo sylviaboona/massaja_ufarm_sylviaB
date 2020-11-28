@@ -13,6 +13,8 @@ const farmeruploadSchema = new mongoose.Schema({
     status: String,
     phoneContact: String,
     quantity: String,
+    username: String,
+    // availability: String,
   });
 
   module.exports = mongoose.model('FarmerUpload', farmeruploadSchema);

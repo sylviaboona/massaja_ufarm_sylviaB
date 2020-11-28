@@ -5,31 +5,41 @@ head
   link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
   link(rel='stylesheet' href='css/style.css')
 nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6B8E23;')
-  a.navbar-brand(href='welcome') Ufarm
+  a.navbar-brand(href='welcome2') Ufarm
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome')
+        a.nav-link(href='welcome2')
           | Home 
           span.sr-only (current)
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
       li.nav-item
         a.nav-link(href='contactUfarm') Contact Us
-      li.nav-item
-        a.nav-link(href='dashboardUF') Browse Products
-      li.nav-item
-        a.nav-link(href='registerAO') Sign Up
-.container.welcomepage
+body
+  header.card-header
+        h4.card-title Orders made
+        |&nbsp
   .row
-    .col-6
-      img.welcomeimage(src="../img/welcomeImage.jpg", alt="")
-    .col-6
-      h1#welcome-message Welcome to Massaja Division Ufarm
-      p#welcome-tag Connecting you to first class agricultural produce by a click of a button from anywhere
+        if items.length
+        each item in items
+            .card.productcard(style='width: 15rem;')
+              .card-body
+                  h5.card-title Product name: #{item.productname}
+                  p.card-text Unit Price: #{item.price}
+                  p.card-text Quantity:#{item.quantity}
+                  p.card-text Contact: #{item.customerContact}
+                  //- p Directions #{item.directions}
+                  //- a#orderBTN(href='orderForm')
+                  //-   input.btn(type="button" value='Order'  onclick='orderbtn()')
+                  //- p
+  
+                
+
+      
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')
-
+script(src='./js/massajaUfarm.js')

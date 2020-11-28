@@ -5,13 +5,13 @@ head
   link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
   link(rel='stylesheet' href='./css/style.css' type='text/css')
 nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='index.html') Ufarm
+  a.navbar-brand(href='welcome2') Ufarm
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome')
+        a.nav-link(href='welcome2')
           | Home 
           span.sr-only (current)
       li.nav-item
@@ -51,11 +51,7 @@ form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST')
         option(value='Namasuba') Namasuba
       span#wardErr
     .form-group.col-md-4
-      select#inputYears.form-control(name='stayPeriod')
-        option(value='Default' selected='') Period of Stay
-        option(value='10-15yrs') 10-15 years
-        option(value='15-20yrs') 15-20years
-        option(value='+20yrs') 20 years +
+      input.form-control(type='text' placeholder='Stay Period' name='stayPeriod' onfocus="(this.type='date')")
       span#stayPeriodErr
     .form-group.col-md-4
       select#inputResidence.form-control(name='residenceType')
