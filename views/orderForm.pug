@@ -24,21 +24,41 @@ body
       .col-4
         //- img.fologinimage(src="../img/avocado1.jpg", alt="" width='400px')
       .col-4.loginForm
-        form(name='orderForm' action=`/orderForm/?id=${productId}` method='POST')
+        h5 Fill in  your order details
+        form(name='orderForm' action=`/orderForm?id=${productId}` method='POST')
             .form-row
                 .form-group.col-md-6
                     label Product Name:
-                    input#inputFirstName.form-control(type='text' name = 'productname')
+                    input.form-control(type='text' name = 'productName')
                 .form-group.col-md-6
                     label Unit Price:
-                    input#inputFirstName.form-control(type='text' name = 'price')
+                    input.form-control(type='text' name = 'price')
             .form-row
                 .form-group.col-md-6
                     label Customer Contact:
-                    input#inputFirstName.form-control(name='customerContact' type='text')
+                    input.form-control(name='customerContact' type='text')
                 .form-group.col-md-6
                     label Quantity:
-                    input#inputFirstName.form-control(type='number' name = 'quantity')
+                    input.form-control(type='number' name = 'quantity' )
+            .form-row
+              .form-group
+                .form-check-inline
+                  label.form-check-label(for='organic')  Payment Mode
+                .form-check-inline
+                  input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked='')
+                  label.form-check-label(for='organic') Cash
+                .form-check-inline
+                  input#inorganicType.form-check-input(type='radio' name='paymentMode' value='Mobile money')
+                  label.form-check-label(for='inorganic')  Mobile Money
+              .form-group
+                .form-check-inline
+                  label.form-check-label(for='organic')  Delivery Mode
+                .form-check-inline
+                  input#organicType.form-check-input(type='radio' name='delivery' value='Pick up' checked='')
+                  label.form-check-label(for='organic')  Pick Up 
+                .form-check-inline
+                  input#inorganicType.form-check-input(type='radio' name='delivery' value='Home Delivery')
+                  label.form-check-label(for='inorganic')  Home Delivery
             button.btn.btn-primary(type='submit') Submit Order
       .col-4
     //- .col-4

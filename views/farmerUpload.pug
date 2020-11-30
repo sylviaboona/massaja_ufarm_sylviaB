@@ -23,8 +23,8 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
 
 body
     .row
-        .col-4
-        .col-4
+        .col-3
+        .col-6
             img.farmerUploadImages.imageUpload(src='img/greenLeafSideImage1.png' alt='')
             h4.imageheader Upload Your New Product Here
             form(name='uploadForm' action='/farmerUpload' enctype='multipart/form-data' method='POST' onsubmit='return validateUpload()')
@@ -57,31 +57,31 @@ body
                     .form-check-inline
                       input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
                       label.form-check-label(for='inorganic')  Inorganic 
-              .form-group
-                .form-check-inline
-                  label.form-check-label(for='organic')  Payment Mode
-                .form-check-inline
-                  input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked='')
-                  label.form-check-label(for='organic') Cash
-                .form-check-inline
-                  input#inorganicType.form-check-input(type='radio' name='paymentMode' value='Mobile money')
-                  label.form-check-label(for='inorganic')  Mobile Money
-              .form-group
-                .form-check-inline
-                  label.form-check-label(for='organic')  Delivery Mode
-                .form-check-inline
-                  input#organicType.form-check-input(type='radio' name='delivery' value='Pick up' checked='')
-                  label.form-check-label(for='organic')  Pick Up 
-                .form-check-inline
-                  input#inorganicType.form-check-input(type='radio' name='delivery' value='Home Delivery')
-                  label.form-check-label(for='inorganic')  Home Delivery
+              //- .form-group
+              //-   .form-check-inline
+              //-     label.form-check-label(for='organic')  Payment Mode
+              //-   .form-check-inline
+              //-     input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked='')
+              //-     label.form-check-label(for='organic') Cash
+              //-   .form-check-inline
+              //-     input#inorganicType.form-check-input(type='radio' name='paymentMode' value='Mobile money')
+              //-     label.form-check-label(for='inorganic')  Mobile Money
+              //- .form-group
+              //-   .form-check-inline
+              //-     label.form-check-label(for='organic')  Delivery Mode
+              //-   .form-check-inline
+              //-     input#organicType.form-check-input(type='radio' name='delivery' value='Pick up' checked='')
+              //-     label.form-check-label(for='organic')  Pick Up 
+              //-   .form-check-inline
+              //-     input#inorganicType.form-check-input(type='radio' name='delivery' value='Home Delivery')
+              //-     label.form-check-label(for='inorganic')  Home Delivery
               .form-group
                 .form-check-inline
                   input#uploadProduct(type='file' name='productImage')
                 .form-check-inline
                   input#registerFO.btn.btn-primary(type='submit' name='uploadproduct' value='Upload')
-        .col-4  
+        .col-3  
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')
-script(src='./js/massajaUfarm.js')
+script(src='./js/validateMassajaUfarm.js')

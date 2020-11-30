@@ -97,9 +97,10 @@ router.post("/deleteProduct", async (req, res) => {
 router.get("/updateProduct/:id", async (req, res) => {
   if (req.session.user) {
     try {
-      if (req.session.user.role == "UrbanFarmer") {
+      //Urban farmer can only update a product if it is still pending
+      if (req.session.user.role == "UrbanFarmer" ) {
         const updateProduct = await FarmerUpload.findOne({
-          _id: req.params.id,
+          _id: req.params.id, status: "Pending"
         });
         res.render("updateProduct", { user: updateProduct });
       } else if (req.session.user.role == "FarmerOne") {
@@ -145,7 +146,7 @@ router.post("/logoutUF", (req, res) => {
 // APPROVED PRODUCE BY FARMER ONE IS UPLOADED TO THE ONLINE SHOP
 router.get("/productDash", async (req, res) => {
   try {
-    let approvedProducts = await FarmerUpload.find({ status: "Approved"}); //, availability: 'Yes'
+    let approvedProducts = await FarmerUpload.find({ status: "Approved"}); 
     
     res.render("productDash", { items: approvedProducts });
   } catch (err) {

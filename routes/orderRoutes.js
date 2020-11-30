@@ -15,6 +15,9 @@ router.get('/orderForm', async(req, res)=>{
 router.post('/orderForm', async(req, res)=>{
     try{
         const clientOrders = await Order(req.body);
+        await clientOrders.save(() => {
+            res.redirect("/ordersDash")
+        });
         const product = await FarmerUpload.findOne({_id: req.query.id});
         let diff = parseInt(product.quantity)- parseInt(req.body.quantity);
         let updatedQuantity = {};
@@ -26,9 +29,7 @@ router.post('/orderForm', async(req, res)=>{
         
         await FarmerUpload.findOneAndUpdate({_id: req.query.id}, updatedQuantity);
         res.redirect("/ordersDash");
-        // await clientOrders.save(() => {
-        //     res.redirect("/ordersDash")
-        // });
+
     } catch (err) {
     res.status(400).send("Ooops! Something went wrong!");
     console.log(err);

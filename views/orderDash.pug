@@ -27,19 +27,12 @@ body
         each item in items
             .card.productcard(style='width: 15rem;')
               .card-body
-                  h5.card-title Product name: #{item.productname}
-                  p.card-text Unit Price: #{item.price}
-                  p.card-text Quantity:#{item.quantity}
-                  p.card-text Contact: #{item.customerContact}
-                  //- p Directions #{item.directions}
-                  //- a#orderBTN(href='orderForm')
-                  //-   input.btn(type="button" value='Order'  onclick='orderbtn()')
-                  //- p
-  
-                
-
-      
+                  h5.card-title Product Name: #{item.productName}
+                  p.card-texts Unit Price: #{item.price}
+                  p.card-texts Quantity:#{item.quantity}
+                  p.card-texts Customer Contact: #{item.customerContact}  
+                  p.card-texts Payment Mode:#{item.paymentMode}
+                  p.card-texts Delivery:#{item.delivery}
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')
-script(src='./js/massajaUfarm.js')

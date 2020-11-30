@@ -1,4 +1,4 @@
-//Importing packages/modules
+//Importing packages/modules, models, routes
 const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -6,12 +6,11 @@ const agricRoutes = require('./routes/agricRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
 const loginRoutes = require('./routes/loginroutes')
-const orderRoutes = require('./routes/clientRoutes')
-// const adminregRoutes = require('./routes/adminregRoutes')
+const orderRoutes = require('./routes/orderRoutes')
 require('dotenv').config();
 const mongoose = require('mongoose');
-// const RegistrationFO = require('./models/RegistrationFO')
 const Users = require('./models/Users')
+
 const expressSession = require('express-session')({
   secret: 'secret', //signs the session ID cookie(should be unique value) 
   resave: false, //forces the session to be saved back to the session store
@@ -63,7 +62,7 @@ app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+// Passport configurations
 passport.use(Users.createStrategy());
 passport.serializeUser(Users.serializeUser());
 passport.deserializeUser(Users.deserializeUser());

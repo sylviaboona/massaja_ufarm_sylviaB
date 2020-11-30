@@ -426,12 +426,3 @@ if (document.getElementById("registerAgricOfficer")) {
   let anchor = document.getElementById("registerAgricOfficer");
   anchor.addEventListener("click", registerAOform);
 }
-
-// const orderbtn = () =>{
-//   let quantity = document.uploadForm.quantity;
-//   if(quantity <= 5){
-//     let anchor = document.getElementById('orderBTN');
-//     let orderBTN = anchor.getElementsByTagName('input')[0]
-//     orderBTN.disabled = true;
-//   }
-// }

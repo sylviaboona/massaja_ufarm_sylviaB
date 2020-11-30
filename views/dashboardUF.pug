@@ -19,7 +19,9 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
       li.nav-item
-        a.nav-link(href='farmerUpload') Upload Product   
+        a.nav-link(href='farmerUpload') Upload Product  
+      li.nav-item
+        a.nav-link(href='ordersDash') View Orders  
     form.search(action='/dashboardUF')
         div.form-row
             div.col-md-8
@@ -35,6 +37,7 @@ body
     table.table
         thead.card-header
             tr
+                th Name of UF
                 th Product Name
                 th Product Description
                 th Product Image
@@ -52,6 +55,7 @@ body
             if items.length
             each item in items
                 tr
+                    td #{item.firstnameUF + item.lastnameUF}
                     td #{item.productName}
                     td #{item.productDescription}
                     td 
@@ -75,4 +79,3 @@ body
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')
-script(src='./js/massajaUfarm.js')

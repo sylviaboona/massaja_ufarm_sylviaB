@@ -7,10 +7,6 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: 'Please Enter User Name' 
     },
-    password: {
-        type: String,
-        unique: true,
-    },
     role:String,
     ward: String
   });
