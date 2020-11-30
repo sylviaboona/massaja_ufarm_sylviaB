@@ -8,11 +8,6 @@ const registrationFOSchema = new mongoose.Schema({
     lastNameFO: String,
     username: String,
     foNIN: String,
-    //{
-    //     type: String,
-    //     unique: true,
-    //     required: 'Please Enter NIN number'
-    // },
     phoneNumberFO: String,
     ward: String,
     stayPeriod: String,

@@ -19,12 +19,12 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
 body
-  .container.loginFOpage
+  .container-fluid.loginFOpage
     .row
-      .col-4
-        //- img.fologinimage(src="../img/avocado1.jpg", alt="" width='400px')
+      .col-8
+        img.fologinimage(src="../img/avocado1.jpg", alt="" width='400px')
       .col-4.loginForm
-        form.agric-FO-Login(action='/login' method='POST' name='login')
+        form.user-Login(action='/login' method='POST' name='login')
           h4 Login
           .form-group
             input#username.form-control(type='text' placeholder='Username' name='username')
@@ -33,7 +33,7 @@ body
             input#inputPassword.form-control(type='password' placeholder='Password' name='password')
             span#pwdErr
           button.btn.btn-primary(type='submit') Log In
-      .col-4
+      //- .col-4
     //- .col-4
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')

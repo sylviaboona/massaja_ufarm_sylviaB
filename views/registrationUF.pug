@@ -5,73 +5,74 @@ head
   link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
   link(rel='stylesheet' href='css/style.css')
 nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome') Ufarm
+  a.navbar-brand(href='welcome2') Ufarm
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome')
+        a.nav-link(href='welcome2')
           | Home 
           span.sr-only (current)
       li.nav-item
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
-form.farmerOneRegister(name='urbanFarmerForm' action = '/registerUF' method='POST')
-  img.formImages(src='img/greenLeafSideImage1.png' alt='')
-  h4#registerFO Register here new Urban Farmers
-  .form-row
-    .form-group.col-md-4
-      input#inputFirstName.form-control(type='text' name='firstNameUF' placeholder='First Name')
-      span#fnameUFerr
-    .form-group.col-md-4
-      input#inputLastName.form-control(type='text' name='lastNameUF' placeholder='Last Name')
-      span#lnameUFerr
-    .form-group.col-md-4
-      input#inputUserName.form-control(type='text' name='username' placeholder='User Name')
-      span#unameUFerr
-  .form-row
-    .form-group.col-md-6
-      input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth' onfocus="(this.type='date')")
-      span#dobUFerr
-    .form-group.col-md-6
-      input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration' onfocus="(this.type='date')")
-      span#dorUFerr
-  .form-row
-    .form-group.col-md-6
-      input#inputfarmerID.form-control(type='text' name='password' placeholder='Unique farmer ID')
-      span#idNumErr
-    .form-group.col-md-6
-      input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
-      span#ufNINerr
-  .form-row
-    .form-group.col-md-6
-      input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
-      span#ufphoneNumErr1
-    .form-group.col-md-6
-      input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
-      span#ufphoneNumErr2
-  .form-group
-    .form-check-inline
-      input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
-      label.form-check-label(for='horticulture') Horticulture Produce
-    .form-check-inline
-      input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
-      label.form-check-label(for='poultry') Poultry products
-    .form-check-inline
-      input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
-      label.form-check-label(for='dairy') Diary Products
-      span#produceUFerr
-  .form-group
-    .form-check-inline
-      input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
-      label.form-check-label(for='genderM')  Male 
-    .form-check-inline
-      input#genderF.form-check-input(type='radio' name='gender' value='Female')
-      label.form-check-label(for='genderF')  Female 
-  a#registerUF(href='#')
-    input.btn.btn-primary(type='button' value='Register')
+.container
+  form.farmerOneRegister(name='urbanFarmerForm' action = '/registerUF' method='POST')
+    img.formImages(src='img/greenLeafSideImage1.png' alt='')
+    h4#registerFO Register here new Urban Farmers
+    .form-row
+      .form-group.col-md-4
+        input#inputFirstName.form-control(type='text' name='firstNameUF' placeholder='First Name')
+        span#fnameUFerr
+      .form-group.col-md-4
+        input#inputLastName.form-control(type='text' name='lastNameUF' placeholder='Last Name')
+        span#lnameUFerr
+      .form-group.col-md-4
+        input#inputUserName.form-control(type='text' name='username' placeholder='User Name')
+        span#unameUFerr
+    .form-row
+      .form-group.col-md-6
+        input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth' onfocus="(this.type='date')")
+        span#dobUFerr
+      .form-group.col-md-6
+        input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration' onfocus="(this.type='date')")
+        span#dorUFerr
+    .form-row
+      .form-group.col-md-6
+        input#inputfarmerID.form-control(type='text' name='password' placeholder='Unique farmer ID')
+        span#idNumErr
+      .form-group.col-md-6
+        input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
+        span#ufNINerr
+    .form-row
+      .form-group.col-md-6
+        input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
+        span#ufphoneNumErr1
+      .form-group.col-md-6
+        input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
+        span#ufphoneNumErr2
+    .form-group
+      .form-check-inline
+        input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
+        label.form-check-label(for='horticulture') Horticulture Produce
+      .form-check-inline
+        input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
+        label.form-check-label(for='poultry') Poultry products
+      .form-check-inline
+        input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
+        label.form-check-label(for='dairy') Diary Products
+        span#produceUFerr
+    .form-group
+      .form-check-inline
+        input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+        label.form-check-label(for='genderM')  Male 
+      .form-check-inline
+        input#genderF.form-check-input(type='radio' name='gender' value='Female')
+        label.form-check-label(for='genderF')  Female 
+    a#registerUF(href='#')
+      input.btn.btn-primary(type='button' value='Register')
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')

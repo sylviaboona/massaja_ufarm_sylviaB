@@ -25,24 +25,24 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
     .form-row
       .form-group.col-md-6
         label First Name
-        input#inputFirstName.form-control(value = user.firstNameUF name ="firstNameUF")
+        input#inputFirstName.form-control(value = user.firstNameUF name ="firstNameUF" readonly)
       .form-group.col-md-6
         label Last Name
-        input#inputLastName.form-control(value = user.lastNameUF name ="lastNameUF")
+        input#inputLastName.form-control(value = user.lastNameUF name ="lastNameUF" readonly)
     .form-row
       .form-group.col-md-6
         label Date of Birth
-        input#inputDOB.form-control(value = user.dobUF name ="dobUF")
+        input#inputDOB.form-control(value = user.dobUF name ="dobUF" readonly)
       .form-group.col-md-6
         label Date of Registration
-        input#inputDOR.form-control(value = user.dorUF name ="dorUF")
+        input#inputDOR.form-control(value = user.dorUF name ="dorUF" readonly)
     .form-row
       .form-group.col-md-6
         label Farmer NIN
-        input#inputNIN.form-control(value = user.ufNIN name ="ufNIN")
+        input#inputNIN.form-control(value = user.ufNIN name ="ufNIN" readonly)
       .form-group.col-md-6
         label Ward
-        select#inputWard.form-control(name='wardUF')
+        select#inputWard.form-control(name='wardUF' readonly)
           option(value="Busabala" selected = user.wardUF === "Busabala") Busabala
           option(value="Massajja" selected = user.wardUF === "Massajja") Massajja
           option(value="Kikajjo" selected = user.wardUF === "Kikajjo") Kikajjo

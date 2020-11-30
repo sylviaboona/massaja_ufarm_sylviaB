@@ -9,8 +9,10 @@ router.get('/login', (req, res) => {
     res.render('login');
   }); 
 
-//PROCESS THE LOG IN INFORMATION FOR FARMER ONE SUBMITTED
-router.post('/login', passport.authenticate('local'), (req,res) =>{
+//PROCESS THE LOG IN INFORMATION SUBMITTED
+//Checking a user and asigning them a session, 
+//Then pick the role of this user to check it and redirect to their respective page
+router.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req,res) =>{
   req.session.user = req.user;
   const userRole = req.user.role;
   if (userRole=='AgricOfficer'){
@@ -26,25 +28,7 @@ router.post('/login', passport.authenticate('local'), (req,res) =>{
 })
 
 
-// router.post('/loginFO', passport.authenticate('local', {failureRedirect: '/loginFO'}), (req,res) =>{
-//   req.session.user = req.user;
-//   const userRole = roles[req.user.role]
-  
-//   if(userRole == 'AgricOfficer')
-//       {
-//        res.redirect('/dashboardAO');
-//       }
-//   if(userRole == 'FarmerOne')
-//       {
-//        res.redirect('/dashboardFO/:ward');
-//       }
-//   else(userRole == 'UrbanFarmer')
-//       {
-//       res.redirect('/dashboardUF');
-//   }
-// })
 
-//we r checking user asign them a session, then we pick the role of this user to check it before they can be redirected to their page
 // router.post('/login_ao', passport.authenticate('local', {failureRedirect:'/login_ao'}), (req,res) =>{
 //     req.session.user = req.user;
 //     const userRole = req.user.userRole

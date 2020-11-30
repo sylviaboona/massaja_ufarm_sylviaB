@@ -18,74 +18,75 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
         a.nav-link(href='contactUfarm') Contact Us
       li.nav-item
         a.nav-link(href='aboutUfarm') About Us
-form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST')
-  img.formImages(src='img/greenLeafSideImage1.png' alt='')
-  h4#registerFO Register New Farmer One  Here
-  .form-row
-    .form-group.col-md-4
-      input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
-      span#fnameFOerr
-    .form-group.col-md-4
-      input#inputLastName.form-control(type='text' placeholder='Last Name' name='lastNameFO')
-      span#lnameFOerr
-    .form-group.col-md-4
-      input#inputUserName.form-control(type='text' placeholder='User Name' name='username')
-      span#unameFOerr
-  .form-row
-    .form-group.col-md-4
-      input#inputFOnumber.form-control(type='password' placeholder='FO Number' name='password')
-      span#foNumErr
-    .form-group.col-md-4
-      input#inputNIN.form-control(type='password' placeholder='NIN number' name='foNIN')
-      span#foNINerr
-    .form-group.col-md-4
-      input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
-      span#fophoneNumErr
-  .form-row
-    .form-group.col-md-4
-      select#inputWard.form-control(name='ward')
-        option(value='Default' selected='') Select your Ward
-        option(value='Busabala') Busabala
-        option(value='Massajja') Masajja
-        option(value='Kikajjo') Kikajjo
-        option(value='Namasuba') Namasuba
-      span#wardErr
-    .form-group.col-md-4
-      input.form-control(type='text' placeholder='Stay Period' name='stayPeriod' onfocus="(this.type='date')")
-      span#stayPeriodErr
-    .form-group.col-md-4
-      select#inputResidence.form-control(name='residenceType')
-        option(value='Default' selected='') Residence type
-        option(value='Citizen') Citizen
-        option(value='NonCitizen') NonCitizen
-      span#residenceErr
-  .form-row
-    .form-group.col-md-6
-      input#inputDOB.form-control(type='text' placeholder='Date of Birth' name='dobFO' onfocus="(this.type='date')")
-      span#dobFOerr
-    .form-group.col-md-6
-      input#inputDOR.form-control(type='text' placeholder='Date of Registration' name='dorFO' onfocus="(this.type='date')")
-      span#dorFOerr
-  .form-group
-    .form-check-inline
-      input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
-      label.form-check-label(for='horticulture') Horticulture Produce
-    .form-check-inline
-      input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
-      label.form-check-label(for='poultry') Poultry products
-    .form-check-inline
-      input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
-      label.form-check-label(for='dairy') Diary Products
-      span#produceFOerr
-  .form-group
-    .form-check-inline
-      input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
-      label.form-check-label(for='genderM')  Male 
-    .form-check-inline
-      input#genderF.form-check-input(type='radio' name='gender' value='Female')
-      label.form-check-label(for='genderF')  Female 
-  a#registerFarmerOne(href='#')
-    input.btn.btn-primary(type='button' value='Register')
+.container
+  form.farmerOneRegister(name='foRegisterForm' action='/registerFO' method='POST')
+    img.formImages(src='img/greenLeafSideImage1.png' alt='')
+    h4#registerFO Register New Farmer One  Here
+    .form-row
+      .form-group.col-md-4
+        input#inputFirstName.form-control(type='text' placeholder='First Name' name='firstNameFO')
+        span#fnameFOerr
+      .form-group.col-md-4
+        input#inputLastName.form-control(type='text' placeholder='Last Name' name='lastNameFO')
+        span#lnameFOerr
+      .form-group.col-md-4
+        input#inputUserName.form-control(type='text' placeholder='User Name' name='username')
+        span#unameFOerr
+    .form-row
+      .form-group.col-md-4
+        input#inputFOnumber.form-control(type='password' placeholder='FO Number' name='password')
+        span#foNumErr
+      .form-group.col-md-4
+        input#inputNIN.form-control(type='password' placeholder='NIN number' name='foNIN')
+        span#foNINerr
+      .form-group.col-md-4
+        input#inputPhoneNumber.form-control(type='text' placeholder='Phone Number e.g. 0700123456' name='phoneNumberFO')
+        span#fophoneNumErr
+    .form-row
+      .form-group.col-md-4
+        select#inputWard.form-control(name='ward')
+          option(value='Default' selected='') Select your Ward
+          option(value='Busabala') Busabala
+          option(value='Massajja') Masajja
+          option(value='Kikajjo') Kikajjo
+          option(value='Namasuba') Namasuba
+        span#wardErr
+      .form-group.col-md-4
+        input.form-control(type='text' placeholder='Stay Period' name='stayPeriod' onfocus="(this.type='date')")
+        span#stayPeriodErr
+      .form-group.col-md-4
+        select#inputResidence.form-control(name='residenceType')
+          option(value='Default' selected='') Residence type
+          option(value='Citizen') Citizen
+          option(value='NonCitizen') NonCitizen
+        span#residenceErr
+    .form-row
+      .form-group.col-md-6
+        input#inputDOB.form-control(type='text' placeholder='Date of Birth' name='dobFO' onfocus="(this.type='date')")
+        span#dobFOerr
+      .form-group.col-md-6
+        input#inputDOR.form-control(type='text' placeholder='Date of Registration' name='dorFO' onfocus="(this.type='date')")
+        span#dorFOerr
+    .form-group
+      .form-check-inline
+        input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
+        label.form-check-label(for='horticulture') Horticulture Produce
+      .form-check-inline
+        input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
+        label.form-check-label(for='poultry') Poultry products
+      .form-check-inline
+        input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
+        label.form-check-label(for='dairy') Diary Products
+        span#produceFOerr
+    .form-group
+      .form-check-inline
+        input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+        label.form-check-label(for='genderM')  Male 
+      .form-check-inline
+        input#genderF.form-check-input(type='radio' name='gender' value='Female')
+        label.form-check-label(for='genderF')  Female 
+    a#registerFarmerOne(href='#')
+      input.btn.btn-primary(type='button' value='Register')
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')

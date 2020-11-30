@@ -2,13 +2,13 @@
 const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
-const agricRoutes = require('./routes/agricRoutes');
+require('dotenv').config();
+const mongoose = require('mongoose');
+const aoRoutes = require('./routes/aoRoutes');
 const foRoutes = require('./routes/foRoutes')
 const ufRoutes = require('./routes/ufRoutes')
 const loginRoutes = require('./routes/loginroutes')
 const orderRoutes = require('./routes/orderRoutes')
-require('dotenv').config();
-const mongoose = require('mongoose');
 const Users = require('./models/Users')
 
 const expressSession = require('express-session')({
@@ -68,7 +68,7 @@ passport.serializeUser(Users.serializeUser());
 passport.deserializeUser(Users.deserializeUser());
 
 //Using the routes for different users from routes directory
-app.use('/', agricRoutes);
+app.use('/', aoRoutes);
 app.use('/', foRoutes);
 app.use('/', ufRoutes);
 app.use('/', loginRoutes);
@@ -102,14 +102,13 @@ app.get('/productDash', (req, res) => {
 
 
 //Log out a user
-//logout Farmer One
 app.post('/logout', (req, res) => {
   if (req.session) {
       req.session.destroy((err)=> {
           if (err) {
               // failed to destroy session
           } else {
-              return res.redirect('/loginFO');
+              return res.redirect('/login');
           }
       })
   }  

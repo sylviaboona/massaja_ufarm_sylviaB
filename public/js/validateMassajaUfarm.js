@@ -124,7 +124,7 @@ const registerFOform = (event) => {
     return false;
   } 
 
-  //Validate Date of Birth
+  //Validate Date of Birth, input should not be left empty
   let dobFOerr = document.getElementById("dobFOerr");
   if (dob.value == "") {
     dobFOerr.innerHTML = "* Date of Birth is required";
@@ -152,7 +152,7 @@ const registerFOform = (event) => {
     return false;
   } 
 
-  //Validate FO NIN Number
+  //Validate FO NIN Number, should be 13 characters, numbers and caps
   let foNINRegex = /^[A-Z]{2}[0-9]{7}[A-Z]{1}[0-9]{2}[A-Z]{1}$/;
   let foNINerr = document.getElementById("foNINerr");
   if (foNINRegex.test( foNIN.value) == false) {
@@ -162,7 +162,7 @@ const registerFOform = (event) => {
     return false;
   } 
 
-  //Validate Farmer One Phone number
+  //Validate Farmer One Phone number, must be exactly 10 digits
   let phoneRegex = /^[0-9]{10}$/;
   let fophoneNumErr = document.getElementById("fophoneNumErr");
   if (phoneRegex.test(phoneNumber.value) == false) {
@@ -192,16 +192,6 @@ const registerFOform = (event) => {
     stayPeriod.style.border = "2px solid red";
     return false;
   } 
-
-  // let stayPeriodErr = document.getElementById("stayPeriodErr");
-  // if (stayPeriod.value == "Default") {
-  //   stayPeriodErr.innerHTML = "*Select Stay Period In ward";
-  //   stayPeriodErr.style.color = "red";
-  //   stayPeriod.style.border = "2px solid red";
-  //   return false;
-  // } else {
-  //   stayPeriod.style.border = "2px solid green";
-  // }
 
   //Validate Farmer One Residence Type
   let residenceErr = document.getElementById("residenceErr");
@@ -234,9 +224,10 @@ const registerFOform = (event) => {
 
 //VALIDATION FUNCTION FOR URBAN FARMER REGISTRATION FORM
 const registerUFform = (event) => {
-  event.preventDefault();
-  event.stopPropagation();
+  event.preventDefault(); // prevent button from posting/submitting
+  event.stopPropagation(); // stop propagation of teh click event to the rest of the form
 
+  // make a request once to the server to get the document, instead of calling it everytime for each input
   const form = document.urbanFarmerForm;
   const firstName = form.firstNameUF;
   const lastName = form.lastNameUF;
@@ -270,9 +261,7 @@ const registerUFform = (event) => {
     lnameUFerr.style.color = "red";
     lastName.style.border = "2px solid red";
     return false;
-  } else {
-    lastName.style.border = "2px solid green";
-  }
+  } 
 
   //Validate Urban Farmer User Name.
   let unameRegex = /^[a-z]+$/;
@@ -284,7 +273,7 @@ const registerUFform = (event) => {
     return false;
   } 
 
-  // //Validate Urban Farmer Date of Birth, Date input must be filled
+  // //Validate Urban Farmer Date of Birth, Date input must be filled, must be 10 years and above
   let dobUFerr = document.getElementById("dobUFerr");
   let date = new Date(dob.value),
     birthYear = date.getFullYear(),
@@ -377,7 +366,7 @@ const validateUpload = () => {
   let productNameRegex = /^[A-Za-z]{2,50}$/;
   let productnameErr = document.getElementById("productnameErr");
   if (productNameRegex.test(productName.value) == false) {
-    productnameErr.innerHTML = "* First Name is required";
+    productnameErr.innerHTML = "* Product Name is required";
     productnameErr.style.color = "red";
     productName.style.border = "2px solid red";
     return false;
@@ -387,7 +376,7 @@ const validateUpload = () => {
   let descRegex = /^[A-Za-z ]{5,50}$/;
   let descErr = document.getElementById("descErr");
   if (descRegex.test(productDescription.value) == false) {
-    descErr.innerHTML = "* Last Name is required";
+    descErr.innerHTML = "* prodcut Descrition is required";
     descErr.style.color = "red";
     productDescription.style.border = "2px solid red";
     return false;
