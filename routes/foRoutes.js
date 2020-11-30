@@ -48,7 +48,6 @@ router.get("/dashboardFO", async (req, res) => {
       }
       res.render("dashboardFO", {
         users: items,
-        //currentUser: req.session.user,
       });
     } catch (err) {
       res.status(400).send("Unable to find items in the database");

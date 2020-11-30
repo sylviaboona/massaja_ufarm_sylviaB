@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const RegistrationFO = require("../models/RegistrationFO");
 const RegistrationAO = require("../models/RegistrationAO");
+const RegistrationUF = require("../models/RegistrationUF");
 const Users = require("../models/Users");
+const FarmerUpload = require("../models/FarmerUpload");
 
 router.get("/registerAO", (req, res) => {
   res.render("registrationAO");
@@ -31,6 +33,7 @@ router.post("/registerAO", async (req, res) => {
 router.get("/registerFO", (req, res) => {
   res.render("registrationFO");
 });
+// viewAllUFs
 
 //SAVING FARMER ONE DATA TO THE DATABASE
 
@@ -136,6 +139,45 @@ router.post("/logoutAO", (req, res) => {
         return res.redirect("/login");
       }
     });
+  }
+});
+
+//AGRIC OFFICER VIEWS ALL URBAN FARMERS IN ALL WARDS
+router.get("/viewAllUFs", async(req, res) => {
+  if (req.session.user) {
+    try {
+      let items = await RegistrationUF.find(); 
+      res.render("dashboardFO", {
+        users: items,
+      });
+    } catch (err) {
+      res.status(400).send("Unable to find items in the database");
+    }
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
+  }
+});
+
+
+//AGRIC OFFICER VIEWS ALL URBAN FARMERS' PRODUCTS
+router.get("/viewAllProducts", async(req, res) => {
+  if (req.session.user) {
+    try {
+      let farmerProducts = await FarmerUpload.find();
+      //SEARCHING URBAN FARMER PRODUCE FOR A SPECIFIC PRODUCT
+      if (req.query.productName) {
+        farmerProducts = await FarmerUpload.find({
+          productName: req.query.productName,
+        });
+      }
+      res.render("dashboardUF", { items: farmerProducts });
+    } catch (err) {
+      res.status(400).send("Ooops! Couldnt find items in database!");
+    }
+  } else {
+    console.log("Can't find session");
+    res.redirect("/login");
   }
 });
 module.exports = router;
