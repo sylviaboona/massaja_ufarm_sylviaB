@@ -29,12 +29,12 @@ body
               img.card-img-top(src='/uploads/' + item.productImage, alt="" height='170px' width='100px')
               .card-body
                   h6.card-title Product name: #{item.productName}
-                  p.card-text Description: #{item.productDescription}
-                  p.card-text Unit Price: #{item.price}
+                  p.card-texts Description: #{item.productDescription}
+                  p.card-texts Unit Price: #{item.price}
                   p
-                    b.card-text Quantity:#{item.quantity}
-                  p.card-text Contact: #{item.phoneContact}
-                  p Ward #{item.ward}
+                    b.card-texts Quantity:#{item.quantity}
+                  p.card-texts Contact: #{item.phoneContact}
+                  p.card-texts Ward: #{item.ward}
                   a#orderBTN(href=`orderForm/?id=${item._id}`) Order
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')

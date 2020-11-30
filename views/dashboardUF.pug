@@ -32,7 +32,7 @@ nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
       button.btn.btn-dark.btn-block(type="submit") Log out
 body
     header.card-header
-        h4.card-title Products uploaded by Urban farmer
+        h4.card-title Products uploaded by Urban farmers in your ward
     |&nbsp
     table.table
         thead.card-header
@@ -55,7 +55,7 @@ body
             if items.length
             each item in items
                 tr
-                    td #{item.firstnameUF + item.lastnameUF}
+                    td #{item.firstNameUF}  #{item.lastNameUF}
                     td #{item.productName}
                     td #{item.productDescription}
                     td 
@@ -66,8 +66,6 @@ body
                     td #{item.uploadDate}
                     td #{item.ward}
                     td #{item.status}
-                    //- td
-                    //-     a(href='/updateStatus/'+item._id) Approve
                     td
                         a(href='/updateProduct/'+item._id) Update
                     td

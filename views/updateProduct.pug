@@ -54,20 +54,6 @@ body
                       label.form-check-label(for='inorganic')  Inorganic 
               .form-group
                 .form-check-inline
-                  input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked = user.paymentMode==="Cash")
-                  label.form-check-label(for='organic') Cash
-                .form-check-inline
-                  input#inorganicType.form-check-input(type='radio' name='paymentMode' value='MMoney' checked = user.paymentMode==="MMoney")
-                  label.form-check-label(for='inorganic')  Mobile Money
-              .form-group
-                .form-check-inline
-                  input#organicType.form-check-input(type='radio' name='delivery' value='PickUp' checked = user.delivery==="PickUp")
-                  label.form-check-label(for='organic')  Pick Up 
-                .form-check-inline
-                  input#inorganicType.form-check-input(type='radio' name='delivery' value='HomeDelivery' checked = user.delivery==="HomeDelivery")
-                  label.form-check-label(for='inorganic')  Home Delivery
-              .form-group
-                .form-check-inline
                   input(name='productImage' value = user.productImage)
                 .form-check-inline
                    button#registerFO.btn.btn-primary(type='submit')

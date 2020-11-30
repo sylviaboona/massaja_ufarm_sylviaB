@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const FarmerUpload = require("../models/FarmerUpload");
 const Users = require("../models/Users");
-
+const RegistrationUF = require("../models/RegistrationUF");
 //Defining the storage location for our images to upload
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
@@ -26,13 +26,14 @@ router.get("/farmerUpload", (req, res) => {
 router.post("/farmerUpload", upload, async (req, res) => {
   if (req.session.user) {
     try {
-      const urbanfarmer = await Users.findOne({
+      const urbanfarmer = await RegistrationUF.findOne({
         username: req.session.user.username,
       });
       req.body.status = "Pending";
       req.body.ward = urbanfarmer.ward;
       req.body.username = urbanfarmer.username;
-      // req.body.availability = urbanfarmer.availability
+      req.body.firstNameUF = urbanfarmer.firstNameUF;
+      req.body.lastNameUF = urbanfarmer.lastNameUF;
       const farmeruploads = new FarmerUpload(req.body);
       farmeruploads.productImage = req.file.filename;
       await farmeruploads.save(() => {

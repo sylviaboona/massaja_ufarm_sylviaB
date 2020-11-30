@@ -12,6 +12,8 @@ const farmeruploadSchema = new mongoose.Schema({
     phoneContact: String,
     quantity: String,
     username: String,
+    firstNameUF: String,
+    lastNameUF: String,
   });
 
   module.exports = mongoose.model('FarmerUpload', farmeruploadSchema);

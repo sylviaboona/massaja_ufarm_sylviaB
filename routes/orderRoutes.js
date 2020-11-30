@@ -28,29 +28,26 @@ router.post('/orderForm', async(req, res)=>{
         }
         
         await FarmerUpload.findOneAndUpdate({_id: req.query.id}, updatedQuantity);
-        res.redirect("/ordersDash");
+        res.redirect("/productDash");
 
     } catch (err) {
     res.status(400).send("Ooops! Something went wrong!");
     console.log(err);
   }
 });
-// const FarmerUpload.find({status approved}) //Check first if the product is available
-    // Then check in erUpload to make sure there is an error if a given requsted
-
-//     const order = new Order({
-//         _id:mongoose.Types.ObjectId(),
-//         quantity: req.body.quantity,
-//         product: productId
-// })
 
 router.get('/ordersDash', async(req, res)=>{
+    if (req.session.user) {
     try{
         let orders = await Order.find();
         res.render('orderDash', {items: orders})
     } catch (err) {
         res.status(400).send("Ooops! Couldnt find items in database!");
       } 
+    } else {
+        console.log("Can't find session");
+        res.redirect("/login");
+      }
 });
 
 module.exports = router;
