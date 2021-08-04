@@ -4,28 +4,28 @@ head
   title Massajja Ufarm
   link(rel='stylesheet' href='/css/bootstrap/bootstrap.css' type='text/css')
   link(rel='stylesheet' href='/css/style.css' type='text/css')
-nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome2') Ufarm
+nav.navbar.navbar-expand-lg.navbar-light.nav-link 
+  a.navbar-brand(href='/') UFARM 
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome2')
-          | Home 
+        a.nav-link(href='/')
+          | HOME 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='contactUfarm') Contact Us
+        a.nav-link(href='contactUfarm') CONTACT
       li.nav-item
-        a.nav-link(href='aboutUfarm') About Us   
+        a.nav-link(href='aboutUfarm') ABOUT   
   form(method="post" action='/logout') 
-    button.btn.btn-dark.btn-block(type="submit") Log out
+    button.btn.btn-dark.btn-block(type="submit") Logout
 
 body
     .row
         .col-4
-        .col-4
-            img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
+        .col-4.update-page
+            //- img.farmerUploadImages(src='img/greenLeafSideImage1.png' alt='')
             h4#registerFO Update Your Product Here
             form(name='uploadForm' action="/updateProduct?id="+user._id method='POST')
               .form-group.row
@@ -44,8 +44,8 @@ body
                 label(for='exampleFormControlTextarea1') Product Description
                 textarea#exampleFormControlTextarea1.form-control(value = user.productDescription name="productDescription")
               fieldset
-                  .form-group
-                    legend.col-form-label.col-sm-2.pt-0 Produce Type
+                  .form-group.form-check-inline
+                    legend.col-form-label.col-sm-6.pt-0 Produce Type
                     .form-check-inline
                       input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked = user.productType==="Organic")
                       label.form-check-label(for='organic')  Organic 
@@ -54,7 +54,7 @@ body
                       label.form-check-label(for='inorganic')  Inorganic 
               .form-group
                 .form-check-inline
-                  input(name='productImage' value = user.productImage)
+                  input(name='productImage' value = user.productImage readonly)
                 .form-check-inline
                    button#registerFO.btn.btn-primary(type='submit')
                         | Update

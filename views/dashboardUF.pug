@@ -4,47 +4,92 @@ head
   title Massajja Ufarm
   link(rel='stylesheet' href='./css/bootstrap/bootstrap.css' type='text/css')
   link(rel='stylesheet' href='./css/style.css' type='text/css')
-nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome2') Ufarm
+nav.navbar.navbar-expand-lg.navbar-light.nav-link
+  a.navbar-brand(href='/') UFARM
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
-        a.nav-link(href='welcome2')
-          | Home 
+      li.nav-item
+        a.nav-link(href='/')
+          | HOME 
           span.sr-only (current)
+      //- li.nav-item
+      //-   a.nav-link(href='contactUfarm') CONTACT
       li.nav-item
-        a.nav-link(href='contactUfarm') Contact Us
+        a.nav-link(href='aboutUfarm') ABOUT
+      //- li.nav-item
+      //-   a.nav-link(href='farmerUpload') UPLOAD  
       li.nav-item
-        a.nav-link(href='aboutUfarm') About Us
-      li.nav-item
-        a.nav-link(href='farmerUpload') Upload Product  
-      li.nav-item
-        a.nav-link(href='ordersDash') View Orders  
+        a.nav-link(href='ordersDash') ORDERS  
     form.search(action='/dashboardUF')
         div.form-row
             div.col-md-8
-                input.form-control(name='productName' placeholder="Search(Product) ...")
+                input.form-control(name='productName' placeholder="(Product) ...")
             div.col-md-4
-                input.btn.btn-dark.btn-block(type="submit")
+                input.btn.btn-dark.btn-block(type="submit" value='Search')
     form(method="post" action='/logoutUF') 
-      button.btn.btn-dark.btn-block(type="submit") Log out
+      button.btn.btn-dark.btn-block(type="submit") Logout
 body
-    header.card-header
-        h4.card-title Products uploaded by Urban farmers in your ward
+  .container-fluid
+    header
+        h4.card-title Uploaded Products 
+        button#newFObtn.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Upload
+        #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h4#exampleModalLabel.modal-title Register New UF
+                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                  span(aria-hidden='true') &times;
+              .modal-body.container
+                form(name='uploadForm' action='/farmerUpload' enctype='multipart/form-data' method='POST' onsubmit='return validateUpload()')
+                  .form-group.row
+                    .col-md-6
+                      input#userNameUF.form-control(type='text' name='productName' placeholder='Product Name')
+                      span#productnameErr
+                    .col-md-6
+                      input#inputUploadDate.form-control(type ='text' name='uploadDate' placeholder='Date of Upload' onfocus="(this.type='date')")
+                      span#uploadDateErr
+                  .form-group.row 
+                    .col-md-4
+                      input#inputPrice.form-control(type='text' name='quantity' placeholder='Quantity')
+                      span#priceErr
+                    .col-md-4
+                      input#inputPrice.form-control(type='text' name='price' placeholder='Unit Price (UGX)')
+                      span#priceErr
+                    .col-md-4
+                      input#inputPhone.form-control(type='text' name='phoneContact' placeholder='Contact')
+                      span#phoneErr
+                  .form-group
+                    textarea#exampleFormControlTextarea1.form-control(rows='3' name="productDescription" placeholder='Product Description')
+                    span#descErr
+                  .form-group
+                        .form-check-inline
+                          label.form-check-label(for='organic')  Produce Type
+                        .form-check-inline
+                          input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked='')
+                          label.form-check-label(for='organic')  Organic 
+                        .form-check-inline
+                          input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic')
+                          label.form-check-label(for='inorganic')  Inorganic 
+                  .form-group
+                    .form-check-inline
+                      input#uploadProduct(type='file' name='productImage')
+                    .form-check-inline
+                      input#registerFO.btn.btn-primary(type='submit' name='uploadproduct' value='Upload')
+            .col-3  
     |&nbsp
-    table.table
-        thead.card-header
+    table#example.table
+        thead
             tr
+                th Date 
                 th Name of UF
-                th Product Name
-                th Product Description
                 th Product Image
+                th Product Name
                 th Unit Price  (UGX)
                 th Quantity
                 th Produce Type
-                th Date of Upload 
                 th Ward 
                 th Status
                 th Action
@@ -55,19 +100,59 @@ body
             if items.length
             each item in items
                 tr
+                    td #{item.uploadDate}
                     td #{item.firstNameUF}  #{item.lastNameUF}
-                    td #{item.productName}
-                    td #{item.productDescription}
                     td 
                         img(src='/uploads/' + item.productImage height='80px' width='80px')
+                    td #{item.productName}
                     td #{item.price}
                     td #{item.quantity}
                     td #{item.productType}
-                    td #{item.uploadDate}
                     td #{item.ward}
                     td #{item.status}
                     td
-                        a(href='/updateProduct/'+item._id) Update
+                        a(href='/updateProduct/'+ item._id) Update
+                        //- a(href='/updateProduct/'+item._id data-toggle='modal' data-target='#updateModal' data-whatever='@getbootstrap') Update
+                        //- #updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+                        //-   .modal-dialog(role='document')
+                        //-     .modal-content
+                        //-       .modal-header
+                        //-         h4#updateModalLabel.modal-title Update Product Here
+                        //-         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                        //-           span(aria-hidden='true') &times;
+                        //-       .modal-body
+                        //-           form(name='uploadForm' action="/updateProduct?id="+item._id method='POST')
+                        //-             .form-group.row
+                        //-               .col-md-6
+                        //-                 input#productName.form-control(value = item.productName name ="productName")
+                        //-               .col-md-6
+                        //-                 input#inputPhone.form-control(value = item.phoneContact name='phoneContact')
+                        //-             .form-group.row  
+                        //-               .col-md-4
+                        //-                 input#inputUploadDate.form-control(value = item.uploadDate name='uploadDate')
+                        //-               .col-md-4
+                        //-                 input#inputPrice.form-control(value = item.price name='price' )
+                        //-               .col-md-4
+                        //-                 input#inputUploadDate.form-control(value = item.quantity name='quantity')
+                        //-             .form-group
+                        //-               label(for='exampleFormControlTextarea1') Product Description
+                        //-               textarea#exampleFormControlTextarea1.form-control(value = item.productDescription name="productDescription")
+                        //-             fieldset
+                        //-                 .form-group
+                        //-                   legend.col-form-label.col-sm-2.pt-0 Produce Type
+                        //-                   .form-check-inline
+                        //-                     input#organicType.form-check-input(type='radio' name='productType' value='Organic' checked = item.productType==="Organic")
+                        //-                     label.form-check-label(for='organic')  Organic 
+                        //-                   .form-check-inline
+                        //-                     input#inorganicType.form-check-input(type='radio' name='productType' value='Inorganic' checked = item.productType==="Inorganic")
+                        //-                     label.form-check-label(for='inorganic')  Inorganic 
+                        //-             .form-group
+                        //-               .form-check-inline
+                        //-                 input(name='productImage' value = item.productImage)
+                        //-               .form-check-inline
+                        //-                 button#registerFO.btn.btn-primary(type='submit')
+                        //-                       | Update
+                              .col-4  
                     td
                         form(method="post" action='/deleteProduct')
                             input(type="hidden", placeholder="", name="id", value=item._id)
@@ -77,3 +162,4 @@ body
 script(src='./js/jquery-3.5.1.slim.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')
+script(src='./js/validateMassajaUfarm.js')

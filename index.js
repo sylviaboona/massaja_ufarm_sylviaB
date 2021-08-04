@@ -42,7 +42,7 @@ mongoose.connection
 
 
 
-  //CONFIGURATION SETTINGS
+//CONFIGURATION SETTINGS
 //Setting the view engine to pug
 app.set('view engine', 'pug')
 //views is the folder where we shall be having our pug files & set path to views
@@ -80,7 +80,7 @@ app.get('/welcome', (req, res) => {
   res.render('home');
 }); 
 
-app.get('/welcome2', (req, res) => {
+app.get('/', (req, res) => {
   res.render('home2');
 }); 
 

@@ -4,36 +4,43 @@ head
   title Massajja Ufarm
   link(rel='stylesheet' href='css/bootstrap/bootstrap.css')
   link(rel='stylesheet' href='css/style.css')
-nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome2') Ufarm
+nav.navbar.navbar-expand-lg.navbar-light.nav-link
+  a.navbar-brand(href='/') UFARM |
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item.active
-        a.nav-link(href='welcome2')
-          | Home 
+        a.nav-link(href='/')
+          | HOME  
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='contactUfarm') Contact Us
+        a.nav-link(href='contactUfarm') CONTACT
       li.nav-item
-        a.nav-link(href='aboutUfarm') About Us
+        a.nav-link(href='aboutUfarm') ABOUT
+      li.nav-item
+        a.nav-link(href='productDash') PRODUCTS
 body
-  .container-fluid.loginFOpage
+  .container-fluid.login-container
     .row
-      .col-8
-        img.fologinimage(src="../img/avocado1.jpg", alt="" width='400px')
+      .col-5
+        .welcome-tag-login
+          h1#welcome-message Massaja Division Ufarm
+          p#welcome-tag Connecting you to first class agricultural produce by a click of a button from anywhere
+          a.viewProducts(href="productDash")
+            input(type='button' value='View Available Products')
+      .col-1
       .col-4.loginForm
         form.user-Login(action='/login' method='POST' name='login')
-          h4 Login
+          h4.login-form-heading LOGIN HERE
           .form-group
-            input#username.form-control(type='text' placeholder='Username' name='username')
+            input#username.form-control.login-form-input(type='text' placeholder='Username' name='username')
             span#unameErr
           .form-group
-            input#inputPassword.form-control(type='password' placeholder='Password' name='password')
+            input#inputPassword.form-control.login-form-input(type='password' placeholder='Password' name='password')
             span#pwdErr
-          button.btn.btn-primary(type='submit') Log In
-      //- .col-4
+          button.btn.btn-primary.form-control(type='submit') Login
+      .col-1
     //- .col-4
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')

@@ -1,4 +1,11 @@
 // //VALIDATION FUNCTION FOR AGRIC OFFICER REGISTRATION FORM
+// const $ = require('jquery')
+// $.DataTable = require('datatables.net')
+
+$(document).ready(function() {
+  $('#example').DataTable();
+} );
+
 const registerAOform = (event) => {
   event.preventDefault();
   event.stopPropagation();
@@ -95,7 +102,7 @@ const registerFOform = (event) => {
   const diary = document.getElementById("diaryProducts");
 
   //Validate First Name.
-  let fnameRegex = /^[A-Za-z]{5,50}$/;
+  let fnameRegex = /^[A-Za-z]{2,50}$/;
   let fnameFOerr = document.getElementById("fnameFOerr");
   if (fnameRegex.test(firstName.value) == false) {
     fnameFOerr.innerHTML = "* First Name is required";
@@ -105,7 +112,7 @@ const registerFOform = (event) => {
   } 
 
   //Validate Last Name.
-  let lnameRegex = /^[A-Za-z]{5,50}$/;
+  let lnameRegex = /^[A-Za-z]{2,50}$/;
   let lnameFOerr = document.getElementById("lnameFOerr");
   if (lnameRegex.test(lastName.value) == false) {
     lnameFOerr.innerHTML = "* Last Name is required";
@@ -246,11 +253,18 @@ const registerUFform = (event) => {
   let fnameRegex = /^[A-Za-z]{2,50}$/;
   let fnameUFerr = document.getElementById("fnameUFerr");
   if (fnameRegex.test(firstName.value) == false) {
-    fnameUFerr.innerHTML = "* First Name is required";
+    fnameUFerr.innerHTML = "* First Name must be at least 5 letters";
     fnameUFerr.style.color = "red";
     firstName.style.border = "2px solid red";
     return false;
   } 
+  //else if(firstName.value == ''){
+  //   fnameUFerr.innerHTML = "* First Name is required";
+  //   fnameUFerr.style.color = "red";
+  //   firstName.style.border = "2px solid red";
+  //   return false;
+
+  // }
 
   //Validate Last Name.
   let lnameRegex = /^[A-Za-z]\w{2,50}$/;
