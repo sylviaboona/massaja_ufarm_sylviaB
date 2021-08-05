@@ -40,50 +40,51 @@ body
                     b.card-texts Quantity: &nbsp #{item.quantity}
                   p.card-texts Contact: #{item.phoneContact}
                   p.card-texts Ward: #{item.ward}
-                  a#orderBTN.btn.btn-secondary(href=`orderForm/?id=${item._id}` data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Order Now
-                  #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
-                    .modal-dialog(role='document')
-                      .modal-content
-                        .modal-header
-                          h4#exampleModalLabel.modal-title Make an order
-                          button.close(type='button' data-dismiss='modal' aria-label='Close')
-                            span(aria-hidden='true') &times;
-                        .modal-body.container
-                            form(name='orderForm' action=`/orderForm?id=${productId}` method='POST')
-                              .form-row
-                                  .form-group.col-md-6
-                                      label Product Name:
-                                      input.form-control(value=item.productName name = 'productName')
-                                  .form-group.col-md-6
-                                      label Unit Price:
-                                      input.form-control(value=item.price name = 'price')
-                              .form-row
-                                  .form-group.col-md-6
-                                      label Customer Contact:
-                                      input.form-control(name='customerContact' type='text')
-                                  .form-group.col-md-6
-                                      label Quantity:
-                                      input.form-control(type='number' name = 'quantity' )
-                              .form-row
-                                .form-group
-                                  .form-check-inline
-                                    label.form-check-label(for='organic')  Payment Mode
-                                  .form-check-inline
-                                    input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked='')
-                                    label.form-check-label(for='organic') Cash
-                                  .form-check-inline
-                                    input#inorganicType.form-check-input(type='radio' name='paymentMode' value='Mobile money')
-                                    label.form-check-label(for='inorganic')  Mobile Money
-                                .form-group
-                                  .form-check-inline
-                                    label.form-check-label(for='organic')  Delivery Mode
-                                  .form-check-inline
-                                    input#organicType.form-check-input(type='radio' name='delivery' value='Pick up' checked='')
-                                    label.form-check-label(for='organic')  Pick Up 
-                                  .form-check-inline
-                                    input#inorganicType.form-check-input(type='radio' name='delivery' value='Home Delivery')
-                                    label.form-check-label(for='inorganic')  Home Delivery
-                              button.btn.btn-primary(type='submit') Submit Order
+                  a#orderBTN.btn.btn-secondary(href=`orderForm/?id=${item._id}`) Order Now
+                  //- a#orderBTN.btn.btn-secondary(href=`orderForm/?id=${item._id}` data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Order Now
+                  //- #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+                  //-   .modal-dialog(role='document')
+                  //-     .modal-content
+                  //-       .modal-header
+                  //-         h4#exampleModalLabel.modal-title Make an order
+                  //-         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                  //-           span(aria-hidden='true') &times;
+                  //-       .modal-body.container
+                  //-           form(name='orderForm' action=`/orderForm?id=${productId}` method='POST')
+                  //-             .form-row
+                  //-                 .form-group.col-md-6
+                  //-                     label Product Name:
+                  //-                     input.form-control(value=item.productName name = 'productName')
+                  //-                 .form-group.col-md-6
+                  //-                     label Unit Price:
+                  //-                     input.form-control(value=item.price name = 'price')
+                  //-             .form-row
+                  //-                 .form-group.col-md-6
+                  //-                     label Customer Contact:
+                  //-                     input.form-control(name='customerContact' type='text')
+                  //-                 .form-group.col-md-6
+                  //-                     label Quantity:
+                  //-                     input.form-control(type='number' name = 'quantity' )
+                  //-             .form-row
+                  //-               .form-group
+                  //-                 .form-check-inline
+                  //-                   label.form-check-label(for='organic')  Payment Mode
+                  //-                 .form-check-inline
+                  //-                   input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked='')
+                  //-                   label.form-check-label(for='organic') Cash
+                  //-                 .form-check-inline
+                  //-                   input#inorganicType.form-check-input(type='radio' name='paymentMode' value='Mobile money')
+                  //-                   label.form-check-label(for='inorganic')  Mobile Money
+                  //-               .form-group
+                  //-                 .form-check-inline
+                  //-                   label.form-check-label(for='organic')  Delivery Mode
+                  //-                 .form-check-inline
+                  //-                   input#organicType.form-check-input(type='radio' name='delivery' value='Pick up' checked='')
+                  //-                   label.form-check-label(for='organic')  Pick Up 
+                  //-                 .form-check-inline
+                  //-                   input#inorganicType.form-check-input(type='radio' name='delivery' value='Home Delivery')
+                  //-                   label.form-check-label(for='inorganic')  Home Delivery
+                  //-             button.btn.btn-primary(type='submit') Submit Order
 script(src='js/jquery-3.5.1.slim.min.js')
 script(src='js/popper.min.js')
 script(src='js/bootstrap/bootstrap.js')

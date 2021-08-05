@@ -4,23 +4,25 @@ head
   title Massajja Ufarm
   link(rel='stylesheet' href='/css/bootstrap/bootstrap.css' type='text/css')
   link(rel='stylesheet' href='/css/style.css' type='text/css')
-nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome2') Ufarm
+nav.navbar.navbar-expand-lg.navbar-light.nav-link
+  a.navbar-brand(href='welcome2') UFARM &nbsp&nbsp |
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
+      li.nav-item
         a.nav-link(href='welcome2')
-          | Home 
+          | HOME 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='contactUfarm') Contact Us
+        a.nav-link(href='contactUfarm') CONTACT
       li.nav-item
-        a.nav-link(href='aboutUfarm') About Us
-.container
+        a.nav-link(href='aboutUfarm') ABOUT
+    form(method="post" action='/logoutAO') 
+      button.btn.btn-dark.btn-block(type="submit") Logout
+.container.update-page
   form.farmerOneRegister(method="post" action="/update?id="+user._id)
-    img.formImages(src='/img/greenLeafSideImage1.png' alt='')
+    //- img.formImages(src='/img/greenLeafSideImage1.png' alt='')
     h4#registerFO Update Farmer One  Information Here
     .form-row
       .form-group.col-md-6

@@ -31,11 +31,43 @@ body
   .row 
     .col-2  
       .bd-sidebar.sidebar 
-        a.sidebar-link(href='viewAllUFs') UFs
         br
+        a.sidebar-link(href='dashboardAO') LEADERS
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='viewAllUFs') FARMERS
+        br
+        br
+        hr
         br
         a.sidebar-link(href='viewAllProducts') PRODUCTS
-        br  
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='ordersDash') ORDERS
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='#') SUMMARY
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='#') PROFILE
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='#') SETTINGS
+        br
+        br
+        hr
+        br
+         
     .col-9.dashAO
       br
       header
@@ -149,72 +181,73 @@ body
                       td #{user.produceType}  
                       td #{user.gender}
                       td
-                          a(href='/update/'+user._id data-toggle='modal' data-target='#updateModal' data-whatever='@getbootstrap') Update
-                          #updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
-                            .modal-dialog(role='document')
-                              .modal-content
-                                .modal-header
-                                  h4#exampleModalLabel.modal-title Update Farmer One  Information Here
-                                  button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                    span(aria-hidden='true') &times;
-                                .modal-body
-                                  form.farmerOneRegister(method="post" action="/update?id="+user._id)
-                                    img.formImages(src='/img/greenLeafSideImage1.png' alt='')
-                                    .form-row
-                                      .form-group.col-md-6
-                                        label First Name
-                                        input#inputFirstName.form-control(value = user.firstNameFO name ="firstNameFO" readonly)
-                                      .form-group.col-md-6
-                                        label Last Name
-                                        input#inputLastName.form-control(value = user.lastNameFO name ="lastNameFO" readonly)
-                                    .form-row
-                                      .form-group.col-md-6
-                                        label FO NIN
-                                        input#inputNIN.form-control(value = user.foNIN name ="foNIN" readonly)
-                                      .form-group.col-md-6
-                                        label Contact
-                                        input#inputPhoneNumber.form-control(value = user.phoneNumberFO name ="phoneNumberFO")
-                                    .form-row
-                                      .form-group.col-md-4
-                                        label Ward
-                                        select#inputWard.form-control(name='ward' disabled)
-                                          option(value="Busabala" selected = user.ward === "Busabala") Busabala
-                                          option(value="Massajja" selected = user.ward === "Massajja") Massajja
-                                          option(value="Kikajjo" selected = user.ward === "Kikajjo") Kikajjo
-                                          option(value="Namasuba" selected = user.ward === "Namasuba") Namasuba
-                                      .form-group.col-md-4
-                                        label Year of Stay 
-                                        input.form-control(value = user.stayPeriod name ="stayPeriod" readonly)
-                                      .form-group.col-md-4
-                                        label Residence Type
-                                        select#inputResidence.form-control(name='residenceType' disabled)
-                                          option(value="Citizen" selected = user.residenceType === "Citizen") Citizen
-                                          option(value="Non Citizen" selected = user.residenceType === "Non Citizen") Non Citizen
-                                    .form-row
-                                      .form-group.col-md-6
-                                        label Date of Birth
-                                        input#inputDOB.form-control(value = user.dobFO name ="dobFO" readonly)
-                                      .form-group.col-md-6
-                                        label Date of Registration
-                                        input#inputDOR.form-control(value = user.dorFO name ="dorFO" readonly)
-                                    .form-check.form-check-inline
-                                      input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType.includes('Horticulture') name="produceType")
-                                      label.form-check-label(for='inlineCheckbox1') Horticulture Produce
-                                    .form-check.form-check-inline
-                                      input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType.includes('Poultry') name="produceType")
-                                      label.form-check-label(for='inlineCheckbox2') Poultry products
-                                    .form-check.form-check-inline
-                                      input#diaryProducts.form-check-input(value= "Dairy" type="checkbox" checked = user.produceType.includes('Dairy') name="produceType")
-                                      label.form-check-label(for='inlineCheckbox3') Diary Products
-                                    .form-group
-                                      .form-check-inline
-                                        input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender" readonly)
-                                        label.form-check-label(for='genderM')  Male 
-                                      .form-check-inline
-                                        input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender" readonly)
-                                        label.form-check-label(for='genderF')  Female 
-                                    button#registerFO.btn.btn-primary(type='submit')
-                                      | Update
+                          a(href='/update/'+user._id) Update
+                          //- a(href='/update/'+user._id data-toggle='modal' data-target='#updateModal' data-whatever='@getbootstrap') Update
+                          //- #updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+                          //-   .modal-dialog(role='document')
+                          //-     .modal-content
+                          //-       .modal-header
+                          //-         h4#exampleModalLabel.modal-title Update Farmer One  Information Here
+                          //-         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                          //-           span(aria-hidden='true') &times;
+                          //-       .modal-body
+                          //-         form.farmerOneRegister(method="post" action="/update?id="+user._id)
+                          //-           img.formImages(src='/img/greenLeafSideImage1.png' alt='')
+                          //-           .form-row
+                          //-             .form-group.col-md-6
+                          //-               label First Name
+                          //-               input#inputFirstName.form-control(value = user.firstNameFO name ="firstNameFO" readonly)
+                          //-             .form-group.col-md-6
+                          //-               label Last Name
+                          //-               input#inputLastName.form-control(value = user.lastNameFO name ="lastNameFO" readonly)
+                          //-           .form-row
+                          //-             .form-group.col-md-6
+                          //-               label FO NIN
+                          //-               input#inputNIN.form-control(value = user.foNIN name ="foNIN" readonly)
+                          //-             .form-group.col-md-6
+                          //-               label Contact
+                          //-               input#inputPhoneNumber.form-control(value = user.phoneNumberFO name ="phoneNumberFO")
+                          //-           .form-row
+                          //-             .form-group.col-md-4
+                          //-               label Ward
+                          //-               select#inputWard.form-control(name='ward' disabled)
+                          //-                 option(value="Busabala" selected = user.ward === "Busabala") Busabala
+                          //-                 option(value="Massajja" selected = user.ward === "Massajja") Massajja
+                          //-                 option(value="Kikajjo" selected = user.ward === "Kikajjo") Kikajjo
+                          //-                 option(value="Namasuba" selected = user.ward === "Namasuba") Namasuba
+                          //-             .form-group.col-md-4
+                          //-               label Year of Stay 
+                          //-               input.form-control(value = user.stayPeriod name ="stayPeriod" readonly)
+                          //-             .form-group.col-md-4
+                          //-               label Residence Type
+                          //-               select#inputResidence.form-control(name='residenceType' disabled)
+                          //-                 option(value="Citizen" selected = user.residenceType === "Citizen") Citizen
+                          //-                 option(value="Non Citizen" selected = user.residenceType === "Non Citizen") Non Citizen
+                          //-           .form-row
+                          //-             .form-group.col-md-6
+                          //-               label Date of Birth
+                          //-               input#inputDOB.form-control(value = user.dobFO name ="dobFO" readonly)
+                          //-             .form-group.col-md-6
+                          //-               label Date of Registration
+                          //-               input#inputDOR.form-control(value = user.dorFO name ="dorFO" readonly)
+                          //-           .form-check.form-check-inline
+                          //-             input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType.includes('Horticulture') name="produceType")
+                          //-             label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+                          //-           .form-check.form-check-inline
+                          //-             input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType.includes('Poultry') name="produceType")
+                          //-             label.form-check-label(for='inlineCheckbox2') Poultry products
+                          //-           .form-check.form-check-inline
+                          //-             input#diaryProducts.form-check-input(value= "Dairy" type="checkbox" checked = user.produceType.includes('Dairy') name="produceType")
+                          //-             label.form-check-label(for='inlineCheckbox3') Diary Products
+                          //-           .form-group
+                          //-             .form-check-inline
+                          //-               input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender" readonly)
+                          //-               label.form-check-label(for='genderM')  Male 
+                          //-             .form-check-inline
+                          //-               input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender" readonly)
+                          //-               label.form-check-label(for='genderF')  Female 
+                          //-           button#registerFO.btn.btn-primary(type='submit')
+                          //-             | Update
                                     br
                       td
                           form(method="post" action='/delete')

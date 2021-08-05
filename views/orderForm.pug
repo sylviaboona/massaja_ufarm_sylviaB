@@ -4,25 +4,26 @@ head
   title Massajja Ufarm
   link(rel='stylesheet' href='/css/bootstrap/bootstrap.css')
   link(rel='stylesheet' href='/css/style.css')
-nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #6b8e23')
-  a.navbar-brand(href='welcome2') Ufarm
+nav.navbar.navbar-expand-lg.navbar-light.nav-link
+  a.navbar-brand(href='/') UFARM &nbsp&nbsp |
   button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
-        a.nav-link(href='welcome2')
-          | Home 
+      li.nav-item
+        a.nav-link(href='/')
+          | HOME 
           span.sr-only (current)
       li.nav-item
-        a.nav-link(href='contactUfarm') Contact Us
+        a.nav-link(href='contactUfarm') CONTACT
       li.nav-item
-        a.nav-link(href='aboutUfarm') About Us
+        a.nav-link(href='aboutUfarm') ABOUT
+      li.nav-item
+        a.nav-link(href='login') LOGIN
 body
   .container.loginFOpage
     .row
       .col-4
-        //- img.fologinimage(src="../img/avocado1.jpg", alt="" width='400px')
       .col-4.loginForm
         h5 Fill in  your order 
         form(name='orderForm' action=`/orderForm?id=${productId}` method='POST')
@@ -43,7 +44,7 @@ body
             .form-row
               .form-group
                 .form-check-inline
-                  label.form-check-label(for='organic')  Payment Mode
+                  label.form-check-label(for='organic') Payment Mode
                 .form-check-inline
                   input#organicType.form-check-input(type='radio' name='paymentMode' value='Cash' checked='')
                   label.form-check-label(for='organic') Cash

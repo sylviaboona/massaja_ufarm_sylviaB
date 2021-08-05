@@ -15,9 +15,10 @@ router.get('/orderForm', async(req, res)=>{
 router.post('/orderForm', async(req, res)=>{
     try{
         const clientOrders = await Order(req.body);
-        await clientOrders.save(() => {
-            res.redirect("/ordersDash")
-        });
+        await clientOrders.save();
+        // () => {
+        //     res.redirect("/ordersDash")
+        // }
         const product = await FarmerUpload.findOne({_id: req.query.id});
         let diff = parseInt(product.quantity)- parseInt(req.body.quantity);
         let updatedQuantity = {};

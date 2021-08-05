@@ -31,168 +31,202 @@ nav.navbar.navbar-expand-lg.navbar-light.nav-link
     form(method="post" action='/logoutFO') 
       button.btn.btn-dark.btn-block(type="submit") Logout
 body
-  .container-fluid 
-    header
-        h4.card-title Urban Farmers in Massajja Division
-        button#newFObtn.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Add New UF
-        #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
-          .modal-dialog(role='document')
-            .modal-content
-              .modal-header
-                h4#exampleModalLabel.modal-title Register New UF
-                button.close(type='button' data-dismiss='modal' aria-label='Close')
-                  span(aria-hidden='true') &times;
-              .modal-body.container
-                  form.farmerOneRegister(name='urbanFarmerForm' action = '/registerUF' method='POST')
-                    .form-row
-                      .form-group.col-md-4
-                        input#inputFirstName.form-control(type='text' name='firstNameUF' placeholder='First Name')
-                        span#fnameUFerr
-                      .form-group.col-md-4
-                        input#inputLastName.form-control(type='text' name='lastNameUF' placeholder='Last Name')
-                        span#lnameUFerr
-                      .form-group.col-md-4
-                        input#inputUserName.form-control(type='text' name='username' placeholder='User Name')
-                        span#unameUFerr
-                    .form-row
-                      .form-group.col-md-6
-                        input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth' onfocus="(this.type='date')")
-                        span#dobUFerr
-                      .form-group.col-md-6
-                        input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration' onfocus="(this.type='date')")
-                        span#dorUFerr
-                    .form-row
-                      .form-group.col-md-6
-                        input#inputfarmerID.form-control(type='text' name='password' placeholder='Unique farmer ID')
-                        span#idNumErr
-                      .form-group.col-md-6
-                        input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
-                        span#ufNINerr
-                    .form-row
-                      .form-group.col-md-6
-                        input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
-                        span#ufphoneNumErr1
-                      .form-group.col-md-6
-                        input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
-                        span#ufphoneNumErr2
-                    .form-group
-                      .form-check-inline
-                        input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
-                        label.form-check-label(for='horticulture') Horticulture Produce
-                      .form-check-inline
-                        input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
-                        label.form-check-label(for='poultry') Poultry products
-                      .form-check-inline
-                        input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
-                        label.form-check-label(for='dairy') Diary Products
-                        span#produceUFerr
-                    .form-group
-                      .form-check-inline
-                        input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
-                        label.form-check-label(for='genderM')  Male 
-                      .form-check-inline
-                        input#genderF.form-check-input(type='radio' name='gender' value='Female')
-                        label.form-check-label(for='genderF')  Female 
-                    a#registerUF(href='#')
-                      input.btn.btn-primary(type='button' value='Register')
-    |&nbsp
-    table#example.table
-        thead
-            tr
-                th Date
-                th Firstname
-                th Lastname
-                th Contact 1
-                th Contact 2
-                th Ward
-                th Produce Type
-                th Gender
-                th
-                th
+  .row 
+    .col-2  
+      .bd-sidebar.sidebar 
+        br
+        a.sidebar-link(href='dashboardFO') FARMERS
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='dashboardUF') PRODUCTS
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='ordersDash') ORDERS
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='#') SUMMARY
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='#') PROFILE
+        br
+        br
+        hr
+        br
+        a.sidebar-link(href='#') SETTINGS
+        br
+        br
+        hr
+        br
+    .col-9
+            header
+                h4.card-title Urban Farmers in Massajja Division
+                button#newFObtn.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever='@getbootstrap') Add New UF
+                #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+                  .modal-dialog(role='document')
+                    .modal-content
+                      .modal-header
+                        h4#exampleModalLabel.modal-title Register New UF
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                          span(aria-hidden='true') &times;
+                      .modal-body.container
+                          form.farmerOneRegister(name='urbanFarmerForm' action = '/registerUF' method='POST')
+                            .form-row
+                              .form-group.col-md-4
+                                input#inputFirstName.form-control(type='text' name='firstNameUF' placeholder='First Name')
+                                span#fnameUFerr
+                              .form-group.col-md-4
+                                input#inputLastName.form-control(type='text' name='lastNameUF' placeholder='Last Name')
+                                span#lnameUFerr
+                              .form-group.col-md-4
+                                input#inputUserName.form-control(type='text' name='username' placeholder='User Name')
+                                span#unameUFerr
+                            .form-row
+                              .form-group.col-md-6
+                                input#inputDOB.form-control(type='text' name='dobUF' placeholder='Date of Birth' onfocus="(this.type='date')")
+                                span#dobUFerr
+                              .form-group.col-md-6
+                                input#inputDOR.form-control(type='text' name='dorUF' placeholder='Date of Registration' onfocus="(this.type='date')")
+                                span#dorUFerr
+                            .form-row
+                              .form-group.col-md-6
+                                input#inputfarmerID.form-control(type='text' name='password' placeholder='Unique farmer ID')
+                                span#idNumErr
+                              .form-group.col-md-6
+                                input#inputfarmerNIN.form-control(type='text' name='ufNIN' placeholder='NIN Number')
+                                span#ufNINerr
+                            .form-row
+                              .form-group.col-md-6
+                                input#inputPhoneNumber.form-control(type='text' name='phoneNumberUF' placeholder='Phone Contact e.g 0700123456')
+                                span#ufphoneNumErr1
+                              .form-group.col-md-6
+                                input#altPhoneNumber.form-control(type='text' name='phoneNumberUF2' placeholder='Other Contact e.g. 0780123456')
+                                span#ufphoneNumErr2
+                            .form-group
+                              .form-check-inline
+                                input#horticultureProduce.form-check-input(type='checkbox' value='Horticulture' name='produceType')
+                                label.form-check-label(for='horticulture') Horticulture Produce
+                              .form-check-inline
+                                input#poultryProducts.form-check-input(type='checkbox' value='Poultry' name='produceType')
+                                label.form-check-label(for='poultry') Poultry products
+                              .form-check-inline
+                                input#diaryProducts.form-check-input(type='checkbox' value='Dairy' name='produceType')
+                                label.form-check-label(for='dairy') Diary Products
+                                span#produceUFerr
+                            .form-group
+                              .form-check-inline
+                                input#genderM.form-check-input(type='radio' name='gender' value='Male' checked='')
+                                label.form-check-label(for='genderM')  Male 
+                              .form-check-inline
+                                input#genderF.form-check-input(type='radio' name='gender' value='Female')
+                                label.form-check-label(for='genderF')  Female 
+                            a#registerUF(href='#')
+                              input.btn.btn-primary(type='button' value='Register')
+            |&nbsp
+            table#example.table
+                thead
+                    tr
+                        th Date
+                        th Firstname
+                        th Lastname
+                        th Contact 1
+                        th Contact 2
+                        th Ward
+                        th Produce Type
+                        th Gender
+                        th
+                        th
 
-        tbody
-            if users.length
-            each user in users
-                tr
-                    td #{user.dorUF}
-                    td #{user.firstNameUF}
-                    td #{user.lastNameUF}
-                    td #{user.phoneNumberUF}
-                    td #{user.phoneNumberUF2}
-                    td #{user.ward}
-                    td #{user.produceType}
-                    td #{user.gender}
-                    td
-                        a(href='/updateUF/'+ user._id) Update
-                        //- a(href='/updateUF/'+ user._id data-toggle='modal' data-target='#updateModal' data-whatever='@getbootstrap') Update
-                        //- #updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
-                        //-   .modal-dialog(role='document')
-                        //-     .modal-content
-                        //-       .modal-header
-                        //-         h4#updateModalLabel.modal-title Update UF Information Here
-                        //-         button.close(type='button' data-dismiss='modal' aria-label='Close')
-                        //-           span(aria-hidden='true') &times;
-                        //-       .modal-body
-                        //-           form(method="post" action="/updateUF?id="+user._id)
-                        //-             .form-row
-                        //-               .form-group.col-md-6
-                        //-                 label First Name
-                        //-                 input#inputFirstName.form-control(value = user.firstNameUF name ="firstNameUF" readonly)
-                        //-               .form-group.col-md-6
-                        //-                 label Last Name
-                        //-                 input#inputLastName.form-control(value = user.lastNameUF name ="lastNameUF" readonly)
-                        //-             .form-row
-                        //-               .form-group.col-md-6
-                        //-                 label Date of Birth
-                        //-                 input#inputDOB.form-control(value = user.dobUF name ="dobUF" readonly)
-                        //-               .form-group.col-md-6
-                        //-                 label Date of Registration
-                        //-                 input#inputDOR.form-control(value = user.dorUF name ="dorUF" readonly)
-                        //-             .form-row
-                        //-               .form-group.col-md-6
-                        //-                 label Farmer NIN
-                        //-                 input#inputNIN.form-control(value = user.ufNIN name ="ufNIN" readonly)
-                        //-               .form-group.col-md-6
-                        //-                 label Ward
-                        //-                 select#inputWard.form-control(name='wardUF' readonly)
-                        //-                   option(value="Busabala" selected = user.wardUF === "Busabala") Busabala
-                        //-                   option(value="Massajja" selected = user.wardUF === "Massajja") Massajja
-                        //-                   option(value="Kikajjo" selected = user.wardUF === "Kikajjo") Kikajjo
-                        //-                   option(value="Namasuba" selected = user.wardUF === "Namasuba") Namasuba
-                        //-             .form-row
-                        //-               .form-group.col-md-4
-                        //-                 label Contact
-                        //-                 input#inputPhoneNumber.form-control(value = user.phoneNumberUF name ="phoneNumberUF")
-                        //-               .form-group.col-md-4
-                        //-                 label Contact 2
-                        //-                 input#inputPhoneNumber.form-control(value = user.phoneNumberUF2 name ="phoneNumberUF2")
-                        //-             .form-check.form-check-inline
-                        //-               input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType.includes('Horticulture') name="produceType")
-                        //-               label.form-check-label(for='inlineCheckbox1') Horticulture Produce
-                        //-             .form-check.form-check-inline
-                        //-               input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType.includes('Poultry') name="produceType")
-                        //-               label.form-check-label(for='inlineCheckbox2') Poultry products
-                        //-             .form-check.form-check-inline
-                        //-               input#diaryProducts.form-check-input(value= "Dairy" type="checkbox" checked = user.produceType.includes('Dairy') name="produceType")
-                        //-               label.form-check-label(for='inlineCheckbox3') Diary Products
-                        //-             .form-group
-                        //-               .form-check-inline
-                        //-                 input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender")
-                        //-                 label.form-check-label(for='genderM')  Male 
-                        //-               .form-check-inline
-                        //-                 input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender")
-                        //-                 label.form-check-label(for='genderF')  Female 
-                        //-             button#registerFO.btn.btn-primary(type='submit')
-                        //-               | Update
-                                    br
-                    td
-                        form(method="post" action='/deleteUF')
-                            input(type="hidden", placeholder="", name="id", value=user._id)
-                            button.btn.btn-dark.btn-block(type="submit") Delete
-            else
-                p No products found yet :(
+                tbody
+                    if users.length
+                    each user in users
+                        tr
+                            td #{user.dorUF}
+                            td #{user.firstNameUF}
+                            td #{user.lastNameUF}
+                            td #{user.phoneNumberUF}
+                            td #{user.phoneNumberUF2}
+                            td #{user.ward}
+                            td #{user.produceType}
+                            td #{user.gender}
+                            td
+                                a(href='/updateUF/'+ user._id) Update
+                                //- a(href='/updateUF/'+ user._id data-toggle='modal' data-target='#updateModal' data-whatever='@getbootstrap') Update
+                                //- #updateModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel')
+                                //-   .modal-dialog(role='document')
+                                //-     .modal-content
+                                //-       .modal-header
+                                //-         h4#updateModalLabel.modal-title Update UF Information Here
+                                //-         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                //-           span(aria-hidden='true') &times;
+                                //-       .modal-body
+                                //-           form(method="post" action="/updateUF?id="+user._id)
+                                //-             .form-row
+                                //-               .form-group.col-md-6
+                                //-                 label First Name
+                                //-                 input#inputFirstName.form-control(value = user.firstNameUF name ="firstNameUF" readonly)
+                                //-               .form-group.col-md-6
+                                //-                 label Last Name
+                                //-                 input#inputLastName.form-control(value = user.lastNameUF name ="lastNameUF" readonly)
+                                //-             .form-row
+                                //-               .form-group.col-md-6
+                                //-                 label Date of Birth
+                                //-                 input#inputDOB.form-control(value = user.dobUF name ="dobUF" readonly)
+                                //-               .form-group.col-md-6
+                                //-                 label Date of Registration
+                                //-                 input#inputDOR.form-control(value = user.dorUF name ="dorUF" readonly)
+                                //-             .form-row
+                                //-               .form-group.col-md-6
+                                //-                 label Farmer NIN
+                                //-                 input#inputNIN.form-control(value = user.ufNIN name ="ufNIN" readonly)
+                                //-               .form-group.col-md-6
+                                //-                 label Ward
+                                //-                 select#inputWard.form-control(name='wardUF' readonly)
+                                //-                   option(value="Busabala" selected = user.wardUF === "Busabala") Busabala
+                                //-                   option(value="Massajja" selected = user.wardUF === "Massajja") Massajja
+                                //-                   option(value="Kikajjo" selected = user.wardUF === "Kikajjo") Kikajjo
+                                //-                   option(value="Namasuba" selected = user.wardUF === "Namasuba") Namasuba
+                                //-             .form-row
+                                //-               .form-group.col-md-4
+                                //-                 label Contact
+                                //-                 input#inputPhoneNumber.form-control(value = user.phoneNumberUF name ="phoneNumberUF")
+                                //-               .form-group.col-md-4
+                                //-                 label Contact 2
+                                //-                 input#inputPhoneNumber.form-control(value = user.phoneNumberUF2 name ="phoneNumberUF2")
+                                //-             .form-check.form-check-inline
+                                //-               input#horticultureProduce.form-check-input(value= "Horticulture" type="checkbox" checked = user.produceType.includes('Horticulture') name="produceType")
+                                //-               label.form-check-label(for='inlineCheckbox1') Horticulture Produce
+                                //-             .form-check.form-check-inline
+                                //-               input#poultryProducts.form-check-input(value= "Poultry" type="checkbox" checked = user.produceType.includes('Poultry') name="produceType")
+                                //-               label.form-check-label(for='inlineCheckbox2') Poultry products
+                                //-             .form-check.form-check-inline
+                                //-               input#diaryProducts.form-check-input(value= "Dairy" type="checkbox" checked = user.produceType.includes('Dairy') name="produceType")
+                                //-               label.form-check-label(for='inlineCheckbox3') Diary Products
+                                //-             .form-group
+                                //-               .form-check-inline
+                                //-                 input#genderM.form-check-input(value= "Male" type="radio" checked = user.gender==="Male" name="gender")
+                                //-                 label.form-check-label(for='genderM')  Male 
+                                //-               .form-check-inline
+                                //-                 input#genderF.form-check-input(value= "Female" type="radio" checked = user.gender==="Female" name="gender")
+                                //-                 label.form-check-label(for='genderF')  Female 
+                                //-             button#registerFO.btn.btn-primary(type='submit')
+                                //-               | Update
+                                            br
+                            td
+                                form(method="post" action='/deleteUF')
+                                    input(type="hidden", placeholder="", name="id", value=user._id)
+                                    button.btn.btn-dark.btn-block(type="submit") Delete
+                    else
+                        p No products found yet :(
 script(src='./js/jquery-3.5.1.slim.min.js')
-script(src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js')
+//- script(src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js')
 script(src='./js/popper.min.js')
 script(src='./js/bootstrap/bootstrap.js')
 script(src='./js/validateMassajaUfarm.js')
